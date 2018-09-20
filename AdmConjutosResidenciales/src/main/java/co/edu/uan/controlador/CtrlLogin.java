@@ -36,7 +36,7 @@ public class CtrlLogin {
 		} else {
 			//se va al dao de sesion
 			
-			
+			//si es admin
 			Stage primaryStage = new Stage();			
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));

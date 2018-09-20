@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #339DE5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelMenuAdmin">
+   <children>
+      <Accordion layoutY="288.0" opacity="0.7" prefHeight="353.0" prefWidth="243.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="-1.0" AnchorPane.topAnchor="288.0">
+         <panes>
+            <TitledPane alignment="CENTER" text="Pagos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Administracion">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="LINE_CHART" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Parqueadero">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="CAR" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TitledPane>
+            <TitledPane alignment="CENTER" contentDisplay="CENTER" text="Asignacion parqueadero" textAlignment="CENTER">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Visitantes">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="GROUP" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Residentes">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="USER" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TitledPane>
+            <TitledPane alignment="CENTER" text="Novedades">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Quejas/sugerencias">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="INBOX" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Asambleas">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="CLIPBOARD" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TitledPane>
+            <TitledPane alignment="CENTER" text="Servicios">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Aseo">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="TINT" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Vigilancia">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="EYE" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_LEFT" layoutY="80.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Mantenimiento">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TitledPane>
+            <TitledPane alignment="CENTER" text="Mi cuenta">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Actualizar mis datos">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="GEARS" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Cerrar sesion">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="SIGN_OUT" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TitledPane>
+         </panes>
+      </Accordion>
+      <ImageView fitHeight="208.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Captura.JPG" />
+         </image>
+      </ImageView>
+      <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="67.0" layoutY="137.0" size="12em" />
+      <Label layoutX="109.0" layoutY="158.0" text="&lt;rol&gt;" textFill="WHITE" />
+      <Label layoutX="94.0" layoutY="183.0" text="&lt;nombre&gt;" textFill="WHITE" />
+      <JFXButton fx:id="btnRegistroResidente" alignment="TOP_LEFT" layoutX="1.0" layoutY="208.0" onAction="#registrarPropietario" prefHeight="40.0" prefWidth="241.0" ripplerFill="#5a63d7" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar propietarios">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#125b61" iconName="BUILDING" />
+         </graphic>
+      </JFXButton>
+      <JFXButton alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#125b61" iconName="USERS" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

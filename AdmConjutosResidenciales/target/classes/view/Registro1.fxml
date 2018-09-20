@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.fontawesome.*?>
@@ -8,15 +9,15 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.4597574421168688" prefHeight="649.0" prefWidth="909.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <AnchorPane style="-fx-background-color: #03131E;">
+            <AnchorPane style="-fx-background-color: #B8D2E3;">
                <children>
-                  <GridPane layoutX="75.0" layoutY="43.0" prefHeight="544.0" prefWidth="301.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="43.0">
+                  <GridPane layoutX="118.0" layoutY="62.0" prefHeight="514.0" prefWidth="346.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="62.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="209.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="329.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -30,48 +31,48 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXTextField fx:id="txtDocumento" focusColor="WHITE" labelFloat="true" maxWidth="309.0" minWidth="219.0" prefHeight="36.0" prefWidth="251.0" promptText="Numero de documento" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
+                        <JFXTextField fx:id="txtDocumento" focusColor="#0e298a" labelFloat="true" maxWidth="558.0" minWidth="219.0" prefHeight="37.0" prefWidth="558.0" promptText="Numero de documento" style="-fx-prompt-text-fill: black; -fx-text-fill: black;" unFocusColor="#072e61">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="15.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="txtNombre" focusColor="WHITE" labelFloat="true" maxWidth="309.0" minWidth="219.0" prefHeight="36.0" prefWidth="251.0" promptText="Nombre completo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" GridPane.rowIndex="1">
+                        <JFXTextField fx:id="txtNombre" focusColor="#0e298a" labelFloat="true" maxWidth="341.0" minWidth="219.0" prefHeight="37.0" prefWidth="341.0" promptText="Nombre completo" style="-fx-prompt-text-fill: black; -fx-text-fill: black;" unFocusColor="#072e61" GridPane.rowIndex="1">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="15.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="txtTelefono" focusColor="WHITE" labelFloat="true" maxWidth="309.0" minWidth="212.0" prefHeight="33.0" prefWidth="212.0" promptText="Telefono" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="txtTelefono" focusColor="#0e298a" labelFloat="true" maxWidth="335.0" minWidth="212.0" prefHeight="37.0" prefWidth="335.0" promptText="Telefono" style="-fx-prompt-text-fill: black; -fx-text-fill: black;" unFocusColor="#072e61" GridPane.rowIndex="2">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="15.0" />
                            </font>
                         </JFXTextField>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento:" GridPane.rowIndex="3">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento:" GridPane.rowIndex="3">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="15.0" />
                            </font>
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="4">
+                        <HBox prefHeight="59.0" prefWidth="308.0" spacing="20.0" GridPane.rowIndex="4">
                            <children>
-                              <JFXComboBox fx:id="cbDia" opacity="0.66" prefHeight="26.0" prefWidth="68.0" promptText="DIA" style="-fx-background-color: white;" />
-                              <JFXComboBox fx:id="cbMes" opacity="0.66" prefHeight="26.0" prefWidth="68.0" promptText="MES" style="-fx-background-color: white;" />
-                              <JFXComboBox fx:id="cbAño" opacity="0.66" prefHeight="26.0" prefWidth="78.0" promptText="AÑO" style="-fx-background-color: white;" />
+                              <JFXComboBox fx:id="cbDia" prefHeight="33.0" prefWidth="78.0" promptText="DIA" style="-fx-background-color: white;" />
+                              <JFXComboBox fx:id="cbMes" prefHeight="32.0" prefWidth="76.0" promptText="MES" style="-fx-background-color: white;" />
+                              <JFXComboBox fx:id="cbAño" prefHeight="33.0" prefWidth="85.0" promptText="AÑO" style="-fx-background-color: white;" />
                            </children>
                            <padding>
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" maxWidth="316.0" minWidth="219.0" prefHeight="36.0" prefWidth="251.0" promptText="Correo electronico" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE" GridPane.rowIndex="5">
+                        <JFXTextField fx:id="txtEmail" focusColor="#0e298a" labelFloat="true" maxWidth="360.0" minWidth="219.0" prefHeight="37.0" prefWidth="360.0" promptText="Correo electronico" style="-fx-prompt-text-fill: black; -fx-text-fill: black;" unFocusColor="#072e61" GridPane.rowIndex="5">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="15.0" />
                            </font>
                         </JFXTextField>
                         <HBox prefHeight="41.0" prefWidth="271.0" spacing="20.0" GridPane.rowIndex="6">
                            <children>
-                              <JFXComboBox fx:id="cbTorre" opacity="0.66" prefHeight="26.0" prefWidth="91.0" promptText="TORRE" style="-fx-background-color: white;" />
-                              <JFXComboBox fx:id="cbApart" opacity="0.66" prefHeight="26.0" prefWidth="130.0" promptText="APARTAMENTO" style="-fx-background-color: white;" />
+                              <JFXComboBox fx:id="cbTorre" prefHeight="34.0" prefWidth="102.0" promptText="TORRE" style="-fx-background-color: white;" />
+                              <JFXComboBox fx:id="cbApart" prefHeight="33.0" prefWidth="145.0" promptText="APARTAMENTO" style="-fx-background-color: white;" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="2.0" />
@@ -82,25 +83,25 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.rowIndex="7">
                            <children>
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Reside?">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="¿Reside?">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="15.0" />
                                  </font>
                               </Text>
-                              <RadioButton mnemonicParsing="false" style="-fx-text-fill: WHITE;" text="SI">
+                              <RadioButton mnemonicParsing="false" style="-fx-text-fill: black;" text="SI">
                                  <toggleGroup>
                                     <ToggleGroup fx:id="reside" />
                                  </toggleGroup>
                               </RadioButton>
-                              <RadioButton mnemonicParsing="false" style="-fx-text-fill: WHITE;" text="NO" toggleGroup="$reside" />
+                              <RadioButton mnemonicParsing="false" style="-fx-text-fill: black;" text="NO" toggleGroup="$reside" />
                            </children>
                            <padding>
                               <Insets left="10.0" />
                            </padding>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.rowIndex="8">
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.rowIndex="8">
                            <children>
-                              <JFXButton fx:id="btnRegistrar" prefHeight="54.0" prefWidth="112.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE">
+                              <JFXButton fx:id="btnRegistrar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -111,7 +112,7 @@
                                     <Insets />
                                  </opaqueInsets>
                               </JFXButton>
-                              <JFXButton prefHeight="54.0" prefWidth="112.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE">
+                              <JFXButton prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -126,6 +127,11 @@
                         </HBox>
                      </children>
                   </GridPane>
+                  <Text layoutX="233.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propietarios">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="614.0" prefWidth="415.0">
