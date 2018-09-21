@@ -27,7 +27,7 @@
          <font>
             <Font size="16.0" />
          </font></JFXButton>
-      <JFXTextField fx:id="txtUser" focusColor="WHITE" labelFloat="true" layoutX="331.0" layoutY="332.0" maxWidth="260.0" minWidth="219.0" prefHeight="48.0" prefWidth="260.0" promptText="Cedula" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
+      <JFXTextField fx:id="txtUser" focusColor="WHITE" labelFloat="true" layoutX="328.0" layoutY="334.0" maxWidth="260.0" minWidth="219.0" prefHeight="48.0" prefWidth="260.0" promptText="Usuario" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
          <font>
             <Font size="18.0" />
          </font></JFXTextField>

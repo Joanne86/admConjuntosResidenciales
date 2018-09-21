@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.4597574421168688" prefHeight="649.0" prefWidth="909.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -152,12 +152,12 @@
                   <TableView layoutY="103.0" prefHeight="544.0" prefWidth="487.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="103.0">
                      <columns>
                         <TableColumn prefWidth="75.0" text="Documento" />
-                        <TableColumn prefWidth="75.0" text="Nombre" />
-                        <TableColumn prefWidth="113.0" text="fecha nacimiento" />
-                        <TableColumn prefWidth="64.0" text="Correo" />
-                        <TableColumn prefWidth="47.0" text="torre" />
-                        <TableColumn prefWidth="47.0" text="apart" />
-                        <TableColumn prefWidth="64.0" text="reside" />
+                        <TableColumn prefWidth="115.0" text="Nombre" />
+                        <TableColumn prefWidth="138.0" text="fecha nacimiento" />
+                        <TableColumn prefWidth="48.0" text="Correo" />
+                        <TableColumn prefWidth="75.0" text="torre" />
+                        <TableColumn prefWidth="63.0" text="apart" />
+                        <TableColumn prefWidth="79.0" text="reside" />
                      </columns>
                   </TableView>
                </children>

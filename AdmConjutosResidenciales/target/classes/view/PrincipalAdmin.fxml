@@ -11,9 +11,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="640.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelAdmin">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="640.0" prefWidth="1100.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelAdmin">
    <children>
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="51.0" prefHeight="589.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1143.0" AnchorPane.topAnchor="51.0" />
-      <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="14.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="45.0" />
+      <AnchorPane prefHeight="45.0" prefWidth="1100.0">
+         <children>
+            <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="16.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

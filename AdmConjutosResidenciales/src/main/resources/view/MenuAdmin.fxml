@@ -9,9 +9,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #339DE5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelMenuAdmin">
+<AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #1B4965;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelMenuAdmin">
    <children>
-      <Accordion layoutY="288.0" opacity="0.7" prefHeight="353.0" prefWidth="243.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="-1.0" AnchorPane.topAnchor="288.0">
+      <Accordion layoutY="288.0" opacity="0.7" prefHeight="353.0" prefWidth="243.0" style="-fx-background-color: #1B4965;">
          <panes>
             <TitledPane alignment="CENTER" text="Pagos">
                <content>
@@ -189,7 +189,7 @@
             <FontAwesomeIcon fill="#125b61" iconName="BUILDING" />
          </graphic>
       </JFXButton>
-      <JFXButton alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
+      <JFXButton fx:id="btnRegistroVisitante" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#registrarVisitante" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
          <font>
             <Font size="17.0" />
          </font>
