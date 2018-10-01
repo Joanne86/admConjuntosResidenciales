@@ -17,6 +17,10 @@
       <AnchorPane prefHeight="45.0" prefWidth="1100.0">
          <children>
             <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="16.0" />
+            <Text layoutX="442.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conjunto:" />
+            <Text layoutX="528.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Nombre del conjunto&gt;" />
+            <Text layoutX="847.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" />
+            <Text layoutX="940.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;fecha&gt;" />
          </children>
       </AnchorPane>
    </children>

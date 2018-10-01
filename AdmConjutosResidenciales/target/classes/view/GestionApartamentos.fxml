@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/conjuto.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="518.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion de apartamentos" wrappingWidth="238.51171875">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <JFXTextField focusColor="#8eaeff" labelFloat="true" layoutX="113.0" layoutY="301.0" promptText="Numero torre" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField focusColor="#8eaeff" labelFloat="true" layoutX="113.0" layoutY="206.0" promptText="Numero apartamento" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <TableView layoutX="339.0" layoutY="204.0" opacity="0.74" prefHeight="275.0" prefWidth="527.0">
+        <columns>
+          <TableColumn prefWidth="276.0" text="Torre" />
+          <TableColumn prefWidth="247.0" text="Apartamento" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btnRegistrar1" layoutX="951.0" layoutY="245.0" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="EDIT" size="1.5em" />
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXButton>
+      <JFXButton layoutX="951.0" layoutY="425.0" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnRegistrar" layoutX="949.0" layoutY="334.0" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="FLOPPY_ALT" size="1.5em" />
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXButton>
+      <FontAwesomeIcon fill="WHITE" iconName="BUILDING" layoutX="386.0" layoutY="137.0" size="10em" />
+      <Text fill="WHITE" layoutX="777.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Results:" />
+      <Label layoutX="848.0" layoutY="167.0" text="0" textFill="WHITE" />
+   </children>
+</AnchorPane>

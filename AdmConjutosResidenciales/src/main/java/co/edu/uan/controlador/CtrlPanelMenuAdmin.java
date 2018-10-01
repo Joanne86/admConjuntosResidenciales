@@ -17,13 +17,15 @@ public class CtrlPanelMenuAdmin {
 	static AnchorPane pane2;
 
 	static AnchorPane pane3;
-
+	static AnchorPane pane4;
+	static AnchorPane pane5;
+	
 	@FXML
 	void registrarPropietario(ActionEvent event) throws IOException {
 		CtrlPanelAdmin.drawer1.close();
 		if (pane2 == null) {
 
-			pane2 = FXMLLoader.load(getClass().getResource("/view/Registro1.fxml"));
+			pane2 = FXMLLoader.load(getClass().getResource("/view/GestionPropietarios.fxml"));
 			pane2.setLayoutX(0);
 			pane2.setLayoutY(45);
 
@@ -49,7 +51,42 @@ public class CtrlPanelMenuAdmin {
 			pane3.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
 		} else {
 			pane3.toFront();
+			// actualizar tabla de bases de datos.
 		}
 	}
 
+	@FXML
+	void pagosAdmin(ActionEvent event) throws IOException {
+		CtrlPanelAdmin.drawer1.close();
+		if (pane4 == null) {
+
+			pane4 = FXMLLoader.load(getClass().getResource("/view/PagosAdmin.fxml"));
+			pane4.setLayoutX(0);
+			pane4.setLayoutY(45);
+			CtrlPanelAdmin.rootP.getChildren().add(pane4);
+			pane4.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane4.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+		} else {
+			pane4.toFront();
+			// actualizar tabla de bases de datos.
+		}
+	}
+
+	@FXML
+	void gestionarApartamentos(ActionEvent event) throws IOException {
+		CtrlPanelAdmin.drawer1.close();
+		if (pane5 == null) {
+
+			pane5 = FXMLLoader.load(getClass().getResource("/view/GestionApartamentos.fxml"));
+			pane5.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane5.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+			pane5.setLayoutX(0);
+			pane5.setLayoutY(45);
+			CtrlPanelAdmin.rootP.getChildren().add(pane5);
+			
+		} else {
+			pane5.toFront();
+			// actualizar tabla de bases de datos.
+		}
+	}
 }
