@@ -11,10 +11,15 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="640.0" prefWidth="1100.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelAdmin">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="640.0" prefWidth="1143.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelAdmin">
    <children>
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" layoutY="45.0" opacity="0.56" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-297.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-316.0" AnchorPane.topAnchor="45.0">
+         <image>
+            <Image url="@../img/conjuto.jpg" />
+         </image>
+      </ImageView>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="45.0" />
-      <AnchorPane prefHeight="45.0" prefWidth="1100.0">
+      <AnchorPane prefHeight="45.0" prefWidth="1205.0" style="-fx-background-color: WHITE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="16.0" />
             <Text layoutX="442.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conjunto:" />
@@ -23,5 +28,20 @@
             <Text layoutX="940.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;fecha&gt;" />
          </children>
       </AnchorPane>
+      <Text fill="WHITE" layoutX="473.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="251.849609375">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="421.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hola" wrappingWidth="137.849609375">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Text>
+      <Label layoutX="599.0" layoutY="158.0" text="&lt;nombre&gt;" textFill="WHITE">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

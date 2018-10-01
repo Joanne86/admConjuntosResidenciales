@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlRegistro">
    <children>
       <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,12 +29,12 @@
       </Text>
       <HBox alignment="BOTTOM_CENTER" layoutX="45.0" layoutY="219.0" prefHeight="46.0" prefWidth="384.0">
          <children>
-            <JFXTextField focusColor="WHITE" labelFloat="true" maxWidth="278.0" minWidth="239.0" prefHeight="35.0" prefWidth="258.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
+            <JFXTextField fx:id="txtNdocumento" focusColor="WHITE" labelFloat="true" maxWidth="278.0" minWidth="239.0" prefHeight="35.0" prefWidth="258.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnRegistrar1" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
+            <JFXButton fx:id="btnBuscar" onAction="#buscar" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -56,16 +56,16 @@
             <Insets left="10.0" />
          </padding>
       </HBox>
-      <TableView layoutX="37.0" layoutY="312.0" opacity="0.82" prefHeight="249.0" prefWidth="881.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="312.0">
+      <TableView fx:id="tvTabla" layoutX="37.0" layoutY="312.0" opacity="0.82" prefHeight="249.0" prefWidth="881.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="312.0">
          <columns>
-            <TableColumn prefWidth="144.0" text="Documento" />
-            <TableColumn prefWidth="108.0" text="Nombre" />
-            <TableColumn prefWidth="126.0" text="fecha nacimiento" />
-            <TableColumn prefWidth="118.0" text="Correo" />
-            <TableColumn prefWidth="75.0" text="torre" />
-            <TableColumn prefWidth="74.0" text="apart" />
-            <TableColumn prefWidth="74.0" text="reside" />
-            <TableColumn prefWidth="86.0" text="Parqueadero" />
+            <TableColumn fx:id="clDocumento" prefWidth="144.0" text="Documento" />
+            <TableColumn fx:id="clNombre" prefWidth="108.0" text="Nombre" />
+            <TableColumn fx:id="clFechaNac" prefWidth="126.0" text="fecha nacimiento" />
+            <TableColumn fx:id="clCorreo" prefWidth="118.0" text="Correo" />
+            <TableColumn fx:id="clTorre" prefWidth="75.0" text="torre" />
+            <TableColumn fx:id="clApart" prefWidth="74.0" text="apart" />
+            <TableColumn fx:id="clReside" prefWidth="74.0" text="reside" />
+            <TableColumn fx:id="clParqueadero" prefWidth="86.0" text="Parqueadero" />
          </columns>
       </TableView>
       <GridPane layoutX="545.0" layoutY="60.0" prefHeight="242.0" prefWidth="562.0" AnchorPane.rightAnchor="100.0">
@@ -98,7 +98,7 @@
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <DatePicker editable="false" prefHeight="34.0" prefWidth="274.0" promptText="Fecha Nacimiento" style="-fx-prompt-text-fill: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <DatePicker fx:id="calenFechaNac" editable="false" prefHeight="34.0" prefWidth="274.0" promptText="Fecha Nacimiento" style="-fx-prompt-text-fill: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -135,7 +135,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Text>
-                  <RadioButton mnemonicParsing="false" style="-fx-text-fill: white;" text="SI" textFill="WHITE">
+                  <RadioButton fx:id="rbSiR" mnemonicParsing="false" style="-fx-text-fill: white;" text="SI" textFill="WHITE">
                      <toggleGroup>
                         <ToggleGroup fx:id="reside" />
                      </toggleGroup>
@@ -143,7 +143,7 @@
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" style="-fx-text-fill: white;" text="NO" textFill="WHITE" toggleGroup="$reside">
+                  <RadioButton fx:id="rbNoR" mnemonicParsing="false" style="-fx-text-fill: white;" text="NO" textFill="WHITE" toggleGroup="$reside">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -163,7 +163,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Text>
-                  <RadioButton mnemonicParsing="false" style="-fx-text-fill: white;" text="SI" textFill="WHITE">
+                  <RadioButton fx:id="rbSiP" mnemonicParsing="false" style="-fx-text-fill: white;" text="SI" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -171,7 +171,7 @@
                         <ToggleGroup fx:id="parqueadero" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" style="-fx-text-fill: white;" text="NO" textFill="WHITE" toggleGroup="$parqueadero">
+                  <RadioButton fx:id="rbNoP" mnemonicParsing="false" style="-fx-text-fill: white;" text="NO" textFill="WHITE" toggleGroup="$parqueadero">
                      <HBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </HBox.margin>
@@ -183,7 +183,7 @@
             </HBox>
          </children>
       </GridPane>
-      <JFXButton fx:id="btnRegistrar" layoutX="963.0" layoutY="401.0" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <JFXButton fx:id="btnRegistrar" layoutX="904.0" layoutY="312.0" onAction="#registrar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -194,7 +194,7 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton layoutX="965.0" layoutY="492.0" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <JFXButton fx:id="btnEliminar" layoutX="965.0" layoutY="492.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -202,7 +202,7 @@
             <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnRegistrar11" layoutX="965.0" layoutY="312.0" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <JFXButton fx:id="btnModificar" layoutX="904.0" layoutY="402.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
          <font>
             <Font size="15.0" />
          </font>
