@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>co.edu.uan</groupId>
-	<artifactId>aprendiendo_maven</artifactId>
+	<artifactId>administracion_conjuntos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>aprendiendo_maven</name>
+	<name>administracionConjuntos</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
