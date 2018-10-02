@@ -11,9 +11,39 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #1B4965;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelMenuAdmin">
    <children>
-      <Accordion layoutY="368.0" opacity="0.7" prefHeight="353.0" prefWidth="243.0" style="-fx-background-color: #1B4965;">
+      <Accordion layoutY="288.0" opacity="0.7" prefHeight="375.0" prefWidth="243.0" style="-fx-background-color: #1B4965;">
          <panes>
-            <TitledPane alignment="CENTER" text="Pagos">
+            <TitledPane alignment="CENTER" text="Residentes">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton fx:id="btnRegistroResidente" alignment="TOP_LEFT" onAction="#registrarPropietario" prefHeight="40.0" prefWidth="241.0" ripplerFill="#5a63d7" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar propietarios">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="USER" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnConsultarArrendatarios" alignment="TOP_LEFT" layoutY="40.0" onAction="#consultarArrendatarios" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Consultar arrendatarios">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon fill="#125b61" iconName="SEARCH" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TitledPane>
+            <TitledPane alignment="CENTER" layoutX="10.0" layoutY="10.0" text="Pagos">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -23,14 +53,6 @@
                            </font>
                            <graphic>
                               <FontAwesomeIcon fill="#125b61" iconName="LINE_CHART" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Parqueadero">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIcon fill="#125b61" iconName="CAR" />
                            </graphic>
                         </JFXButton>
                      </children>
@@ -77,7 +99,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Quejas/sugerencias">
+                        <JFXButton fx:id="btnQuejasSugerencias" alignment="TOP_LEFT" onAction="#quejasSugerencias" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Quejas/sugerencias">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -85,7 +107,7 @@
                               <FontAwesomeIcon fill="#125b61" iconName="INBOX" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Asambleas">
+                        <JFXButton fx:id="btnAsambleas" alignment="TOP_LEFT" layoutY="40.0" onAction="#setAsamblea" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Asambleas">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -131,6 +153,7 @@
                               <FontAwesomeIcon fill="#125b61" />
                            </graphic>
                         </JFXButton>
+                        <JFXToolbar />
                      </children>
                   </AnchorPane>
                </content>
@@ -181,15 +204,7 @@
       <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="67.0" layoutY="137.0" size="12em" />
       <Label layoutX="109.0" layoutY="158.0" text="&lt;rol&gt;" textFill="WHITE" />
       <Label layoutX="94.0" layoutY="183.0" text="&lt;nombre&gt;" textFill="WHITE" />
-      <JFXButton fx:id="btnRegistroResidente" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#registrarPropietario" prefHeight="40.0" prefWidth="241.0" ripplerFill="#5a63d7" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar propietarios">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="#125b61" iconName="USER" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnRegistroVisitante" alignment="TOP_LEFT" layoutX="1.0" layoutY="288.0" onAction="#registrarVisitante" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
+      <JFXButton fx:id="btnRegistroVisitante" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#registrarVisitante" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
          <font>
             <Font size="17.0" />
          </font>
@@ -203,14 +218,6 @@
          </font>
          <graphic>
             <FontAwesomeIcon fill="#125b61" iconName="BUILDING" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnRegistroVisitante1" alignment="TOP_LEFT" layoutX="1.0" layoutY="328.0" onAction="#registrarVisitante" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Consultar arrendatarios">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="#125b61" iconName="SEARCH" />
          </graphic>
       </JFXButton>
    </children>

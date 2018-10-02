@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1103.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1103.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPagosAdministracion">
    <children>
       <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.41" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,12 +28,12 @@
       </Text>
       <HBox layoutX="424.0" layoutY="197.0" prefHeight="46.0" prefWidth="441.0">
          <children>
-            <JFXTextField focusColor="WHITE" labelFloat="true" maxWidth="287.0" minWidth="239.0" prefHeight="35.0" prefWidth="287.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
+            <JFXTextField fx:id="txtNdocumentoBuscar" focusColor="WHITE" labelFloat="true" maxWidth="287.0" minWidth="239.0" prefHeight="35.0" prefWidth="287.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="btnRegistrar1" prefHeight="33.0" prefWidth="133.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
+            <JFXButton fx:id="btnBuscar" onAction="#buscar" prefHeight="33.0" prefWidth="133.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -49,13 +49,13 @@
             <Insets left="20.0" right="20.0" />
          </opaqueInsets>
       </HBox>
-      <TableView fixedCellSize="1.0" layoutX="197.0" layoutY="299.0" prefHeight="178.0" prefWidth="830.0" AnchorPane.leftAnchor="197.0">
+      <TableView fx:id="tvTabla" fixedCellSize="1.0" layoutX="197.0" layoutY="299.0" opacity="0.87" prefHeight="178.0" prefWidth="830.0" AnchorPane.leftAnchor="197.0">
         <columns>
-          <TableColumn prefWidth="147.0" text="Informacion apto" />
-          <TableColumn minWidth="3.0" prefWidth="132.0" text="Tipo apto zona" />
-            <TableColumn prefWidth="184.0" text="fecha a pagar" />
-            <TableColumn prefWidth="161.0" text="Intereses a la fecha" />
-            <TableColumn prefWidth="196.0" text="Subtotal" />
+          <TableColumn fx:id="clInfoApto" prefWidth="147.0" text="Informacion apto" />
+          <TableColumn fx:id="clTipoApto" minWidth="3.0" prefWidth="132.0" text="Tipo apto" />
+            <TableColumn fx:id="clFechaPago" prefWidth="184.0" text="fecha a pagar" />
+            <TableColumn fx:id="clCargoParqueadero" prefWidth="161.0" text="cargo por parqueadero" />
+            <TableColumn fx:id="clSubTotal" prefWidth="203.0" text="Subtotal" />
         </columns>
       </TableView>
       <Text fill="WHITE" layoutX="193.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de (los) apartamento(s) de: ">
@@ -63,27 +63,22 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="435.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;nombre&gt;">
+      <Text fx:id="lbNombre" fill="WHITE" layoutX="435.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;nombre&gt;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <JFXTextField focusColor="WHITE" labelFloat="true" layoutX="460.0" layoutY="532.0" maxWidth="287.0" minWidth="234.0" prefHeight="35.0" prefWidth="237.0" promptText="Valor cancelado" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
       <Text fill="WHITE" layoutX="204.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total a pagar:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="324.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;SumaTotal&gt;">
+      <Text fx:id="lbTotalPagar" fill="WHITE" layoutX="324.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;SumaTotal&gt;">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnRegistrar11" layoutX="769.0" layoutY="534.0" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Realizar pago" textFill="WHITE">
+      <JFXButton fx:id="btnPagar" layoutX="543.0" layoutY="533.0" onAction="#realizarPago" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Realizar pago" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -99,15 +94,5 @@
             <Image url="@../img/caja.jpg" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="534.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;monto saldo&gt;">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="472.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

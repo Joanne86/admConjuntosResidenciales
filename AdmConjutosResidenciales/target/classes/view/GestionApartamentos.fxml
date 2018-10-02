@@ -9,9 +9,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlGestionApartamentos">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlGestionApartamentos">
    <children>
-      <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" layoutX="-1.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/conjuto.jpg" />
          </image>
@@ -21,22 +21,22 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="txtTorre" focusColor="#8eaeff" labelFloat="true" layoutX="109.0" layoutY="277.0" promptText="Numero torre" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+      <JFXTextField fx:id="txtTorre" focusColor="#8eaeff" labelFloat="true" layoutX="109.0" layoutY="223.0" promptText="Numero torre" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtApartamento" focusColor="#8eaeff" labelFloat="true" layoutX="109.0" layoutY="345.0" promptText="Numero apartamento" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+      <JFXTextField fx:id="txtApartamento" focusColor="#8eaeff" labelFloat="true" layoutX="109.0" layoutY="286.0" promptText="Apartamentos en la torre" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
       <TableView fx:id="tvTabla" layoutX="318.0" layoutY="277.0" opacity="0.74" prefHeight="275.0" prefWidth="610.0">
         <columns>
-          <TableColumn fx:id="clTorre" prefWidth="165.0" text="Torre" />
-          <TableColumn fx:id="clApartamento" prefWidth="129.0" text="Apartamento" />
-            <TableColumn fx:id="clTipo" prefWidth="152.0" text="Tipo" />
-            <TableColumn fx:id="clCosto" prefWidth="163.0" text="Costo administracion" />
+          <TableColumn fx:id="clTorre" prefWidth="79.0" text="Torre" />
+          <TableColumn fx:id="clApartamento" prefWidth="113.0" text="N Apartamentos" />
+            <TableColumn fx:id="clTipo" prefWidth="136.0" text="Tipo" />
+            <TableColumn fx:id="clCosto" prefWidth="281.0" text="Costo administracion+ parqueadero carro moto" />
         </columns>
       </TableView>
       <JFXButton fx:id="btnModificar" layoutX="977.0" layoutY="364.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE">
@@ -70,20 +70,8 @@
          </opaqueInsets>
       </JFXButton>
       <FontAwesomeIcon fill="WHITE" iconName="BUILDING" layoutX="386.0" layoutY="137.0" size="10em" />
-      <Text fill="WHITE" layoutX="318.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Results:" />
-      <Label layoutX="402.0" layoutY="564.0" text="0" textFill="WHITE" />
-      <JFXComboBox fx:id="cbTipo" layoutX="109.0" layoutY="415.0" prefHeight="37.0" prefWidth="165.0" promptText="Tipo" style="-fx-background-color: white;" />
-      <Text fill="WHITE" layoutX="109.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo administacion:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text fx:id="lblCostoAdmin" fill="WHITE" layoutX="109.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <JFXButton fx:id="btnBuscar" layoutX="794.0" layoutY="223.0" onAction="#buscar" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
+      <JFXComboBox fx:id="cbTipo" layoutX="109.0" layoutY="331.0" opacity="0.84" prefHeight="37.0" prefWidth="187.0" promptText="Tipo" style="-fx-background-color: white;" />
+      <JFXButton fx:id="btnBuscar" layoutX="561.0" layoutY="223.0" onAction="#buscar" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -94,10 +82,57 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXTextField fx:id="txtTipoBusqueda" focusColor="#8eaeff" labelFloat="true" layoutX="588.0" layoutY="223.0" promptText="Tipo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+      <JFXTextField fx:id="txtTipoBusqueda" focusColor="#8eaeff" labelFloat="true" layoutX="356.0" layoutY="223.0" promptText="Tipo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
+      <JFXButton fx:id="btnMostrarTodo" layoutX="716.0" layoutY="223.0" onAction="#mostrarTodo" prefHeight="37.0" prefWidth="212.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Mostrar todas las torres" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="EYE" size="1.5em" />
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="318.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Los apartamentos de cada torre comienzan en 101 y el numero maximo de apartamentos por cada torre es de 30" />
+      <Text fill="WHITE" layoutX="117.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de apartamentos">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="109.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Administracion:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="109.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo parqueadero carro:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="109.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo parqueadero moto:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="txtCostoAdmin" layoutX="110.0" layoutY="418.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtCostoCarro" layoutX="110.0" layoutY="480.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtCostoMoto" layoutX="110.0" layoutY="542.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

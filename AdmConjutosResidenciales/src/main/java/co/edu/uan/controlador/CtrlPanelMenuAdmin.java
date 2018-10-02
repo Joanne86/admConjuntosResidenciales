@@ -14,11 +14,15 @@ public class CtrlPanelMenuAdmin {
 	@FXML
 	private JFXButton btnRegistroResidente;
 
+    @FXML
+    private JFXButton btnConsultarArrendatarios;
+
 	static AnchorPane pane2;
 
 	static AnchorPane pane3;
 	static AnchorPane pane4;
 	static AnchorPane pane5;
+	static AnchorPane pane6;
 	
 	@FXML
 	void registrarPropietario(ActionEvent event) throws IOException {
@@ -89,4 +93,31 @@ public class CtrlPanelMenuAdmin {
 			// actualizar tabla de bases de datos.
 		}
 	}
+	@FXML
+    void consultarArrendatarios(ActionEvent event) throws IOException {
+		CtrlPanelAdmin.drawer1.close();
+		if (pane6 == null) {
+
+			pane6 = FXMLLoader.load(getClass().getResource("/view/ConsultaArrendatarios.fxml"));
+			pane6.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane6.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+			pane6.setLayoutX(0);
+			pane6.setLayoutY(45);
+			CtrlPanelAdmin.rootP.getChildren().add(pane6);
+			
+		} else {
+			pane6.toFront();
+			// actualizar tabla de bases de datos.
+		}
+    }
+
+    
+    @FXML
+    void quejasSugerencias(ActionEvent event) {
+
+    }
+    @FXML
+    void setAsamblea(ActionEvent event) {
+
+    }
 }

@@ -10,76 +10,121 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.text.Text;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 
-public class CtrlGestionApartamentos implements Initializable{
+public class CtrlGestionApartamentos implements Initializable {
 
-    @FXML
-    private JFXTextField txtTipoBusqueda;
+	@FXML
+	private JFXTextField txtTorre;
 
-    @FXML
-    private JFXTextField txtTorre;
+	@FXML
+	private TableColumn<?, ?> clCosto;
 
-    @FXML
-    private TableColumn<?, ?> clCosto;
+	@FXML
+	private TableColumn<?, ?> clTorre;
 
-    @FXML
-    private TableView<?> tvTabla;
+	@FXML
+	private Label txtCostoMoto;
 
-    @FXML
-    private TableColumn<?, ?> clTipo;
+	@FXML
+	private JFXTextField txtApartamento;
 
-    @FXML
-    private JFXButton btnEliminar;
+	@FXML
+	private Label txtCostoAdmin;
 
-    @FXML
-    private TableColumn<?, ?> clApartamento;
+	@FXML
+	private JFXComboBox<String> cbTipo;
 
-    @FXML
-    private TableColumn<?, ?> clTorre;
+	@FXML
+	private TableView<?> tvTabla;
 
-    @FXML
-    private JFXTextField txtApartamento;
+	@FXML
+	private Label txtCostoCarro;
 
-    @FXML
-    private Text lblCostoAdmin;
-    
-    @FXML
-    private JFXButton btnBuscar;
+	@FXML
+	private TableColumn<?, ?> clTipo;
 
-    @FXML
-    private JFXButton btnModificar;
+	@FXML
+	private JFXButton btnEliminar;
 
-    @FXML
-    private JFXButton btnRegistrar;
+	@FXML
+	private TableColumn<?, ?> clApartamento;
 
-    @FXML
-    private JFXComboBox<String> cbTipo;
-    
-    @FXML
-    void modificar(ActionEvent event) {
+	@FXML
+	private JFXButton btnMostrarTodo;
 
-    }
+	@FXML
+	private JFXTextField txtTipoBusqueda;
 
-    @FXML
-    void eliminar(ActionEvent event) {
+	@FXML
+	private JFXButton btnModificar;
 
-    }
+	@FXML
+	private JFXButton btnRegistrar;
 
-    @FXML
-    void registrar(ActionEvent event) {
+	@FXML
+	private JFXButton btnBuscar;
 
-    }
-    @FXML
-    void buscar(ActionEvent event) {
+	@FXML
+	void modificar(ActionEvent event) {
 
-    }
+	}
+
+	@FXML
+	void eliminar(ActionEvent event) {
+
+	}
+
+	@FXML
+	void registrar(ActionEvent event) {
+		String tipo = null;
+		tipo = cbTipo.getValue();
+		
+		float adminRecargoPark;
+		adminRecargoPark=Float.parseFloat(txtCostoAdmin.getText())+Float.parseFloat(txtCostoCarro.getText())+Float.parseFloat(txtCostoMoto.getText());
+
+		if (txtTorre.getText().equals("") || txtApartamento.getText().equals("") || txtCostoAdmin.getText().equals("")|| tipo == null||adminRecargoPark==0) {
+			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos del registro llenos");
+		} else {
+			//valida la existencia del numero de la torre
+			
+			try {
+				
+			}catch(NumberFormatException e) {
+				
+			}
+			
+		}
+	}
+
+	@FXML
+	void buscar(ActionEvent event) {
+		if(txtTipoBusqueda.getText().equals("")) {
+			displayAlert(AlertType.INFORMATION, "CAMPO VACIO", "Debe tener el campo de busqueda lleno");
+		}else {
+			
+		}
+	}
+
+	@FXML
+	void mostrarTodo(ActionEvent event) {
+
+	}
+
+	private void displayAlert(AlertType type, String title, String message) {
+		Alert alert = new Alert(type);
+		alert.setTitle(title);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//cargar tabla de la bd y combo box
-		
+		// cargar tabla de la bd y combo box
+
 	}
 }

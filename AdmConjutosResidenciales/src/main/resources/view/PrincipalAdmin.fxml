@@ -23,9 +23,9 @@
          <children>
             <JFXHamburger fx:id="hamburger" layoutX="14.0" layoutY="16.0" />
             <Text layoutX="442.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conjunto:" />
-            <Text layoutX="528.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;Nombre del conjunto&gt;" />
             <Text layoutX="847.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" />
-            <Text layoutX="940.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;fecha&gt;" />
+            <Label fx:id="lbConjunto" layoutX="520.0" layoutY="14.0" text="&lt;nombre conjunto&gt;" />
+            <Label fx:id="lbFechaSistema" layoutX="912.0" layoutY="14.0" text="&lt;fecha&gt;" />
          </children>
       </AnchorPane>
       <Text fill="WHITE" layoutX="473.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="251.849609375">
@@ -38,7 +38,7 @@
             <Font size="44.0" />
          </font>
       </Text>
-      <Label layoutX="599.0" layoutY="158.0" text="&lt;nombre&gt;" textFill="WHITE">
+      <Label fx:id="lbNombreLogeado" layoutX="599.0" layoutY="158.0" text="&lt;nombre&gt;" textFill="WHITE">
          <font>
             <Font size="44.0" />
          </font>
