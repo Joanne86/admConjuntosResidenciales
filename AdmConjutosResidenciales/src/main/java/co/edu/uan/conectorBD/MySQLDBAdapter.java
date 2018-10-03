@@ -9,7 +9,7 @@ import co.edu.uan.util.PropertiesUtil;
 
 public class MySQLDBAdapter implements IDBAdapter {
 
-    private static final String DB_PROPERTIES = "META-INF/DBMySQL.properties";
+    private static final String DB_PROPERTIES = "METAINFO/DBMySQL.properties";
 
     //Propiedades de los archivos properties
     private static final String DB_NAME_PROP = "dbname";
@@ -49,6 +49,8 @@ public class MySQLDBAdapter implements IDBAdapter {
         String user = prop.getProperty(DB_USER_PROP);
         String password = prop.getProperty(DB_PASSWORD_PROP);
 
+       // "jdbc:mysql://localhost:3306/colegio?useSSL=false&useTimezone=true&serverTimezone=UTC";
+        //?useSSL=false&useTimezone=true&serverTimezone=UTC
         String connectionString = "jdbc:mysql://" + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password;
         System.out.println("ConnectionString ==> " + connectionString);
         return connectionString;

@@ -15,7 +15,6 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -38,25 +37,23 @@ public class CtrlPanelAdmin implements Initializable {
 	private Label lbNombreLogeado;
 
 	@FXML
-	private Accordion acordeon;
-
-	@FXML
 	private JFXHamburger hamburger;
-
+	
 	public static JFXDrawer drawer1;
 	public static JFXHamburger hamburger1;
 	public static AnchorPane rootP;
-	public static AnchorPane panelMenu;
+	public static AnchorPane panelMenu;	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		//establece la fecha
+
+		// establece la fecha
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = new Date();
 		String fecha = dateFormat.format(date);
 		lbFechaSistema.setText(fecha);
-
+		//lbNombreLogeado.setText(persona.getNombre());
+		
 		hamburger1 = hamburger;
 		rootP = root;
 		drawer1 = drawer;
@@ -87,5 +84,4 @@ public class CtrlPanelAdmin implements Initializable {
 		});
 
 	}
-
 }

@@ -3,7 +3,8 @@ package co.edu.uan.dao;
 
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
-import co.edu.uan.entidad.Propietario;
+import co.edu.uan.entidadLogin.Propietario;
+
 import java.sql.Connection;
 
 /**

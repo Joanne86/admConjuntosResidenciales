@@ -6,7 +6,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-
+import co.edu.uan.dao.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,43 +18,54 @@ import javafx.stage.Stage;
 
 public class CtrlLogin {
 
-	@FXML
-	private JFXPasswordField txtPass;
+    @FXML
+    private JFXPasswordField txtPass;
 
-	@FXML
-	private JFXTextField txtUser;
+    @FXML
+    private JFXTextField txtUser;
 
-	@FXML
-	private JFXButton btnIngresar;
-	
-	static Stage stage1;
+    @FXML
+    private JFXButton btnIngresar;
 
-	@FXML
-	void ingresar(ActionEvent event) throws IOException {
-		if (txtPass.getText().equals("") || txtUser.getText().equals("")) {
-			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
-		} else {
-			//se va al dao de sesion
-			
-			//si es admin
-			Stage primaryStage = new Stage();			
-			Parent root;
-			root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
 
-			primaryStage.show();
-			primaryStage.setMaximized(true);
-			//primaryStage.resizableProperty().setValue(Boolean.FALSE);
-			stage1=primaryStage;
-			AppAdminConjuntos.cerrarVentana();
-		}
-	}
+    @FXML
+    void ingresar(ActionEvent event) throws IOException {
+    	
+        if (txtPass.getText().equals("") || txtUser.getText().equals("")) {
+            displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
+        } else {
+            LoginDAO loginDAO = new LoginDAO();   
+            
+            if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
+                if(loginDAO.getPersona().getLogin().getTipoPersona().equals("administrador")) {
+                	Stage primaryStage = new Stage();
+                    Parent root;
+                    root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
+                    Scene scene = new Scene(root);
+                    primaryStage.setScene(scene);
 
-	private void displayAlert(AlertType type, String title, String message) {
-		Alert alert = new Alert(type);
-		alert.setTitle(title);
-		alert.setContentText(message);
-		alert.showAndWait();
-	}
+                    primaryStage.show();
+                    primaryStage.setMaximized(true);
+                    cerrarPrincipal();
+                }else if(loginDAO.getPersona().getLogin().getTipoPersona().equals("propietario")) {
+                	System.out.println("es propeitario");
+                	
+                }else if(loginDAO.getPersona().getLogin().getTipoPersona().equals("vigilante")) {
+                	
+                }                
+            } else {
+                System.out.println("error");
+            }            
+        }
+    }
+    public void  cerrarPrincipal(){
+    	AppAdminConjuntos.cerrarVentana();
+    }
+
+    private void displayAlert(AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
