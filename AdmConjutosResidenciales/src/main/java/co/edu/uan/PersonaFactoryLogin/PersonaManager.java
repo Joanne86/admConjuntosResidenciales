@@ -1,6 +1,9 @@
 
 package co.edu.uan.PersonaFactoryLogin;
 
+import java.util.ArrayList;
+
+import co.edu.uan.entidadLogin.Apartamento;
 import co.edu.uan.entidadLogin.Login;
 import co.edu.uan.entidadLogin.Persona;
 
@@ -12,17 +15,9 @@ public class PersonaManager {
 		this.personaF = personaF;
 	}
 
-	public void masAtributosAdmin() {
-
-	}
-
-	public void masAtributosProp() {
-
-	}
-
 	public void crearPersona(int documento, String nombre, String telefono, String nacimiento, String correo,
-			Login login) {
-		this.persona = personaF.createPersona(documento, nombre, telefono, nacimiento, correo, login);
+			Login login, ArrayList<Apartamento> apartamentos) {
+		this.persona = personaF.createPersona(documento, nombre, telefono, nacimiento, correo, login, apartamentos);
 	}
 
 	public Persona getPersona() {

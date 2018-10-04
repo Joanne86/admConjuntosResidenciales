@@ -9,8 +9,7 @@ public abstract class Persona {
     private String correo;
     private Login login;
 
-  
-
+	
 	public Persona(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
 		super();
 		this.documento = documento;
@@ -21,6 +20,10 @@ public abstract class Persona {
 		this.login = login;
 	}
 
+
+	public abstract Persona getInstrance(int documento, String nombre, String telefono, String nacimiento, String correo, Login login);
+	
+	
 	public int getDocumento() {
         return documento;
     }

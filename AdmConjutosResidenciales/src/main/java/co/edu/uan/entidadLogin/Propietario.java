@@ -1,34 +1,42 @@
 
 package co.edu.uan.entidadLogin;
 
+import java.util.ArrayList;
+
 public class Propietario extends Persona{
-	
+
+
+	private ArrayList<Apartamento> apartamentos;
 
 	
 
-	private int torre;
-    private int apartamento;
-    
-    public Propietario(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
+	public Propietario(int documento, String nombre, String telefono, String nacimiento, String correo, Login login,
+			ArrayList<Apartamento> apartamentos) {
 		super(documento, nombre, telefono, nacimiento, correo, login);
-		// TODO Auto-generated constructor stub
+		this.apartamentos = apartamentos;
 	}
 
-    public int getTorre() {
-        return torre;
-    }
 
-    public void setTorre(int torre) {
-        this.torre = torre;
-    }
 
-    public int getApartamento() {
-        return apartamento;
-    }
+	public ArrayList<Apartamento> getInmuebles() {
+		return apartamentos;
+	}
 
-    public void setApartamento(int apartamento) {
-        this.apartamento = apartamento;
-    }
 
+
+	public void setInmuebles(ArrayList<Apartamento> apartamentos) {
+		this.apartamentos = apartamentos;
+	}
+
+
+
+	@Override
+	public Persona getInstrance(int documento, String nombre, String telefono, String nacimiento, String correo,
+			Login login) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
+    
+  
 }
