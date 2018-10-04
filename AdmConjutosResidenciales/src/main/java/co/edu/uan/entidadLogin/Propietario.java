@@ -30,12 +30,6 @@ public class Propietario extends Persona{
 
 
 
-	@Override
-	public Persona getInstrance(int documento, String nombre, String telefono, String nacimiento, String correo,
-			Login login) {
-		// TODO Auto-generated method stub
-		return null;
-	}
     
     
   

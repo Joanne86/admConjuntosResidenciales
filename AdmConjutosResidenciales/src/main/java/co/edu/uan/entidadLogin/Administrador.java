@@ -8,10 +8,4 @@ public class Administrador extends Persona{
 		super(documento, nombre, telefono, nacimiento, correo, login);
 	}
 
-	@Override
-	public Persona getInstrance(int documento, String nombre, String telefono, String nacimiento, String correo,
-			Login login) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

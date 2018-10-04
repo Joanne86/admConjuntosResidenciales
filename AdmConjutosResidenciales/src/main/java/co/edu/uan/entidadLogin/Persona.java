@@ -21,7 +21,7 @@ public abstract class Persona {
 	}
 
 
-	public abstract Persona getInstrance(int documento, String nombre, String telefono, String nacimiento, String correo, Login login);
+	//public abstract static Persona getInstrance();
 	
 	
 	public int getDocumento() {

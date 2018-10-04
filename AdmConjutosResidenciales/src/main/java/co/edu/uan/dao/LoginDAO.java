@@ -18,7 +18,7 @@ import co.edu.uan.entidadLogin.Zona;
 
 public class LoginDAO {
 	private IDBAdapter dbAdapter;
-	private Persona persona;
+	private static Persona persona;
 
 	public LoginDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
@@ -114,10 +114,10 @@ public class LoginDAO {
 	}
 
 	public void setPersona(Persona persona) {
-		this.persona = persona;
+		LoginDAO.persona = persona;
 	}
 
-	public Persona getPersona() {
+	public static Persona getInstancePersona() {
 		return persona;
 	}
 }

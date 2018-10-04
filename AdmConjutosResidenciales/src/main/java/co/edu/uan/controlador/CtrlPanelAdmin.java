@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 
+import co.edu.uan.dao.LoginDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -52,16 +53,18 @@ public class CtrlPanelAdmin implements Initializable {
 		Date date = new Date();
 		String fecha = dateFormat.format(date);
 		lbFechaSistema.setText(fecha);
-		//lbNombreLogeado.setText(persona.getNombre());
+		lbNombreLogeado.setText(LoginDAO.getInstancePersona().getNombre());
 		
 		hamburger1 = hamburger;
 		rootP = root;
 		drawer1 = drawer;
 		try {
+			
 			panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuAdmin.fxml"));
-			panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
-			// acordeon.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height-288);
+			panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
 			drawer.setSidePane(panelMenu);
+
+			
 		} catch (IOException ex) {
 			Logger.getLogger(CtrlPanelAdmin.class.getName()).log(Level.SEVERE, null, ex);
 		}

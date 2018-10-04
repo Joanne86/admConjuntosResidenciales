@@ -37,7 +37,7 @@ public class CtrlLogin {
             LoginDAO loginDAO = new LoginDAO();   
             
             if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
-                if(loginDAO.getPersona().getLogin().getTipoPersona().equals("administrador")) {
+                if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("administrador")) {
                 	Stage primaryStage = new Stage();
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
@@ -47,10 +47,10 @@ public class CtrlLogin {
                     primaryStage.show();
                     primaryStage.setMaximized(true);
                     cerrarPrincipal();
-                }else if(loginDAO.getPersona().getLogin().getTipoPersona().equals("propietario")) {
+                }else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("propietario")) {
                 	System.out.println("es propeitario");
                 	
-                }else if(loginDAO.getPersona().getLogin().getTipoPersona().equals("vigilante")) {
+                }else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("vigilante")) {
                 	
                 }                
             } else {
