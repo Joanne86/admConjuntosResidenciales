@@ -37,7 +37,7 @@ public class CtrlLogin {
             LoginDAO loginDAO = new LoginDAO();   
             
             if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
-                if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("administrador")) {
+                
                 	Stage primaryStage = new Stage();
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
@@ -47,14 +47,10 @@ public class CtrlLogin {
                     primaryStage.show();
                     primaryStage.setMaximized(true);
                     cerrarPrincipal();
-                }else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("propietario")) {
-                	System.out.println("es propeitario");
-                	
-                }else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("vigilante")) {
-                	
-                }                
+                               
             } else {
-                System.out.println("error");
+            	displayAlert(AlertType.INFORMATION, "Error al ingresar", "Usuario y/o contraseña incorrectos"
+            			+ ", verifique su usuario y contraseña");
             }            
         }
     }

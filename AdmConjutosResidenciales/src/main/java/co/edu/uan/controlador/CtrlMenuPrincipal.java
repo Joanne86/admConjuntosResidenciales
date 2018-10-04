@@ -20,7 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class CtrlPanelAdmin implements Initializable {
+public class CtrlMenuPrincipal implements Initializable {
 
 	@FXML
 	private Label lbConjunto;
@@ -59,14 +59,20 @@ public class CtrlPanelAdmin implements Initializable {
 		rootP = root;
 		drawer1 = drawer;
 		try {
+			if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("administrador")) {
+				panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuAdmin.fxml"));
+				panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
+				drawer.setSidePane(panelMenu);
+			}else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("propietario")) {
+				panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuProp.fxml"));
+				panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
+				drawer.setSidePane(panelMenu);
+			}
 			
-			panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuAdmin.fxml"));
-			panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
-			drawer.setSidePane(panelMenu);
 
 			
 		} catch (IOException ex) {
-			Logger.getLogger(CtrlPanelAdmin.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(CtrlMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
 		transition.setRate(0);

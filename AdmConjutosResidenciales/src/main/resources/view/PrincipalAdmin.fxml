@@ -11,7 +11,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="640.0" prefWidth="1143.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelAdmin">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="640.0" prefWidth="1143.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlMenuPrincipal">
    <children>
       <ImageView fitHeight="1000.0" fitWidth="1800.0" layoutY="45.0" opacity="0.56" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-297.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-316.0" AnchorPane.topAnchor="45.0">
          <image>
@@ -28,7 +28,7 @@
             <Label fx:id="lbFechaSistema" layoutX="912.0" layoutY="14.0" text="&lt;fecha&gt;" />
          </children>
       </AnchorPane>
-      <Text fill="WHITE" layoutX="473.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="251.849609375">
+      <Text fill="WHITE" layoutX="513.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido" wrappingWidth="251.849609375">
          <font>
             <Font size="44.0" />
          </font>

@@ -52,14 +52,14 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 	@FXML
 	void registrarPropietario(ActionEvent event) throws IOException {
-		CtrlPanelAdmin.drawer1.close();
+		CtrlMenuPrincipal.drawer1.close();
 		if (pane2 == null) {
 
 			pane2 = FXMLLoader.load(getClass().getResource("/view/GestionPropietarios.fxml"));
 			pane2.setLayoutX(0);
 			pane2.setLayoutY(45);
 
-			CtrlPanelAdmin.rootP.getChildren().add(pane2);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane2);
 			pane2.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
 			pane2.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
 		} else {
@@ -70,13 +70,13 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	@FXML
 	void registrarVisitante(ActionEvent event) throws IOException {
 
-		CtrlPanelAdmin.drawer1.close();
+		CtrlMenuPrincipal.drawer1.close();
 		if (pane3 == null) {
 
 			pane3 = FXMLLoader.load(getClass().getResource("/view/RegistroVisitantes.fxml"));
 			pane3.setLayoutX(0);
 			pane3.setLayoutY(45);
-			CtrlPanelAdmin.rootP.getChildren().add(pane3);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane3);
 			pane3.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
 			pane3.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
 		} else {
@@ -87,13 +87,13 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 	@FXML
 	void pagosAdmin(ActionEvent event) throws IOException {
-		CtrlPanelAdmin.drawer1.close();
+		CtrlMenuPrincipal.drawer1.close();
 		if (pane4 == null) {
 
 			pane4 = FXMLLoader.load(getClass().getResource("/view/PagosAdmin.fxml"));
 			pane4.setLayoutX(0);
 			pane4.setLayoutY(45);
-			CtrlPanelAdmin.rootP.getChildren().add(pane4);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane4);
 			pane4.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
 			pane4.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
 		} else {
@@ -104,7 +104,7 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 	@FXML
 	void gestionarApartamentos(ActionEvent event) throws IOException {
-		CtrlPanelAdmin.drawer1.close();
+		CtrlMenuPrincipal.drawer1.close();
 		if (pane5 == null) {
 
 			pane5 = FXMLLoader.load(getClass().getResource("/view/GestionApartamentos.fxml"));
@@ -112,7 +112,7 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			pane5.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
 			pane5.setLayoutX(0);
 			pane5.setLayoutY(45);
-			CtrlPanelAdmin.rootP.getChildren().add(pane5);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane5);
 
 		} else {
 			pane5.toFront();
@@ -122,7 +122,7 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 	@FXML
 	void consultarArrendatarios(ActionEvent event) throws IOException {
-		CtrlPanelAdmin.drawer1.close();
+		CtrlMenuPrincipal.drawer1.close();
 		if (pane6 == null) {
 
 			pane6 = FXMLLoader.load(getClass().getResource("/view/ConsultaArrendatarios.fxml"));
@@ -130,7 +130,7 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			pane6.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
 			pane6.setLayoutX(0);
 			pane6.setLayoutY(45);
-			CtrlPanelAdmin.rootP.getChildren().add(pane6);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane6);
 
 		} else {
 			pane6.toFront();
