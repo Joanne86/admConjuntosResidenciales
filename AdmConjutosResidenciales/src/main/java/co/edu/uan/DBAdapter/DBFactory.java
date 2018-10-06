@@ -9,7 +9,7 @@ import co.edu.uan.util.PropertiesUtil;
 
 public class DBFactory {
 
-    private static final String DB_FACTORY_PROPERTY_URL = "METAINFO/DBFactory.properties";
+    private static final String DB_FACTORY_PROPERTY_URL = "DBFactory.properties";
     private static final String DEFAULT_DB_CLASS_PROP = "defaultDBClass";
 
     public static IDBAdapter getDBadapter(DBType dbType) {
@@ -29,7 +29,7 @@ public class DBFactory {
             String defaultDBClass = prop.getProperty(DEFAULT_DB_CLASS_PROP);
             
             System.out.println("DefaultDBClass ==> " + defaultDBClass);
-            return (IDBAdapter) Class.forName(defaultDBClass).newInstance();
+            return (IDBAdapter)Class.forName(defaultDBClass).newInstance();
         } catch (Exception e) {
             e.printStackTrace();
             return null;

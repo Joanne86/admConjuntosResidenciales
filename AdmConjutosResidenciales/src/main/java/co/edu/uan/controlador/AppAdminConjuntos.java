@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class AppAdminConjuntos extends Application {
 
-    static Stage stage;
+     static Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -25,7 +25,9 @@ public class AppAdminConjuntos extends Application {
         launch(args);
     }
 
-    public static void cerrarVentana() {
+    public static  void cerrarVentana() {
+   	
         stage.close();
+
     }
 }

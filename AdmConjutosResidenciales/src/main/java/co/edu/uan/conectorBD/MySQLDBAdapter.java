@@ -9,7 +9,7 @@ import co.edu.uan.util.PropertiesUtil;
 
 public class MySQLDBAdapter implements IDBAdapter {
 
-    private static final String DB_PROPERTIES = "METAINFO/DBMySQL.properties";
+    private static final String DB_PROPERTIES = "DBMySQL.properties";
 
     //Propiedades de los archivos properties
     private static final String DB_NAME_PROP = "dbname";

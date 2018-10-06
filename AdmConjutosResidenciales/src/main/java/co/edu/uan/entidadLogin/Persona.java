@@ -9,22 +9,18 @@ public abstract class Persona {
     private String correo;
     private Login login;
 
-	
-	public Persona(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
-		super();
-		this.documento = documento;
-		this.nombre = nombre;
-		this.telefono = telefono;
-		this.nacimiento = nacimiento;
-		this.correo = correo;
-		this.login = login;
-	}
+    public Persona(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
+        super();
+        this.documento = documento;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.nacimiento = nacimiento;
+        this.correo = correo;
+        this.login = login;
+    }
 
-
-	//public abstract static Persona getInstrance();
-	
-	
-	public int getDocumento() {
+    //public abstract static Persona getInstrance();
+    public int getDocumento() {
         return documento;
     }
 
@@ -72,6 +68,4 @@ public abstract class Persona {
         this.login = login;
     }
 
-    
-    
 }

@@ -168,7 +168,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Actualizar mis datos">
+                        <JFXButton fx:id="btnUpdateData" alignment="TOP_LEFT" onAction="#actualizarDatos" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Actualizar mis datos">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -176,7 +176,7 @@
                               <FontAwesomeIcon fill="#125b61" iconName="GEARS" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Cerrar sesion">
+                        <JFXButton fx:id="btnCerrarSesion" alignment="TOP_LEFT" layoutY="40.0" onAction="#cerrarSesion" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Cerrar sesion">
                            <font>
                               <Font size="17.0" />
                            </font>

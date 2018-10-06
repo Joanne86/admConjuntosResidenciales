@@ -25,8 +25,11 @@ public class LoginDAO {
 	}
 
 	public boolean iniciarSesion(String usuario, String contraseña) {
+		System.out.println(dbAdapter);
 
 		Connection connection = dbAdapter.getConnection();
+		
+		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM loginpersona WHERE usuario =?";

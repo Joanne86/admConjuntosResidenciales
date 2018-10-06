@@ -11,8 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class CtrlPanelMenuAdmin implements Initializable {
 
@@ -32,10 +35,16 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	private Label lbRol;
 
 	@FXML
+	private JFXButton btnCerrarSesion;
+
+	@FXML
 	private JFXButton btnConsultarArrendatarios;
 
 	@FXML
 	private JFXButton btnGestionarApartamentos;
+
+	@FXML
+	private JFXButton btnUpdateData;
 
 	@FXML
 	private JFXButton btnPagoAdmin;
@@ -49,6 +58,8 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	static AnchorPane pane4;
 	static AnchorPane pane5;
 	static AnchorPane pane6;
+	
+	static Stage primaryStage;
 
 	@FXML
 	void registrarPropietario(ActionEvent event) throws IOException {
@@ -147,6 +158,31 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	void setAsamblea(ActionEvent event) {
 
 	}
+
+	@FXML
+	void actualizarDatos(ActionEvent event) {
+
+	}
+
+	@FXML
+	void cerrarSesion(ActionEvent event) throws IOException {
+
+		primaryStage= new Stage();
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/view/Principal.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+        primaryStage.setMaximized(true);
+        
+        CtrlLogin.cerrarVentana();
+	}
+	
+	public static void cerrarVentana() {
+		primaryStage.close();	
+	}
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

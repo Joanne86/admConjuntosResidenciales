@@ -18,50 +18,56 @@ import javafx.stage.Stage;
 
 public class CtrlLogin {
 
-    @FXML
-    private JFXPasswordField txtPass;
+	@FXML
+	private JFXPasswordField txtPass;
 
-    @FXML
-    private JFXTextField txtUser;
+	@FXML
+	private JFXTextField txtUser;
 
-    @FXML
-    private JFXButton btnIngresar;
+	@FXML
+	private JFXButton btnIngresar;
 
+	static Stage primaryStage = new Stage();
+	Parent root;
 
-    @FXML
-    void ingresar(ActionEvent event) throws IOException {
-    	
-        if (txtPass.getText().equals("") || txtUser.getText().equals("")) {
-            displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
-        } else {
-            LoginDAO loginDAO = new LoginDAO();   
-            
-            if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
-                
-                	Stage primaryStage = new Stage();
-                    Parent root;
-                    root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
-                    Scene scene = new Scene(root);
-                    primaryStage.setScene(scene);
+	@FXML
+	void ingresar(ActionEvent event) throws IOException {
 
-                    primaryStage.show();
-                    primaryStage.setMaximized(true);
-                    cerrarPrincipal();
-                               
-            } else {
-            	displayAlert(AlertType.INFORMATION, "Error al ingresar", "Usuario y/o contraseña incorrectos"
-            			+ ", verifique su usuario y contraseña");
-            }            
-        }
-    }
-    public void  cerrarPrincipal(){
-    	AppAdminConjuntos.cerrarVentana();
-    }
+		if (txtPass.getText().equals("") || txtUser.getText().equals("")) {
+			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
+		} else {
+			LoginDAO loginDAO = new LoginDAO();
 
-    private void displayAlert(AlertType type, String title, String message) {
-        Alert alert = new Alert(type);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+			if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
+
+				root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
+				Scene scene = new Scene(root);
+				primaryStage.setScene(scene);
+
+				primaryStage.show();
+				primaryStage.setMaximized(true);
+				
+				if(AppAdminConjuntos.stage!=null) {
+					AppAdminConjuntos.cerrarVentana();
+				}
+				if(CtrlPanelMenuAdmin.primaryStage!=null) {
+					CtrlPanelMenuAdmin.cerrarVentana();
+				}
+			} else {
+				displayAlert(AlertType.INFORMATION, "Error al ingresar",
+						"Usuario y/o contraseña incorrectos" + ", verifique su usuario y contraseña");
+			}
+		}
+	}
+
+	public static void cerrarVentana() {
+		primaryStage.close();
+	}
+
+	private void displayAlert(AlertType type, String title, String message) {
+		Alert alert = new Alert(type);
+		alert.setTitle(title);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
 }
