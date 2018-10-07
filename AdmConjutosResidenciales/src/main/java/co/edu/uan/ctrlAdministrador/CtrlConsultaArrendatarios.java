@@ -1,4 +1,4 @@
-package co.edu.uan.controlador;
+package co.edu.uan.ctrlAdministrador;
 
 
 import com.jfoenix.controls.JFXButton;

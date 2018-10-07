@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #1B4965;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlPanelMenuAdmin">
+<AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #1B4965;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.ctrlAdministrador.CtrlPanelMenuAdmin">
    <children>
       <Accordion layoutY="288.0" opacity="0.7" prefHeight="375.0" prefWidth="243.0" style="-fx-background-color: #1B4965;">
          <panes>

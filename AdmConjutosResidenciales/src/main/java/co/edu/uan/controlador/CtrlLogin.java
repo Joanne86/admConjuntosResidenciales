@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import co.edu.uan.AdminConjuntos.AppAdminConjuntos;
+import co.edu.uan.ctrlAdministrador.CtrlPanelMenuAdmin;
 import co.edu.uan.dao.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,7 +30,7 @@ public class CtrlLogin {
 	private JFXButton btnIngresar;
 
 	static Stage primaryStage = new Stage();
-	Parent root;
+	public static Parent root;
 
 	@FXML
 	void ingresar(ActionEvent event) throws IOException {

@@ -68,7 +68,7 @@
 				<artifactId>javafx-maven-pligin</artifactId>
 				<version>8.7.8</version>
 				<configuration>
-					<mainClass>com.edu.uan.controlador.AppAdminConjuntos</mainClass>
+					<mainClass>com.edu.uan.AdminConjuntos.AppAdminConjuntos</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -76,7 +76,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>co.edu.uan.controlador.AppAdminConjuntos</mainClass>
+							<mainClass>co.edu.uan.AdminConjuntos.AppAdminConjuntos</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

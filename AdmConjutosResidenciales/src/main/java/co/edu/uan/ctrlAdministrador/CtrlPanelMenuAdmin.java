@@ -1,4 +1,4 @@
-package co.edu.uan.controlador;
+package co.edu.uan.ctrlAdministrador;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import co.edu.uan.controlador.CtrlLogin;
+import co.edu.uan.controlador.CtrlMenuPrincipal;
 import co.edu.uan.dao.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,8 +60,9 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	static AnchorPane pane4;
 	static AnchorPane pane5;
 	static AnchorPane pane6;
+	static AnchorPane pane7;
 	
-	static Stage primaryStage;
+	public static Stage primaryStage;
 
 	@FXML
 	void registrarPropietario(ActionEvent event) throws IOException {
@@ -150,8 +153,21 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	}
 
 	@FXML
-	void quejasSugerencias(ActionEvent event) {
+	void quejasSugerencias(ActionEvent event) throws IOException {
+		CtrlMenuPrincipal.drawer1.close();
+		if (pane7 == null) {
 
+			pane7 = FXMLLoader.load(getClass().getResource("/view/QuejasSugerencias.fxml"));
+			pane7.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane7.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+			pane7.setLayoutX(0);
+			pane7.setLayoutY(45);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane7);
+
+		} else {
+			pane7.toFront();
+			// actualizar tabla de bases de datos.
+		}
 	}
 
 	@FXML

@@ -1,4 +1,4 @@
-package co.edu.uan.controlador;
+package co.edu.uan.ctrlAdministrador;
 
 import java.net.URL;
 import java.util.ResourceBundle;
