@@ -4,10 +4,10 @@ package co.edu.uan.PersonaFactoryLogin;
 
 import java.util.ArrayList;
 
-import co.edu.uan.entidadLogin.Administrador;
-import co.edu.uan.entidadLogin.Apartamento;
-import co.edu.uan.entidadLogin.Login;
-import co.edu.uan.entidadLogin.Persona;
+import co.edu.uan.entidad.Administrador;
+import co.edu.uan.entidad.Apartamento;
+import co.edu.uan.entidad.Login;
+import co.edu.uan.entidad.Persona;
 
 public class AdminFactory extends PersonaFactory{
 

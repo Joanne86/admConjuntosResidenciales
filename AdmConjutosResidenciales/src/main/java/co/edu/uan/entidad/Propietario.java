@@ -1,5 +1,5 @@
 
-package co.edu.uan.entidadLogin;
+package co.edu.uan.entidad;
 
 import java.util.ArrayList;
 

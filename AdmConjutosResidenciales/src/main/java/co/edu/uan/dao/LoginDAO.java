@@ -11,10 +11,10 @@ import co.edu.uan.DBAdapter.IDBAdapter;
 import co.edu.uan.PersonaFactoryLogin.AdminFactory;
 import co.edu.uan.PersonaFactoryLogin.PersonaManager;
 import co.edu.uan.PersonaFactoryLogin.PropietarioFactory;
-import co.edu.uan.entidadLogin.Apartamento;
-import co.edu.uan.entidadLogin.Login;
-import co.edu.uan.entidadLogin.Persona;
-import co.edu.uan.entidadLogin.Zona;
+import co.edu.uan.entidad.Apartamento;
+import co.edu.uan.entidad.Login;
+import co.edu.uan.entidad.Persona;
+import co.edu.uan.entidad.Zona;
 
 public class LoginDAO {
 	private IDBAdapter dbAdapter;

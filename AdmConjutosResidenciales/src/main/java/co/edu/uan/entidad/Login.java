@@ -1,4 +1,4 @@
-package co.edu.uan.entidadLogin;
+package co.edu.uan.entidad;
 
 public class Login {
 
