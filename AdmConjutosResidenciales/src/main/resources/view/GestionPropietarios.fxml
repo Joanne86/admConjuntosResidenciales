@@ -56,16 +56,17 @@
             <Insets left="10.0" />
          </padding>
       </HBox>
-      <TableView fx:id="tvTabla" layoutX="37.0" layoutY="312.0" opacity="0.82" prefHeight="249.0" prefWidth="881.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="312.0">
+      <TableView fx:id="tvTabla" layoutX="37.0" layoutY="327.0" opacity="0.82" prefHeight="204.0" prefWidth="846.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="327.0">
          <columns>
-            <TableColumn fx:id="clDocumento" prefWidth="144.0" text="Documento" />
-            <TableColumn fx:id="clNombre" prefWidth="108.0" text="Nombre" />
-            <TableColumn fx:id="clFechaNac" prefWidth="126.0" text="fecha nacimiento" />
-            <TableColumn fx:id="clCorreo" prefWidth="118.0" text="Correo" />
-            <TableColumn fx:id="clTorre" prefWidth="75.0" text="torre" />
-            <TableColumn fx:id="clApart" prefWidth="74.0" text="apart" />
-            <TableColumn fx:id="clReside" prefWidth="74.0" text="reside" />
-            <TableColumn fx:id="clParqueadero" prefWidth="86.0" text="Parqueadero" />
+            <TableColumn fx:id="clDocumento" prefWidth="120.0" text="Documento" />
+            <TableColumn fx:id="clNombre" prefWidth="109.0" text="Nombre" />
+            <TableColumn prefWidth="108.0" text="telefono" />
+            <TableColumn fx:id="clFechaNac" prefWidth="128.0" text="fecha nacimiento" />
+            <TableColumn fx:id="clCorreo" prefWidth="96.0" text="Correo" />
+            <TableColumn fx:id="clTorre" prefWidth="62.0" text="torre" />
+            <TableColumn fx:id="clApart" prefWidth="63.0" text="apart" />
+            <TableColumn fx:id="clReside" prefWidth="62.0" text="reside" />
+            <TableColumn fx:id="clParqueadero" prefWidth="97.0" text="Parqueadero" />
          </columns>
       </TableView>
       <GridPane layoutX="545.0" layoutY="60.0" prefHeight="242.0" prefWidth="562.0" AnchorPane.rightAnchor="100.0">
@@ -183,7 +184,7 @@
             </HBox>
          </children>
       </GridPane>
-      <JFXButton fx:id="btnRegistrar" layoutX="904.0" layoutY="312.0" onAction="#registrar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
+      <JFXButton fx:id="btnRegistrar" layoutX="904.0" layoutY="327.0" onAction="#registrar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -194,7 +195,7 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton fx:id="btnEliminar" layoutX="965.0" layoutY="492.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="100.0">
+      <JFXButton fx:id="btnEliminar" layoutX="907.0" layoutY="473.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="99.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -212,6 +213,11 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+      </JFXButton>
+      <JFXButton fx:id="btnActualizarTv" layoutX="37.0" layoutY="279.0" onAction="#actualizarTabla" prefHeight="37.0" prefWidth="49.0" text=".">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
+         </graphic>
       </JFXButton>
    </children>
 </AnchorPane>

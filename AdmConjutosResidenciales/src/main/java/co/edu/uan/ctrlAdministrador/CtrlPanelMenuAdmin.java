@@ -25,6 +25,9 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	private JFXButton btnQuejasSugerencias;
 
 	@FXML
+	private JFXButton btnGestionarServicios;
+
+	@FXML
 	private JFXButton btnRegistroVisitante;
 
 	@FXML
@@ -55,13 +58,13 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	private JFXButton btnAsambleas;
 
 	static AnchorPane pane2;
-
 	static AnchorPane pane3;
 	static AnchorPane pane4;
 	static AnchorPane pane5;
 	static AnchorPane pane6;
 	static AnchorPane pane7;
-	
+	static AnchorPane pane8;
+
 	public static Stage primaryStage;
 
 	@FXML
@@ -169,6 +172,24 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			// actualizar tabla de bases de datos.
 		}
 	}
+	
+    @FXML
+    void gestionarServicios(ActionEvent event) throws IOException {
+    	CtrlMenuPrincipal.drawer1.close();
+		if (pane8 == null) {
+
+			pane8 = FXMLLoader.load(getClass().getResource("/view/GestionServicios.fxml"));
+			pane8.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane8.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+			pane8.setLayoutX(0);
+			pane8.setLayoutY(45);
+			CtrlMenuPrincipal.rootP.getChildren().add(pane8);
+
+		} else {
+			pane7.toFront();
+			// actualizar tabla de bases de datos.
+		}
+    }
 
 	@FXML
 	void setAsamblea(ActionEvent event) {
@@ -183,22 +204,21 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	@FXML
 	void cerrarSesion(ActionEvent event) throws IOException {
 
-		primaryStage= new Stage();
-        Parent root;
-        root = FXMLLoader.load(getClass().getResource("/view/Principal.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
+		primaryStage = new Stage();
+		Parent root;
+		root = FXMLLoader.load(getClass().getResource("/view/Principal.fxml"));
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
 
-        primaryStage.show();
-        primaryStage.setMaximized(true);
-        
-        CtrlLogin.cerrarVentana();
+		primaryStage.show();
+		primaryStage.setMaximized(true);
+
+		CtrlLogin.cerrarVentana();
 	}
-	
+
 	public static void cerrarVentana() {
-		primaryStage.close();	
+		primaryStage.close();
 	}
-	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

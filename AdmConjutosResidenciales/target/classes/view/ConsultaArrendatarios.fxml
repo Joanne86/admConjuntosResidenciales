@@ -16,7 +16,7 @@
             <Image url="@../img/conjuto.jpg" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnBuscar" layoutX="572.0" layoutY="127.0" onAction="#buscar" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
+      <JFXButton fx:id="btnBuscar" layoutX="490.0" layoutY="134.0" onAction="#buscar" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -30,21 +30,29 @@
             <Insets left="10.0" />
          </padding>
       </JFXButton>
-      <JFXTextField fx:id="txtNdocumento" focusColor="WHITE" labelFloat="true" layoutX="296.0" layoutY="135.0" maxWidth="278.0" minWidth="239.0" prefHeight="35.0" prefWidth="258.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
+      <JFXTextField fx:id="txtNdocumento" focusColor="WHITE" labelFloat="true" layoutX="211.0" layoutY="142.0" maxWidth="278.0" minWidth="239.0" prefHeight="35.0" prefWidth="258.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <TableView layoutX="296.0" layoutY="230.0" opacity="0.84" prefHeight="262.0" prefWidth="610.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
       <Text fill="WHITE" layoutX="296.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consulta de arrendatarios">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Text>
+      <JFXButton layoutX="857.0" layoutY="172.0" prefHeight="37.0" prefWidth="49.0" text="." />
+      <TableView fx:id="tvTabla" layoutX="211.0" layoutY="252.0" opacity="0.82" prefHeight="204.0" prefWidth="846.0">
+         <columns>
+            <TableColumn fx:id="clDocumento" prefWidth="120.0" text="Documento" />
+            <TableColumn fx:id="clNombre" prefWidth="109.0" text="Nombre" />
+            <TableColumn prefWidth="108.0" text="telefono" />
+            <TableColumn fx:id="clFechaNac" prefWidth="128.0" text="fecha nacimiento" />
+            <TableColumn fx:id="clCorreo" prefWidth="131.0" text="Correo" />
+            <TableColumn fx:id="clTorre" prefWidth="77.0" text="torre" />
+            <TableColumn fx:id="clApart" prefWidth="79.0" text="apart" />
+            <TableColumn fx:id="clParqueadero" prefWidth="92.0" text="Parqueadero" />
+         </columns>
+      </TableView>
+      <FontAwesomeIcon fill="WHITE" iconName="REPEAT" layoutX="1027.0" layoutY="225.0" size="2em" />
    </children>
 </AnchorPane>

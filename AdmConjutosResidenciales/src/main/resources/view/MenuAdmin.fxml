@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="0.0" style="-fx-background-color: #1B4965;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.ctrlAdministrador.CtrlPanelMenuAdmin">
    <children>
-      <Accordion layoutY="288.0" opacity="0.7" prefHeight="375.0" prefWidth="243.0" style="-fx-background-color: #1B4965;">
+      <Accordion layoutY="328.0" opacity="0.7" prefHeight="322.0" prefWidth="243.0" style="-fx-background-color: #1B4965;">
          <panes>
             <TitledPane alignment="CENTER" text="Residentes">
                <content>
@@ -125,45 +125,6 @@
                   <Font size="17.0" />
                </font>
             </TitledPane>
-            <TitledPane alignment="CENTER" text="Servicios">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <JFXButton alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Aseo">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIcon fill="#125b61" iconName="TINT" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton alignment="TOP_LEFT" layoutY="40.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Vigilancia">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIcon fill="#125b61" iconName="EYE" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton alignment="TOP_LEFT" layoutY="80.0" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Mantenimiento">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIcon fill="#125b61" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXToolbar />
-                     </children>
-                  </AnchorPane>
-               </content>
-               <effect>
-                  <ColorAdjust />
-               </effect>
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </TitledPane>
             <TitledPane alignment="CENTER" text="Mi cuenta">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -204,7 +165,7 @@
       <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="67.0" layoutY="137.0" size="12em" />
       <Label fx:id="lbRol" layoutX="93.0" layoutY="158.0" text="&lt;rol&gt;" textFill="WHITE" />
       <Label fx:id="lbNombre" layoutX="20.0" layoutY="182.0" text="&lt;nombre&gt;" textFill="WHITE" />
-      <JFXButton fx:id="btnRegistroVisitante" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#registrarVisitante" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
+      <JFXButton fx:id="btnRegistroVisitante" alignment="TOP_LEFT" layoutX="1.0" layoutY="288.0" onAction="#registrarVisitante" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Registrar visitantes">
          <font>
             <Font size="17.0" />
          </font>
@@ -218,6 +179,14 @@
          </font>
          <graphic>
             <FontAwesomeIcon fill="#125b61" iconName="BUILDING" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnGestionarServicios" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#gestionarServicios" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar servicios">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#125b61" />
          </graphic>
       </JFXButton>
    </children>

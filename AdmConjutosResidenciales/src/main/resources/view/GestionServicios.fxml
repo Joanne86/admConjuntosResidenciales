@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.ctrlAdministrador.CtrlGestionServicios">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/conjuto.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="31.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administracion de servicios">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="45.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Módulo para gestionar el personal de servicios del conjunto residencial UANConjuntos." wrappingWidth="331.140625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <HBox alignment="BOTTOM_CENTER" layoutX="45.0" layoutY="219.0" prefHeight="46.0" prefWidth="384.0">
+         <children>
+            <JFXTextField fx:id="txtNdocumento" focusColor="WHITE" labelFloat="true" maxWidth="278.0" minWidth="239.0" prefHeight="35.0" prefWidth="258.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnBuscar" onAction="#buscar" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="SEARCH" size="1.5em" />
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </JFXButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="tvTabla" layoutX="40.0" layoutY="330.0" opacity="0.82" prefHeight="249.0" prefWidth="881.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="297.0" AnchorPane.topAnchor="330.0">
+         <columns>
+            <TableColumn fx:id="clDocumento" prefWidth="109.0" text="Documento" />
+            <TableColumn fx:id="clNombre" prefWidth="143.0" text="Nombre" />
+            <TableColumn fx:id="clTelefono" prefWidth="84.0" text="Telefono" />
+            <TableColumn fx:id="clFechaNac" prefWidth="114.0" text="fecha nacimiento" />
+            <TableColumn fx:id="clCorreo" prefWidth="120.0" text="Correo" />
+            <TableColumn fx:id="clServicio" prefWidth="110.0" text="Servicio" />
+            <TableColumn fx:id="clHorario" prefWidth="124.0" text="Horario" />
+         </columns>
+      </TableView>
+      <GridPane layoutX="545.0" layoutY="60.0" prefHeight="242.0" prefWidth="562.0" AnchorPane.rightAnchor="100.0">
+         <children>
+            <JFXTextField fx:id="txtDocumento" focusColor="WHITE" labelFloat="true" maxWidth="558.0" minWidth="219.0" prefHeight="37.0" prefWidth="245.0" promptText="Numero de documento" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNombre" focusColor="WHITE" labelFloat="true" maxWidth="341.0" minWidth="219.0" prefHeight="37.0" prefWidth="250.0" promptText="Nombre completo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.columnIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtTelefono" focusColor="WHITE" labelFloat="true" maxWidth="335.0" minWidth="212.0" prefHeight="37.0" prefWidth="250.0" promptText="Telefono" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <DatePicker fx:id="calenFechaNac" editable="false" prefHeight="34.0" prefWidth="274.0" promptText="Fecha Nacimiento" style="-fx-prompt-text-fill: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" maxWidth="360.0" minWidth="219.0" prefHeight="37.0" prefWidth="250.0" promptText="Correo electronico" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXComboBox fx:id="cbServicio" prefHeight="33.0" prefWidth="276.0" promptText="SERVICIO" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </JFXComboBox>
+            <JFXTextField fx:id="txtHorario" focusColor="WHITE" labelFloat="true" maxWidth="335.0" minWidth="212.0" prefHeight="37.0" prefWidth="250.0" promptText="Horario" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.rowIndex="3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <JFXButton fx:id="btnRegistrar" layoutX="904.0" layoutY="312.0" onAction="#registrar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE" AnchorPane.rightAnchor="76.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="FLOPPY_ALT" size="1.5em" />
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXButton>
+      <JFXButton fx:id="btnEliminar" layoutX="907.0" layoutY="446.0" onAction="#eliminar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="73.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnModificar" layoutX="904.0" layoutY="378.0" onAction="#modificar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="76.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="EDIT" size="1.5em" />
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXButton>
+      <JFXButton fx:id="btnReporte" layoutX="909.0" layoutY="516.0" onAction="#generarReporte" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #DA9334; -fx-background-radius: 5;" text="Generar reporte" textFill="WHITE" AnchorPane.rightAnchor="73.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="FILE_TEXT_ALT" size="1.5em" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnActualizar" layoutX="40.0" layoutY="285.0" onAction="#actualizar" prefHeight="37.0" prefWidth="49.0" text=".">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

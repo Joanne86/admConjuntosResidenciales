@@ -87,17 +87,6 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnMostrarTodo" layoutX="716.0" layoutY="223.0" onAction="#mostrarTodo" prefHeight="37.0" prefWidth="212.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Mostrar todas las torres" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="EYE" size="1.5em" />
-         </graphic>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXButton>
       <Text fill="WHITE" layoutX="318.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Los apartamentos de cada torre comienzan en 101 y el numero maximo de apartamentos por cada torre es de 30" />
       <Text fill="WHITE" layoutX="117.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de apartamentos">
          <font>
@@ -134,5 +123,10 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <JFXButton layoutX="879.0" layoutY="223.0" prefHeight="37.0" prefWidth="49.0" text=".">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

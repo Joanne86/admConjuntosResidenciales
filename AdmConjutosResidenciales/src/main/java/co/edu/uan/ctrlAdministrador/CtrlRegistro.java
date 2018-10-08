@@ -7,14 +7,19 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 
 public class CtrlRegistro {
 
+    @FXML
+    private JFXButton btnActualizarTv;
+    
     @FXML
     private TableColumn<?, ?> clCorreo;
 
@@ -100,11 +105,30 @@ public class CtrlRegistro {
     @FXML
     void buscar(ActionEvent event) {
 
+    	if(txtNdocumento.getText().isEmpty()) {
+    		displayAlert(AlertType.INFORMATION, "CAMPO DE BUSQUEDA VACIO", "Debe tener el campo de busqueda lleno");
+    	}else {
+    		//se va al dao
+    	}
     }
 
     @FXML
     void registrar(ActionEvent event) {
-
+    	
+    	if(txtDocumento.getText().isEmpty()
+    			||calenFechaNac.getValue()==null
+    			||txtEmail.getText().isEmpty()
+    			||txtNombre.getText().isEmpty()
+    			||txtDocumento.getText().isEmpty()
+    			||cbApart.getValue().equals("")
+    			||cbTorre.getValue().equals("")
+    			||(!rbSiP.isSelected()&&!rbNoP.isSelected())
+    			||(!rbSiR.isSelected()&&!rbNoR.isSelected())) {
+    		displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos de registro llenos");  		
+    	}else {
+    		//hacer builder ir al dao
+    	}
+    	
     }
 
     @FXML
@@ -116,5 +140,15 @@ public class CtrlRegistro {
     void modificar(ActionEvent event) {
 
     }
+    @FXML
+    void actualizarTabla(ActionEvent event) {
+
+    }
+    private void displayAlert(AlertType type, String title, String message) {
+		Alert alert = new Alert(type);
+		alert.setTitle(title);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
 
 }
