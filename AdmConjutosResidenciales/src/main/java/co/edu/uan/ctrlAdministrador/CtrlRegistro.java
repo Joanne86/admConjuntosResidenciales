@@ -155,7 +155,7 @@ public class CtrlRegistro {
 			apto.setApartamento(Integer.parseInt(String.valueOf(cbApart.getValue())));
 			apto.setReside(rbSiR.getText());
 			apto.setParqueadero(rbSiP.getText());
-			
+	//leidy porfa me ayudas a mirar este error :--		
 			propietario.Propietario(Integer.parseInt(txtDocumento.getText()),txtNombre.getText(),txtTelefono.getText(),
     				String.valueOf(calenFechaNac.getValue()),txtEmail.getText(),login,apto);
     		if(newPropietario.createPropietario(propietario)) {

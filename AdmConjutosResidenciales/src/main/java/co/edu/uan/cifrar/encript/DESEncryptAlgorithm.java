@@ -5,6 +5,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 import sun.misc.BASE64Encoder;
 
+
 public class DESEncryptAlgorithm implements IEncryptAlgorithm {
 	@Override
     public String encrypt(String message, String password) throws Exception {

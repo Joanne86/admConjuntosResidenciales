@@ -65,7 +65,6 @@ public class PropietarioDAO {
 		}
 
 	}
-
 	// metodo que encripta el password para los usuarios
 	public String CifarClave(String clave_cifrada) {
 		String messageAES;

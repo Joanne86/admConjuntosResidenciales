@@ -1,6 +1,6 @@
 package co.edu.uan.cifrar.impl;
 
-import co.edu.uan.cifrar.encript.IEncryptAlgorithm;
+import co.edu.uan.Cifrar.encript.IEncryptAlgorithm;
 /*
 Clase que representa al bridge o puente, la clase implementa IMessageEncrypt y
 delega la responsabilidad al m�todo de cifrado asignado durante la creaci�n del
