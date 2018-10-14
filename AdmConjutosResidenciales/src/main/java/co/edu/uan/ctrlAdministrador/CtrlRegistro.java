@@ -23,9 +23,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import co.edu.uan.dao.LoginDAO;
 import co.edu.uan.dao.PropietarioDAO;
-import co.edu.uan.entidad.Apartamento;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Propietario;
+import co.edu.uan.torreBuilder.Apartamento;
 
 public class CtrlRegistro {
 
@@ -96,13 +96,13 @@ public class CtrlRegistro {
     private TableColumn<?, ?> clApart;
 
     @FXML
-    private JFXComboBox<?> cbApart;
+    private JFXComboBox<Integer> cbApart;
 
     @FXML
     private DatePicker calenFechaNac;
 
     @FXML
-    private JFXComboBox<?> cbTorre;
+    private JFXComboBox<Integer> cbTorre;
 
     @FXML
     private JFXButton btnRegistrar;
@@ -128,8 +128,8 @@ public class CtrlRegistro {
 
     @FXML
     void registrar(ActionEvent event) {
-    	Propietario propietario = new Propietario();
-    	PropietarioDAO newPropietario = new PropietarioDAO();
+    	
+    	
     	if(txtDocumento.getText().isEmpty()
     			||calenFechaNac.getValue()==null
     			||txtEmail.getText().isEmpty()
@@ -142,49 +142,39 @@ public class CtrlRegistro {
     			||(!rbSiR.isSelected()&&!rbNoR.isSelected())) {
     		displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos de registro llenos");  		
     	}else {
-    		
-    	}
-    	
-/*
     		//Generacion de clave aleatoria para el nuevo propietario 
     		String clave =UUID.randomUUID().toString().toUpperCase().substring(0, 6);   		
     		Login login = new Login();
 			login.setUsuario(txtDocumento.getText());
 			login.setContraseña(clave);
 			login.setTipoPersona("2");
-			
 			//OBJETO APARTAMENTO
-			Apartamento apto = new Apartamento();
-			apto.setTorre(Integer.parseInt(String.valueOf(cbTorre.getValue())));
-			apto.setApartamento(Integer.parseInt(String.valueOf(cbApart.getValue())));
-			apto.setReside(rbSiR.getText());
-			apto.setParqueadero(rbSiP.getText());
-	//leidy porfa me ayudas a mirar este error :--		
-			propietario.Propietario(Integer.parseInt(txtDocumento.getText()),txtNombre.getText(),txtTelefono.getText(),
-    				String.valueOf(calenFechaNac.getValue()),txtEmail.getText(),login,apto);
-    		if(newPropietario.createPropietario(propietario)) {
-    			
-    			root = FXMLLoader.load(getClass().getResource("/view/GestionPropietarios.fxml"));
-				Scene scene = new Scene(root);
-				primaryStage.setScene(scene);
+			String reside="";
+			String parqueadero="";
+			if(rbSiR.isSelected()) {
+				reside="si";
+			}else {
+				reside="no";
+			}
+			if(rbSiP.isSelected()) {
+				parqueadero="si";
+			}else {
+				parqueadero="No";
+			}
+			int torre =cbTorre.getValue();
+			Apartamento apart= new Apartamento(cbApart.getValue(),reside, parqueadero);
+			//OBJETO PROPIETARIO
+			
+			Propietario propietario = new Propietario(Integer.parseInt(txtDocumento.getText())
+					,txtNombre.getText(),txtEmail.getText(),login, torre, apart);
+    	
+			PropietarioDAO propDAO = new PropietarioDAO();
+			if(propDAO.createPropietario(propietario)) {
+				displayAlert(AlertType.ERROR, "Error guardar Propietario",
+						"Error al guardar el Propietario");
+			}
+    	}
 
-				primaryStage.show();
-				primaryStage.setMaximized(true);
-				
-				if(AppAdminConjuntos.stage!=null) {
-					AppAdminConjuntos.cerrarVentana();
-				}
-				if(CtrlPanelMenuAdmin.primaryStage!=null) {
-					CtrlPanelMenuAdmin.cerrarVentana();
-				}
-			} else {
-				
-				displayAlert(AlertType.ERROR, "Error Grabar Propietario",
-						"Error al grabar el Propietario. Conatacte con el Administrador");
-			}   			
-
-    	}    	
-*/
     }
 
     @FXML
