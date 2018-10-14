@@ -36,9 +36,8 @@ public class TorreDAO {
              ps2.setString(3, torre.getApartamentos().get(i).getReside());
              ps2.setString(4, torre.getApartamentos().get(i).getParqueadero());
              ps2.setString(5, null);
+             ps2.execute();
         }     
-        ps2.execute();
-
     } catch (SQLException e) {
 
     } finally {

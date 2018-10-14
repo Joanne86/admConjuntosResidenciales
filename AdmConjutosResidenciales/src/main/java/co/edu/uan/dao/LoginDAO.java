@@ -79,37 +79,7 @@ public class LoginDAO {
 			}
 		}
 	}
-/*
-	public ArrayList<Apartamento> listaApartamentos(int documento, Connection connection) {
-		ArrayList<Apartamento> apartamentos = new ArrayList<>();
-		Apartamento apartamento;
 
-		PreparedStatement ps2 = null;
-		ResultSet rs2 = null;
-		String sql2 = "select * from inmueble where documento =?";
-		try {
-			// prepara la consulta
-			ps2 = connection.prepareStatement(sql2);
-			ps2.setInt(1, documento);// se elvia el valor
-			rs2 = ps2.executeQuery();// busca un nombre de usuario en la bd
-			while (rs2.next()) {
-				Zona zona = new Zona(rs2.getString(5), rs2.getFloat(6), rs2.getFloat(7));
-
-				apartamento = new Apartamento(Integer.parseInt(rs2.getString(1)), Integer.parseInt(rs2.getString(2)),
-						rs2.getString(3), rs2.getString(4), zona);
-				apartamentos.add(apartamento);
-			}
-		} catch (SQLException ex) {
-
-		} finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-			}
-		}
-		return apartamentos;
-	}
-*/
 	public void setPersona(Persona persona) {
 		LoginDAO.persona = persona;
 	}
