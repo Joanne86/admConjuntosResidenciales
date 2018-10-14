@@ -123,7 +123,7 @@ public class CtrlGestionApartamentos implements Initializable {
 				displayAlert(AlertType.INFORMATION, "TORRE EXISTENTE", "El numero de la torre ya existe");
 			}else {
 				torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
-						.setZona(tipo, Float.parseFloat(txtCostoAdmin.getText()), numeroPuestosParq,
+						.setZona(idZona, tipo, Float.parseFloat(txtCostoAdmin.getText()), numeroPuestosParq,
 								Float.parseFloat(txtCostoParqueadero.getText()))
 						.build());
 			}

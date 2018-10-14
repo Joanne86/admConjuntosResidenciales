@@ -1,38 +1,33 @@
 
 package co.edu.uan.entidad;
 
-import java.util.ArrayList;
-
 import co.edu.uan.torreBuilder.Apartamento;
 
 public class Propietario extends Persona{
-
-
-	private ArrayList<Apartamento> apartamentos;
-
 	
+	private Apartamento apartamento;
 
-	public Propietario(int documento, String nombre, String telefono, String nacimiento, String correo, Login login,
-			ArrayList<Apartamento> apartamentos) {
-		super(documento, nombre, telefono, nacimiento, correo, login);
-		this.apartamentos = apartamentos;
+	public Propietario(int documento, String nombre, String correo, Login login) {
+		super(documento, nombre, correo, login);
+		
 	}
 
-
-
-	public ArrayList<Apartamento> getInmuebles() {
-		return apartamentos;
+	public Propietario() {
+		
 	}
 
-
-
-	public void setInmuebles(ArrayList<Apartamento> apartamentos) {
-		this.apartamentos = apartamentos;
+	public Propietario(int documento, String nombre, String correo, Login login, Apartamento apartamento) {
+		super(documento, nombre, correo, login);
+		this.apartamento = apartamento;
 	}
 
+	public Apartamento getApartamento() {
+		return apartamento;
+	}
 
-
-    
-    
-  
+	public void setApartamento(Apartamento apartamento) {
+		this.apartamento = apartamento;
+	}  
+	
+	
 }

@@ -52,19 +52,15 @@ public class LoginDAO {
 					if (tipo.equals("administrador")) {
 
 						personaManager.setFactory(new AdminFactory());
-						personaManager.crearPersona(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3),
-								rs.getString(4), rs.getString(5), login, null);
+						personaManager.crearPersona(Integer.parseInt(rs.getString(1)), rs.getString(2),
+								 rs.getString(5), login);
 						setPersona(personaManager.getPersona());
 
 					} else if (tipo.equals("propietario")) {
 						// hace otra consulta para obtener los apartamentos que tiene
 						personaManager.setFactory(new PropietarioFactory());// pasa como parametro el resto de info
-						personaManager.crearPersona(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3),
-								rs.getString(4), rs.getString(5), login,
-								null); // por ahora nul porque
-																								// tiene q hacer
-						// otra consulta para agregar a la lista
-						// de inmuebles
+						personaManager.crearPersona(Integer.parseInt(rs.getString(1)), rs.getString(2)
+								,rs.getString(5), login);
 						setPersona(personaManager.getPersona());
 					}
 					return true;

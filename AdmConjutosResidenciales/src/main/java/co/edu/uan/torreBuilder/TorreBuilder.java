@@ -17,8 +17,8 @@ public class TorreBuilder implements IBuilder<Torre>{
 		this.numero=numero;
 		return this;
 	}
-	public TorreBuilder setZona(String nombre, float administracion, ArrayList<Integer> numeros, float costo) {
-		this.zona = new Zona(nombre, administracion,new Parqueadero(numeros, costo));
+	public TorreBuilder setZona(String idzona, String nombre, float administracion, ArrayList<Integer> numeros, float costo) {
+		this.zona = new Zona(idzona, nombre, administracion,new Parqueadero(numeros, costo));
 		return this;
 	}
 	

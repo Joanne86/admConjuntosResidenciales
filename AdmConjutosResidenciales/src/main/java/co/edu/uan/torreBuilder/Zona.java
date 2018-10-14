@@ -1,6 +1,7 @@
 package co.edu.uan.torreBuilder;
 
 public class Zona {
+	private String idzona;
 	private String nombre;
 	private float administracion;
 	private Parqueadero  parqueadero;
@@ -11,8 +12,9 @@ public class Zona {
 		this.nombre = nombre;
 	}
 	
-	public Zona(String nombre, float administracion, Parqueadero parqueadero) {
+	public Zona(String idzona, String nombre, float administracion, Parqueadero parqueadero) {
 		super();
+		this.idzona=idzona;
 		this.nombre = nombre;
 		this.administracion = administracion;
 		this.parqueadero = parqueadero;
@@ -34,6 +36,14 @@ public class Zona {
 	}
 	public void setParqueadero(Parqueadero parqueadero) {
 		this.parqueadero = parqueadero;
+	}
+
+	public String getIdzona() {
+		return idzona;
+	}
+
+	public void setIdzona(String idzona) {
+		this.idzona = idzona;
 	}
 
 	@Override

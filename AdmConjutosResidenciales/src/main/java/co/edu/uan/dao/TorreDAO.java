@@ -20,11 +20,24 @@ public class TorreDAO {
 	public void createTorre(Torre torre) {
 	Connection connection = dbAdapter.getConnection();
 	PreparedStatement ps = null;
+	PreparedStatement ps2 = null;
 	String sql = "INSERT INTO torre(numero, idzona) VALUES (?,?)";
+	String sql2 = "INSERT INTO torreapart(ntorre, napartamento, reside, parqueadero, documento) VALUES (?,?,?,?,?)";
 	try {
         ps = connection.prepareStatement(sql);
-
+        ps.setInt(1, torre.getNumero());
+        ps.setInt(2, Integer.parseInt(torre.getZona().getIdzona()));
         ps.execute();
+        //datos de apartamento
+        ps2 = connection.prepareStatement(sql2);
+        for(int i=0; i<torre.getApartamentos().size(); i++) {
+        	 ps2.setInt(1, torre.getNumero());            
+             ps2.setInt(2, torre.getApartamentos().get(i).getNumero());
+             ps2.setString(3, torre.getApartamentos().get(i).getReside());
+             ps2.setString(4, torre.getApartamentos().get(i).getParqueadero());
+             ps2.setString(5, null);
+        }     
+        ps2.execute();
 
     } catch (SQLException e) {
 
