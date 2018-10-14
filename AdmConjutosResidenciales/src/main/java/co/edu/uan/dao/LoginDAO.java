@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
@@ -13,9 +12,8 @@ import co.edu.uan.PersonaFactoryLogin.PersonaManager;
 import co.edu.uan.PersonaFactoryLogin.PropietarioFactory;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Persona;
-import co.edu.uan.torreBuilder.Apartamento;
-import co.edu.uan.torreBuilder.Zona;
-//mmmm
+
+
 public class LoginDAO {
 	private IDBAdapter dbAdapter;
 	private static Persona persona;

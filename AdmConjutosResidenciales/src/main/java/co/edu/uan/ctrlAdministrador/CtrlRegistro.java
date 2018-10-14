@@ -126,7 +126,7 @@ public class CtrlRegistro {
     			||(!rbSiR.isSelected()&&!rbNoR.isSelected())) {
     		displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos de registro llenos");  		
     	}else {
-    		//hacer builder ir al dao
+    		
     	}
     	
     }

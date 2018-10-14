@@ -16,7 +16,7 @@
 	</properties>
 
 	<dependencies>
-	<!-- Librería para pruebas unitarias -->
+		<!-- Librería para pruebas unitarias -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -92,7 +92,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>	
-		</plugins>		
+			</plugin>
+		</plugins>
 	</build>
 </project>

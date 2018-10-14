@@ -60,6 +60,26 @@ public class ZonaDAO {
 		}
 		return admin;
 	}
+	public String traerDatosDeZonaId(String zona) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String id = null;
+		String sql = "SELECT id FROM tipozona WHERE nombre=?";
+		try {
+			
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, zona);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				id = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
 	public String traerDatosDeZonaParq(String zona) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;

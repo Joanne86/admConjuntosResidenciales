@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
+import co.edu.uan.dao.TorreDAO;
 import co.edu.uan.dao.ZonaDAO;
 import co.edu.uan.torreBuilder.TorreBuilder;
 import javafx.collections.ObservableList;
@@ -67,7 +68,9 @@ public class CtrlGestionApartamentos implements Initializable {
 	@FXML
 	private JFXButton btnBuscar;
 	@FXML
-    private JFXTextField txtNumeroParZona;
+	private JFXTextField txtNumeroParZona;
+	
+	private String idZona;
 
 	@FXML
 	void modificar(ActionEvent event) {
@@ -84,36 +87,47 @@ public class CtrlGestionApartamentos implements Initializable {
 		String tipo = null;
 		tipo = cbTipo.getValue();
 
-		if (txtTorre.getText().equals("") || txtApartamento.getText().equals("") || tipo == null||txtNumeroParZona.getText().isEmpty()) {
+		if (txtTorre.getText().equals("") || txtApartamento.getText().equals("") || tipo == null
+				|| txtNumeroParZona.getText().isEmpty()) {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos del registro llenos");
-		} else if (isNumeric(txtTorre.getText()) == false || isNumeric(txtApartamento.getText()) == false||isNumeric(txtNumeroParZona.getText())==false) {
-			displayAlert(AlertType.INFORMATION, "DATOS INVALIDOS", "DEBE INGRESAR DATOS NUMERICOS ENTEROS EN EL CAMPO DE TORRE Y APARTAMENTOS");
-		}else {
-			
+		} else if (isNumeric(txtTorre.getText()) == false || isNumeric(txtApartamento.getText()) == false
+				|| isNumeric(txtNumeroParZona.getText()) == false) {
+			displayAlert(AlertType.INFORMATION, "DATOS INVALIDOS",
+					"DEBE INGRESAR DATOS NUMERICOS ENTEROS EN EL CAMPO DE TORRE Y APARTAMENTOS");
+		} else {
+
 			ArrayList<Integer> numeroPuestosParq = new ArrayList<>();
-			
-			for(int i=1; i<=Integer.parseInt(txtNumeroParZona.getText()); i++) {
+
+			for (int i = 1; i <= Integer.parseInt(txtNumeroParZona.getText()); i++) {
 				numeroPuestosParq.add(i);
-				
+
 			}
-			
+
 			TorreBuilder torreBuilder = new TorreBuilder();
-			int cuadruple=0;
-			int apt=100;
-			for(int i=0; i<Integer.parseInt(txtApartamento.getText()); i++) {
-				cuadruple++;				
-				apt++;
-				if(cuadruple==5) {
-					cuadruple=0;
-					apt=apt+100-4;
+			int cuadruple = 0;
+			int apt = 100;
+			for (int i = 0; i < Integer.parseInt(txtApartamento.getText()); i++) {
+
+				if (cuadruple == 4) {
+					cuadruple = 0;
+					apt = apt + 100 - 4;
 				}
-				torreBuilder.addApartamentos(apt, "", "");			
+				cuadruple++;
+				apt++;
+				torreBuilder.addApartamentos(apt, "", "");
 			}
-			System.out.println(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
-					.setZona(tipo, Float.parseFloat(txtCostoAdmin.getText()), numeroPuestosParq, Float.parseFloat(txtCostoParqueadero.getText()))
-					.build().toString());	
-			//ese build se pasa al dao de torre
-			
+
+			TorreDAO torreDAO = new TorreDAO();
+
+			if(torreDAO.verificarTorre(txtTorre.getText())) {
+				displayAlert(AlertType.INFORMATION, "TORRE EXISTENTE", "El numero de la torre ya existe");
+			}else {
+				torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
+						.setZona(tipo, Float.parseFloat(txtCostoAdmin.getText()), numeroPuestosParq,
+								Float.parseFloat(txtCostoParqueadero.getText()))
+						.build());
+			}
+		
 		}
 
 	}
@@ -155,6 +169,7 @@ public class CtrlGestionApartamentos implements Initializable {
 
 		txtCostoAdmin.setText(zonaDAO.traerDatosDeZonaAdmin(cbTipo.getValue()));
 		txtCostoParqueadero.setText(zonaDAO.traerDatosDeZonaParq(cbTipo.getValue()));
+		idZona=zonaDAO.traerDatosDeZonaId(cbTipo.getValue());
 	}
 
 	@Override
