@@ -17,5 +17,6 @@ public class AESEncryptAlgorithm implements IEncryptAlgorithm {
         byte[] encVal = c.doFinal(message.getBytes());
         String encryptedValue = new BASE64Encoder().encode(encVal);
         return encryptedValue;
+        
     }
 }
