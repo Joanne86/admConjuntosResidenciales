@@ -11,10 +11,10 @@ import co.edu.uan.DBAdapter.IDBAdapter;
 import co.edu.uan.PersonaFactoryLogin.AdminFactory;
 import co.edu.uan.PersonaFactoryLogin.PersonaManager;
 import co.edu.uan.PersonaFactoryLogin.PropietarioFactory;
-import co.edu.uan.entidad.Apartamento;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Persona;
-import co.edu.uan.entidad.Zona;
+import co.edu.uan.torreBuilder.Apartamento;
+import co.edu.uan.torreBuilder.Zona;
 
 public class LoginDAO {
 	private IDBAdapter dbAdapter;
@@ -63,7 +63,7 @@ public class LoginDAO {
 						personaManager.setFactory(new PropietarioFactory());// pasa como parametro el resto de info
 						personaManager.crearPersona(Integer.parseInt(rs.getString(1)), rs.getString(2), rs.getString(3),
 								rs.getString(4), rs.getString(5), login,
-								listaApartamentos(Integer.parseInt(rs.getString(1)), connection)); // por ahora nul porque
+								null); // por ahora nul porque
 																								// tiene q hacer
 						// otra consulta para agregar a la lista
 						// de inmuebles
@@ -85,7 +85,7 @@ public class LoginDAO {
 			}
 		}
 	}
-
+/*
 	public ArrayList<Apartamento> listaApartamentos(int documento, Connection connection) {
 		ArrayList<Apartamento> apartamentos = new ArrayList<>();
 		Apartamento apartamento;
@@ -115,7 +115,7 @@ public class LoginDAO {
 		}
 		return apartamentos;
 	}
-
+*/
 	public void setPersona(Persona persona) {
 		LoginDAO.persona = persona;
 	}

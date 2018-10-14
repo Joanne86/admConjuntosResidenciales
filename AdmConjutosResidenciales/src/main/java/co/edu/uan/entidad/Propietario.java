@@ -3,6 +3,8 @@ package co.edu.uan.entidad;
 
 import java.util.ArrayList;
 
+import co.edu.uan.torreBuilder.Apartamento;
+
 public class Propietario extends Persona{
 
 

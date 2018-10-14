@@ -3,9 +3,9 @@ package co.edu.uan.PersonaFactoryLogin;
 
 import java.util.ArrayList;
 
-import co.edu.uan.entidad.Apartamento;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Persona;
+import co.edu.uan.torreBuilder.Apartamento;
 
 public class PersonaManager {
 	private Persona persona;

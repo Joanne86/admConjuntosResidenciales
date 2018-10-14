@@ -70,7 +70,7 @@
          </opaqueInsets>
       </JFXButton>
       <FontAwesomeIcon fill="WHITE" iconName="BUILDING" layoutX="386.0" layoutY="137.0" size="10em" />
-      <JFXComboBox fx:id="cbTipo" layoutX="109.0" layoutY="331.0" opacity="0.84" prefHeight="37.0" prefWidth="187.0" promptText="Tipo" style="-fx-background-color: white;" />
+      <JFXComboBox fx:id="cbTipo" layoutX="109.0" layoutY="331.0" onAction="#cargarDatosZona" opacity="0.84" prefHeight="37.0" prefWidth="187.0" promptText="Zona" style="-fx-background-color: white;" />
       <JFXButton fx:id="btnBuscar" layoutX="561.0" layoutY="223.0" onAction="#buscar" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -93,32 +93,22 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="109.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Administracion:">
+      <Text fill="WHITE" layoutX="109.0" layoutY="465.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo Administracion:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="109.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo parqueadero carro:">
+      <Text fill="WHITE" layoutX="109.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo parqueadero:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="109.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costo parqueadero moto:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Label fx:id="txtCostoAdmin" layoutX="110.0" layoutY="418.0" text="0" textFill="WHITE">
+      <Label fx:id="txtCostoAdmin" layoutX="110.0" layoutY="486.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="txtCostoCarro" layoutX="110.0" layoutY="480.0" text="0" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="txtCostoMoto" layoutX="110.0" layoutY="542.0" text="0" textFill="WHITE">
+      <Label fx:id="txtCostoParqueadero" layoutX="110.0" layoutY="548.0" text="0" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -128,5 +118,10 @@
             <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
          </graphic>
       </JFXButton>
+      <JFXTextField fx:id="txtNumeroParZona" focusColor="#8eaeff" labelFloat="true" layoutX="109.0" layoutY="400.0" maxWidth="195.0" minWidth="195.0" prefHeight="37.0" prefWidth="195.0" promptText="Puestos en el parqueadero" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>
