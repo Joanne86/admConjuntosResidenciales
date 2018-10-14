@@ -23,7 +23,7 @@ public class TorreDAO {
 	PreparedStatement ps2 = null;
 	String sql = "INSERT INTO torre(numero, idzona) VALUES (?,?)";
 	String sql2 = "INSERT INTO torreapart(ntorre, napartamento, reside, parqueadero, documento) VALUES (?,?,?,?,?)";
-	try {
+	try { 
         ps = connection.prepareStatement(sql);
         ps.setInt(1, torre.getNumero());
         ps.setInt(2, Integer.parseInt(torre.getZona().getIdzona()));
