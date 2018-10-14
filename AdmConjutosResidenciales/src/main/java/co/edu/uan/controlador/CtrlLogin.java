@@ -19,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class CtrlLogin {
+	//hola soy yeimmy hice esto
 
 	@FXML
 	private JFXPasswordField txtPass;
