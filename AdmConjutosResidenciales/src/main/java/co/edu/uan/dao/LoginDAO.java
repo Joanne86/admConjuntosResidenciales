@@ -15,7 +15,7 @@ import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Persona;
 import co.edu.uan.torreBuilder.Apartamento;
 import co.edu.uan.torreBuilder.Zona;
-
+//mmmm
 public class LoginDAO {
 	private IDBAdapter dbAdapter;
 	private static Persona persona;
