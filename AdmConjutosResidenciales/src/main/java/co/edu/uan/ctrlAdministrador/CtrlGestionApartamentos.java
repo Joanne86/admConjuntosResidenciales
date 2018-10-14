@@ -122,10 +122,14 @@ public class CtrlGestionApartamentos implements Initializable {
 			if(torreDAO.verificarTorre(txtTorre.getText())) {
 				displayAlert(AlertType.INFORMATION, "TORRE EXISTENTE", "El numero de la torre ya existe");
 			}else {
-				torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
+				if(torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
 						.setZona(idZona, tipo, Float.parseFloat(txtCostoAdmin.getText()), numeroPuestosParq,
 								Float.parseFloat(txtCostoParqueadero.getText()))
-						.build());
+						.build())) {
+					displayAlert(AlertType.INFORMATION, "TORRE CREADA", "Torre guardada con exito");
+				}else {
+					displayAlert(AlertType.ERROR, "ERROR", "ERROR al guardar la torre");
+				}
 			}
 		
 		}

@@ -17,7 +17,9 @@ public class TorreDAO {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
 
-	public void createTorre(Torre torre) {
+	public boolean createTorre(Torre torre) {
+	boolean creada=false;
+		
 	Connection connection = dbAdapter.getConnection();
 	PreparedStatement ps = null;
 	PreparedStatement ps2 = null;
@@ -37,9 +39,10 @@ public class TorreDAO {
              ps2.setString(4, torre.getApartamentos().get(i).getParqueadero());
              ps2.setString(5, null);
              ps2.execute();
-        }     
+        }  
+        creada=true;
     } catch (SQLException e) {
-
+    	creada=false;
     } finally {
         try {
         	connection.close();
@@ -47,6 +50,7 @@ public class TorreDAO {
 
         }
     }
+	return creada;
 	}
 
 	public boolean verificarTorre(String numero) {
