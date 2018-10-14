@@ -35,7 +35,6 @@ public class PropietarioDAO {
 		ResultSet rs = null;
 		
 		try {
-
             PreparedStatement sentencia = this.connection.prepareStatement("INSERT into persona"
             		+ "(documento, nombre, telefono, nacimiento, correo, id_sesion) values(?,?,?,?,?,?)");
             sentencia.setInt(1, prop.getDocumento());

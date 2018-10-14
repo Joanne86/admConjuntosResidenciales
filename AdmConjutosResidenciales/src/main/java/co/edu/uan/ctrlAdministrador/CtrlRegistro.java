@@ -174,6 +174,7 @@ public class CtrlRegistro {
 					CtrlPanelMenuAdmin.cerrarVentana();
 				}
 			} else {
+				
 				displayAlert(AlertType.ERROR, "Error Grabar Propietario",
 						"Error al grabar el Propietario. Conatacte con el Administrador");
 			}   			
