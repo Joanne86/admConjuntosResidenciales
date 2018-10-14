@@ -6,31 +6,28 @@ import java.util.ArrayList;
 public class Propietario extends Persona{
 
 
-	private ArrayList<Apartamento> apartamentos;
-
-	
+	private Apartamento apartamentos;
 
 	public Propietario(int documento, String nombre, String telefono, String nacimiento, String correo, Login login,
-			ArrayList<Apartamento> apartamentos) {
+			Apartamento apto ) {
 		super(documento, nombre, telefono, nacimiento, correo, login);
-		this.apartamentos = apartamentos;
+		this.setApartamentos(apto);
+	}
+	
+	public Propietario() {
+		
 	}
 
 
-
-	public ArrayList<Apartamento> getInmuebles() {
+	private Apartamento getApartamentos() {
 		return apartamentos;
 	}
 
 
 
-	public void setInmuebles(ArrayList<Apartamento> apartamentos) {
+	private void setApartamentos(Apartamento apartamentos) {
 		this.apartamentos = apartamentos;
 	}
 
-
-
-    
-    
-  
 }
+	

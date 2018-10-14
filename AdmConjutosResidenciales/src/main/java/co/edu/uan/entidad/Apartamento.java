@@ -9,7 +9,9 @@ public class Apartamento {
 	private  String parqueadero;
 	private Zona zona;
 	
-	
+	public Apartamento() {
+		
+	}
 
 	public Apartamento(int torre, int apartamento, String reside, String parqueadero, Zona zona) {
 		super();

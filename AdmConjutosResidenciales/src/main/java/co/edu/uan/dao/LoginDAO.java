@@ -32,7 +32,7 @@ public class LoginDAO {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM loginpersona WHERE usuario =?";
+		String sql = "SELECT * FROM loginpersona WHERE usuario =?"; 
 		// usar bridge para ciffrar contraseñas
 		PersonaManager personaManager = new PersonaManager();
 
