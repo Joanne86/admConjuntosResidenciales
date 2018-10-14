@@ -16,5 +16,6 @@ public class DESEncryptAlgorithm implements IEncryptAlgorithm {
 
         BASE64Encoder base64encoder = new BASE64Encoder();
         return base64encoder.encode(desCipher.doFinal(message.getBytes()));
+        
     }
 }
