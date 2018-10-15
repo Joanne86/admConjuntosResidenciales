@@ -11,6 +11,9 @@ import com.jfoenix.controls.JFXTextField;
 import co.edu.uan.dao.TorreDAO;
 import co.edu.uan.dao.ZonaDAO;
 import co.edu.uan.torreBuilder.TorreBuilder;
+import co.edu.uan.torreBuilder.TorreCom;
+
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,21 +22,26 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Label;
 
 public class CtrlGestionApartamentos implements Initializable {
 
 	@FXML
 	private JFXTextField txtTorre;
+	  @FXML
+	    private JFXButton btnCargar;
+	    @FXML
+	    private TableColumn<TorreCom, String> clPuestos;
 
 	@FXML
-	private TableColumn<?, ?> clCosto;
+	private TableColumn<TorreCom, String> clCosto;
 
 	@FXML
 	private Label txtCostoParqueadero;
 
 	@FXML
-	private TableColumn<?, ?> clTorre;
+	private TableColumn<TorreCom, String> clTorre;
 
 	@FXML
 	private JFXTextField txtApartamento;
@@ -44,17 +52,15 @@ public class CtrlGestionApartamentos implements Initializable {
 	@FXML
 	private JFXComboBox<String> cbTipo;
 
-	@FXML
-	private TableView<?> tvTabla;
 
 	@FXML
-	private TableColumn<?, ?> clTipo;
+	private TableColumn<TorreCom, String> clTipo;
 
 	@FXML
 	private JFXButton btnEliminar;
 
 	@FXML
-	private TableColumn<?, ?> clApartamento;
+	private TableColumn<TorreCom, String> clApartamento;
 
 	@FXML
 	private JFXTextField txtTipoBusqueda;
@@ -69,7 +75,13 @@ public class CtrlGestionApartamentos implements Initializable {
 	private JFXButton btnBuscar;
 	@FXML
 	private JFXTextField txtNumeroParZona;
-	
+
+	@FXML
+	private TableView<TorreCom> tvTabla;
+
+	// colecciones
+	private ObservableList<TorreCom> listaTorre;
+
 	private String idZona;
 
 	@FXML
@@ -96,10 +108,19 @@ public class CtrlGestionApartamentos implements Initializable {
 					"DEBE INGRESAR DATOS NUMERICOS ENTEROS EN EL CAMPO DE TORRE Y APARTAMENTOS");
 		} else {
 
-			ArrayList<Integer> numeroPuestosParq = new ArrayList<>();
+			ArrayList<String> numeroPuestosParq = new ArrayList<>();
 
-			for (int i = 1; i <= Integer.parseInt(txtNumeroParZona.getText()); i++) {
-				numeroPuestosParq.add(i);
+			int cuadruple1 = 0;			
+			int puestos =100;
+			
+			for (int i = 0; i < Integer.parseInt(txtNumeroParZona.getText()); i++) {
+				if (cuadruple1 == 4) {
+					cuadruple1 = 0;
+					puestos = puestos + 100 - 4;
+				}
+				cuadruple1++;
+				puestos++;
+				numeroPuestosParq.add(txtTorre.getText()+"-"+puestos);
 
 			}
 
@@ -119,19 +140,23 @@ public class CtrlGestionApartamentos implements Initializable {
 
 			TorreDAO torreDAO = new TorreDAO();
 
-			if(torreDAO.verificarTorre(txtTorre.getText())) {
+			if (torreDAO.verificarTorre(txtTorre.getText())) {
 				displayAlert(AlertType.INFORMATION, "TORRE EXISTENTE", "El numero de la torre ya existe");
-			}else {
-				if(torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
-						.setZona(idZona, tipo, Float.parseFloat(txtCostoAdmin.getText()), numeroPuestosParq,
-								Float.parseFloat(txtCostoParqueadero.getText()))
-						.build())) {
+			} else {
+				if (torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
+										.setZona(idZona, tipo, Float.parseFloat(txtCostoAdmin.getText()),
+												numeroPuestosParq, Float.parseFloat(txtCostoParqueadero.getText()))
+										.build())) {
 					displayAlert(AlertType.INFORMATION, "TORRE CREADA", "Torre guardada con exito");
-				}else {
+					
+					float suma=Float.parseFloat(txtCostoAdmin.getText())+Float.parseFloat(txtCostoParqueadero.getText());
+					listaTorre.add(new TorreCom(txtTorre.getText(), txtApartamento.getText(),tipo, txtNumeroParZona.getText(), Float.toString(suma)));
+					// muestra en la tabla
+				} else {
 					displayAlert(AlertType.ERROR, "ERROR", "ERROR al guardar la torre");
 				}
 			}
-		
+
 		}
 
 	}
@@ -173,16 +198,34 @@ public class CtrlGestionApartamentos implements Initializable {
 
 		txtCostoAdmin.setText(zonaDAO.traerDatosDeZonaAdmin(cbTipo.getValue()));
 		txtCostoParqueadero.setText(zonaDAO.traerDatosDeZonaParq(cbTipo.getValue()));
-		idZona=zonaDAO.traerDatosDeZonaId(cbTipo.getValue());
+		idZona = zonaDAO.traerDatosDeZonaId(cbTipo.getValue());
 	}
+
+	public void iniciarlizarLista() {
+		listaTorre = FXCollections.observableArrayList();
+		TorreDAO torreDAO = new TorreDAO();
+		
+		torreDAO.traerDatosTabla(listaTorre);
+
+		tvTabla.setItems(listaTorre);
+
+		clTorre.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("numero"));
+		clApartamento.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("naptos"));
+		clTipo.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("zona"));
+		clPuestos.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("puestos"));
+		clCosto.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("costo"));
+
+	}
+    @FXML
+    void refresacar(ActionEvent event) {
+    	iniciarlizarLista();
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
 		ZonaDAO zonaDAO = new ZonaDAO();
-
 		ObservableList<String> lista = zonaDAO.listZona();
-
 		cbTipo.setItems(lista);
+		iniciarlizarLista();
 	}
 }

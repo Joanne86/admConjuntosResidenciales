@@ -36,6 +36,11 @@ public class ZonaDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
 		}
 		return listaZonas;
 	}
@@ -57,6 +62,11 @@ public class ZonaDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
 		}
 		return admin;
 	}
@@ -77,6 +87,11 @@ public class ZonaDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
 		}
 		return id;
 	}
@@ -97,6 +112,11 @@ public class ZonaDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
 		}
 		return parq;
 	}

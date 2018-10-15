@@ -31,14 +31,6 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <TableView fx:id="tvTabla" layoutX="318.0" layoutY="277.0" opacity="0.74" prefHeight="275.0" prefWidth="610.0">
-        <columns>
-          <TableColumn fx:id="clTorre" prefWidth="79.0" text="Torre" />
-          <TableColumn fx:id="clApartamento" prefWidth="113.0" text="N Apartamentos" />
-            <TableColumn fx:id="clTipo" prefWidth="136.0" text="Tipo" />
-            <TableColumn fx:id="clCosto" prefWidth="281.0" text="Costo administracion+ parqueadero carro moto" />
-        </columns>
-      </TableView>
       <JFXButton fx:id="btnModificar" layoutX="977.0" layoutY="364.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -70,7 +62,7 @@
          </opaqueInsets>
       </JFXButton>
       <FontAwesomeIcon fill="WHITE" iconName="BUILDING" layoutX="386.0" layoutY="137.0" size="10em" />
-      <JFXComboBox fx:id="cbTipo" layoutX="109.0" layoutY="331.0" onAction="#cargarDatosZona" opacity="0.84" prefHeight="37.0" prefWidth="187.0" promptText="Zona" style="-fx-background-color: white;" />
+      <JFXComboBox fx:id="cbTipo" layoutX="109.0" layoutY="396.0" onAction="#cargarDatosZona" opacity="0.84" prefHeight="37.0" prefWidth="187.0" promptText="Zona" style="-fx-background-color: white;" />
       <JFXButton fx:id="btnBuscar" layoutX="561.0" layoutY="223.0" onAction="#buscar" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #37B23E; -fx-background-radius: 5;" text="Buscar" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -113,15 +105,24 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <JFXButton layoutX="879.0" layoutY="223.0" prefHeight="37.0" prefWidth="49.0" text=".">
+      <JFXButton fx:id="btnCargar" layoutX="879.0" layoutY="223.0" onAction="#refresacar" prefHeight="37.0" prefWidth="49.0" text=".">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="txtNumeroParZona" focusColor="#8eaeff" labelFloat="true" layoutX="109.0" layoutY="400.0" maxWidth="195.0" minWidth="195.0" prefHeight="37.0" prefWidth="195.0" promptText="Puestos en el parqueadero" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+      <JFXTextField fx:id="txtNumeroParZona" focusColor="#8eaeff" labelFloat="true" layoutX="107.0" layoutY="346.0" maxWidth="195.0" minWidth="195.0" prefHeight="37.0" prefWidth="195.0" promptText="Puestos en el parqueadero" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
+      <TableView fx:id="tvTabla" layoutX="324.0" layoutY="291.0" prefHeight="249.0" prefWidth="628.0">
+        <columns>
+          <TableColumn fx:id="clTorre" prefWidth="92.0" text="Torre" />
+            <TableColumn fx:id="clApartamento" prefWidth="109.0" text="N°  apartamentos" />
+            <TableColumn fx:id="clTipo" prefWidth="108.0" text="Zona" />
+            <TableColumn fx:id="clPuestos" prefWidth="118.0" text="N° Puestos Parq" />
+          <TableColumn fx:id="clCosto" minWidth="0.0" prefWidth="200.0" text="Administracion + parqueadero" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

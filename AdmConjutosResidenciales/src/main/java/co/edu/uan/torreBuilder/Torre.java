@@ -6,8 +6,27 @@ public class Torre {
 	private int numero;
 	private Zona zona;
 	private ArrayList<Apartamento> apartamentos;
+	private int naptos;
 	
 	
+	public int getNaptos() {
+		return naptos;
+	}
+
+
+	public Torre(int numero, Zona zona, int naptos) {
+		super();
+		this.numero = numero;
+		this.zona = zona;
+		this.naptos = naptos;
+	}
+
+
+	public void setNaptos(int naptos) {
+		this.naptos = naptos;
+	}
+
+
 	public Torre(int numero, Zona zona, ArrayList<Apartamento> apartamentos) {
 		super();
 		this.numero = numero;

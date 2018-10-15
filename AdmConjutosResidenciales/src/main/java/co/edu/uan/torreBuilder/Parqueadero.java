@@ -5,22 +5,22 @@ import java.util.ArrayList;
 public class Parqueadero {
 	
 	
-	private ArrayList<Integer> numeros;
+	private ArrayList<String> numeros;
 	private float costo;
 	
 	
 	
 	public Parqueadero() {
 	}
-	public Parqueadero(ArrayList<Integer> numeros, float costo) {
+	public Parqueadero(ArrayList<String> numeros, float costo) {
 		super();
 		this.numeros = numeros;
 		this.costo = costo;
 	}
-	public ArrayList<Integer> getNumeros() {
+	public ArrayList<String> getNumeros() {
 		return numeros;
 	}
-	public void setNumero(ArrayList<Integer> numeros) {
+	public void setNumero(ArrayList<String> numeros) {
 		this.numeros = numeros;
 	}
 	public float getCosto() {
