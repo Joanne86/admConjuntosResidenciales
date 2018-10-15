@@ -1,6 +1,8 @@
 package co.edu.uan.ctrlAdministrador;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.UUID;
 
 import com.jfoenix.controls.JFXButton;
@@ -8,9 +10,12 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uan.AdminConjuntos.AppAdminConjuntos;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -23,17 +28,20 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import co.edu.uan.dao.LoginDAO;
 import co.edu.uan.dao.PropietarioDAO;
+import co.edu.uan.dao.TorreDAO;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Propietario;
+import co.edu.uan.entidad.PropietarioTabla;
 import co.edu.uan.torreBuilder.Apartamento;
+import co.edu.uan.torreBuilder.TorreCom;
 
-public class CtrlRegistro {
+public class CtrlRegistro implements Initializable{
 
     @FXML
     private JFXButton btnActualizarTv;
     
     @FXML
-    private TableColumn<?, ?> clCorreo;
+    private TableColumn<PropietarioTabla, String> clCorreo;
 
     @FXML
     private ToggleGroup reside;
@@ -42,10 +50,10 @@ public class CtrlRegistro {
     private ToggleGroup parqueadero;
 
     @FXML
-    private TableColumn<?, ?> clTorre;
+    private TableColumn<PropietarioTabla, String> clTorre;
 
     @FXML
-    private TableColumn<?, ?> clNombre;
+    private TableColumn<PropietarioTabla, String> clNombre;
 
     @FXML
     private JFXTextField txtDocumento;
@@ -54,13 +62,13 @@ public class CtrlRegistro {
     private JFXTextField txtNombre;
 
     @FXML
-    private TableView<?> tvTabla;
+    private TableView<PropietarioTabla> tvTabla;
 
     @FXML
     private RadioButton rbNoR;
 
     @FXML
-    private TableColumn<?, ?> clDocumento;
+    private TableColumn<PropietarioTabla, String> clDocumento;
 
     @FXML
     private JFXTextField txtTelefono;
@@ -72,10 +80,10 @@ public class CtrlRegistro {
     private RadioButton rbSiP;
 
     @FXML
-    private TableColumn<?, ?> clFechaNac;
+    private TableColumn<PropietarioTabla, String> clFechaNac;
 
     @FXML
-    private TableColumn<?, ?> clParqueadero;
+    private TableColumn<PropietarioTabla, String> clParqueadero;
 
     @FXML
     private JFXTextField txtEmail;
@@ -84,7 +92,7 @@ public class CtrlRegistro {
     private RadioButton rbNoP;
 
     @FXML
-    private TableColumn<?, ?> clReside;
+    private TableColumn<PropietarioTabla, String> clReside;
 
     @FXML
     private JFXTextField txtNdocumento;
@@ -93,7 +101,7 @@ public class CtrlRegistro {
     private JFXButton btnEliminar;
 
     @FXML
-    private TableColumn<?, ?> clApart;
+    private TableColumn<PropietarioTabla, String> clApart;
 
     @FXML
     private JFXComboBox<Integer> cbApart;
@@ -127,9 +135,7 @@ public class CtrlRegistro {
 	public static Parent root;
 
     @FXML
-    void registrar(ActionEvent event) {
-    	
-    	
+    void registrar(ActionEvent event) {  	
     	if(txtDocumento.getText().isEmpty()
     			||calenFechaNac.getValue()==null
     			||txtEmail.getText().isEmpty()
@@ -170,6 +176,8 @@ public class CtrlRegistro {
     	
 			PropietarioDAO propDAO = new PropietarioDAO();
 			if(propDAO.createPropietario(propietario)) {
+				
+			}else {
 				displayAlert(AlertType.ERROR, "Error guardar Propietario",
 						"Error al guardar el Propietario");
 			}
@@ -200,6 +208,18 @@ public class CtrlRegistro {
 		alert.setTitle(title);
 		alert.setContentText(message);
 		alert.showAndWait();
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// carga los combos
+		ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
+		ObservableList<Integer> listaAptos = FXCollections.observableArrayList();
+		TorreDAO torreDAO = new TorreDAO();
+		torreDAO.traerTorresAptos(listaTorres, listaAptos);
+		
+		cbTorre.setItems(listaTorres);
+		cbApart.setItems(listaAptos);
 	}
 
 }

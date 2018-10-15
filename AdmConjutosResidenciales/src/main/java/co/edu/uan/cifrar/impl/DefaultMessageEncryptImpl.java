@@ -1,11 +1,6 @@
 package co.edu.uan.cifrar.impl;
 
-
-/*
-Clase que representa al bridge o puente, la clase implementa IMessageEncrypt y
-delega la responsabilidad al m�todo de cifrado asignado durante la creaci�n del
-objeto.
-
+import co.edu.uan.cifrar.metodo.IEncryptAlgorithm;
 
 public class DefaultMessageEncryptImpl implements IMessageEncrypt{
     private IEncryptAlgorithm encryptAlgorith;
@@ -15,7 +10,12 @@ public class DefaultMessageEncryptImpl implements IMessageEncrypt{
     }
     
     @Override
-    public String encryptMessage(String message, String password)throws Exception {
-        return encryptAlgorith.encrypt(message, password);
+    public byte[] encryptMessage(String password)throws Exception {
+        return encryptAlgorith.cifrarMensaje(password);
     }
-    */
+
+	@Override
+	public String decryptMessage(byte[] mensaje) {
+		return encryptAlgorith.descifrarMensaje(mensaje);
+	}
+}

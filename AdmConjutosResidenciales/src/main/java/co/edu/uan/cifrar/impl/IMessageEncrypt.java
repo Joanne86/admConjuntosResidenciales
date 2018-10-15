@@ -1,5 +1,6 @@
 package co.edu.uan.cifrar.impl;
 
 public interface IMessageEncrypt {
-	  public String encryptMessage(String message, String password)throws Exception;
+	public byte[] encryptMessage(String password) throws Exception;	
+	public String decryptMessage(byte[] mensaje);
 }

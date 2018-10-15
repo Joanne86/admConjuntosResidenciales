@@ -2,6 +2,7 @@ package co.edu.uan.controlador;
 
 import java.io.IOException;
 
+import co.edu.uan.cifrar.metodo.Cifrado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,10 +36,14 @@ public class CtrlPrincipal {
 			rootPane.getChildren().add(pane2);
 			pane2.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 			pane2.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width-243);
+		
+		Cifrado cif = new Cifrado();
+		cif.cifrarClave();
 		} else {
 			pane2.toFront();
 		}
 
 	}
+	
 	
 }

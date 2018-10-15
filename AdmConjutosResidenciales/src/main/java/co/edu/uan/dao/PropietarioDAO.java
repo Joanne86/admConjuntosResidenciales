@@ -42,13 +42,13 @@ public class PropietarioDAO {
 			sentencia.execute();
 
 			// encriptar la clave
-			String clave_cifrada = CifarClave(prop.getLogin().getContraseña());
+			//String clave_cifrada = cifarClave(prop.getLogin().getContraseña());
 
 			// se ingresa para inicio de sesion
 			PreparedStatement sentencialogin = this.connection
 					.prepareStatement("INSERT into sesion" + "(usuario, contraseña, id_tipo) values(?,?,?)");
 			sentencialogin.setString(1, Integer.toString(prop.getDocumento()));
-			sentencialogin.setString(2, clave_cifrada);
+			//sentencialogin.setString(2, clave_cifrada);
 			sentencialogin.setString(3, prop.getLogin().getTipoPersona());
 			sentencialogin.execute();
 			return true;
@@ -64,33 +64,5 @@ public class PropietarioDAO {
 
 	}
 	// metodo que encripta el password para los usuarios
-	public String CifarClave(String clave_cifrada) {
-		String messageAES;
-		messageAES = "";
-		//IMessageEncrypt aesImpl = new DefaultMessageEncryptImpl(new AESEncryptAlgorithm());
-		/*
-		 * IMessageEncrypt desImpl = new DefaultMessageEncryptImpl( new
-		 * DESEncryptAlgorithm()); IMessageEncrypt noImpl = new
-		 * DefaultMessageEncryptImpl( new NoEncryptAlgorithm());
-		 */
-		try {
-			final String message = clave_cifrada;
-			//messageAES = aesImpl.encryptMessage(message, "HG58YZ3CR9123456");
-			// System.out.println("messageAES > " + messageAES + "\n");
-
-			/*
-			 * String messageDES = desImpl.encryptMessage(message, "XMzDdG4D03CKm2Ix");
-			 * System.out.println("messageDES > " + messageDES + "\n");
-			 * 
-			 * String messageNO = noImpl.encryptMessage(message, null);
-			 * System.out.println("messageNO > " + messageNO + "\n");
-			 */
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		return messageAES;
-		
-	}
+	
 }

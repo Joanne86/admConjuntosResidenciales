@@ -44,7 +44,7 @@ public class LoginDAO {
 				if (contraseña.equals(rs.getString(8))) {
 
 					String tipo = rs.getString(6);
-					Login login = new Login();
+					Login login = new Login();			
 					login.setUsuario(rs.getString(7));
 					login.setContraseña(rs.getString(8));
 					login.setTipoPersona(tipo);

@@ -115,7 +115,7 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <TableView fx:id="tvTabla" layoutX="324.0" layoutY="291.0" prefHeight="249.0" prefWidth="628.0">
+      <TableView fx:id="tvTabla" layoutX="324.0" layoutY="291.0" opacity="0.85" prefHeight="249.0" prefWidth="628.0">
         <columns>
           <TableColumn fx:id="clTorre" prefWidth="92.0" text="Torre" />
             <TableColumn fx:id="clApartamento" prefWidth="109.0" text="N°  apartamentos" />

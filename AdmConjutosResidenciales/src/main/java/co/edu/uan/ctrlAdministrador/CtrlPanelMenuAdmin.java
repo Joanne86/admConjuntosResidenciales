@@ -151,7 +151,6 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 		} else {
 			pane6.toFront();
-			// actualizar tabla de bases de datos.
 		}
 	}
 
@@ -169,7 +168,6 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 		} else {
 			pane7.toFront();
-			// actualizar tabla de bases de datos.
 		}
 	}
 	
@@ -186,8 +184,7 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			CtrlMenuPrincipal.rootP.getChildren().add(pane8);
 
 		} else {
-			pane7.toFront();
-			// actualizar tabla de bases de datos.
+			pane8.toFront();
 		}
     }
 

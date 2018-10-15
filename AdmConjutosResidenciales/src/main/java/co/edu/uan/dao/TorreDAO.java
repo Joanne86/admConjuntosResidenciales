@@ -147,6 +147,41 @@ public class TorreDAO {
 			}
 		}
 	}
+	
+	public void traerTorresAptos(ObservableList<Integer> listaTorres, ObservableList<Integer> listaAptos) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		PreparedStatement ps2 = null;
+		ResultSet rs2 = null;
+		
+		String sql = "SELECT numero FROM torre";
+		String sql2 = "SELECT numero FROM apartamento";
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listaTorres.add(rs.getInt(1));			
+			}
+			//aptos
+			ps2 = connection.prepareStatement(sql2);
+			rs2 = ps2.executeQuery();
+			while (rs2.next()) {
+				listaAptos.add(rs2.getInt(1));			
+			}			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+	}
+	
 	public void deleteTorre() {
 
 	}
