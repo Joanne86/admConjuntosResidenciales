@@ -31,7 +31,7 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnModificar" layoutX="977.0" layoutY="364.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE">
+      <JFXButton fx:id="btnModificar" disable="true" layoutX="977.0" layoutY="364.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -42,7 +42,7 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton fx:id="btnEliminar" layoutX="979.0" layoutY="457.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE">
+      <JFXButton fx:id="btnEliminar" disable="true" layoutX="979.0" layoutY="457.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -74,12 +74,12 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXTextField fx:id="txtTipoBusqueda" focusColor="#8eaeff" labelFloat="true" layoutX="356.0" layoutY="223.0" promptText="Tipo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
+      <JFXTextField fx:id="txtTipoBusqueda" focusColor="#8eaeff" labelFloat="true" layoutX="356.0" layoutY="223.0" promptText="Zona" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#92c8fc">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <Text fill="WHITE" layoutX="318.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Los apartamentos de cada torre comienzan en 101 y el numero maximo de apartamentos por cada torre es de 30" />
+      <Text fill="WHITE" layoutX="318.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Los apartamentos de cada torre comienzan en 101 y el numero maximo de apartamentos por cada torre es de 24" />
       <Text fill="WHITE" layoutX="117.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de apartamentos">
          <font>
             <Font size="15.0" />

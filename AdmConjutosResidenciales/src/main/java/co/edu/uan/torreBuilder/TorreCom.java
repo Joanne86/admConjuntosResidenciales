@@ -11,6 +11,11 @@ public class TorreCom {
 	
 	
 	
+	public TorreCom(String zona) {
+
+		this.zona = zona;
+	}
+
 	public TorreCom(String numero, String naptos, String zona, String puestos, String costo) {
 		this.numero = numero;
 		this.naptos = naptos;

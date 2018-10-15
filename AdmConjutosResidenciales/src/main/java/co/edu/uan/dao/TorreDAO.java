@@ -123,6 +123,30 @@ public class TorreDAO {
 
 	}
 
+	public void buscarZona(ObservableList<TorreCom> lista, String zona) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT numero, naptos,  zona, puestos, costo FROM totaltorre WHERE zona=?";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, zona);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				lista.add(new TorreCom(rs.getString("numero"), rs.getString("naptos"), rs.getString("zona"), rs.getString("puestos"), rs.getString("costo")));				
+			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 	public void deleteTorre() {
 
 	}
