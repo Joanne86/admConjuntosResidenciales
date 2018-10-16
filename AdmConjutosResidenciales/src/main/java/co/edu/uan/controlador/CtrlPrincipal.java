@@ -37,8 +37,7 @@ public class CtrlPrincipal {
 			pane2.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 			pane2.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width-243);
 		
-		Cifrado cif = new Cifrado();
-		cif.cifrarClave();
+		
 		} else {
 			pane2.toFront();
 		}

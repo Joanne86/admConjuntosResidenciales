@@ -53,21 +53,21 @@ public class CtrlMenuPrincipal implements Initializable {
 		Date date = new Date();
 		String fecha = dateFormat.format(date);
 		lbFechaSistema.setText(fecha);
-		lbNombreLogeado.setText(LoginDAO.getInstancePersona().getNombre());
+		//lbNombreLogeado.setText(LoginDAO.getInstancePersona().getNombre());
 		
 		hamburger1 = hamburger;
 		rootP = root;
 		drawer1 = drawer;
 		try {
-			if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("administrador")) {
+			//if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("administrador")) {
 				panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuAdmin.fxml"));
 				panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
 				drawer.setSidePane(panelMenu);
-			}else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("propietario")) {
+			/*}else if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("propietario")) {
 				panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuProp.fxml"));
 				panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
 				drawer.setSidePane(panelMenu);
-			}
+			}*/
 			
 
 			

@@ -172,7 +172,7 @@ public class CtrlRegistro implements Initializable{
 			//OBJETO PROPIETARIO
 			
 			Propietario propietario = new Propietario(Integer.parseInt(txtDocumento.getText())
-					,txtNombre.getText(),txtEmail.getText(),login, torre, apart);
+					,txtNombre.getText(),txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(),login, torre, apart);
     	
 			PropietarioDAO propDAO = new PropietarioDAO();
 			if(propDAO.createPropietario(propietario)) {
@@ -182,7 +182,6 @@ public class CtrlRegistro implements Initializable{
 						"Error al guardar el Propietario");
 			}
     	}
-
     }
 
     @FXML

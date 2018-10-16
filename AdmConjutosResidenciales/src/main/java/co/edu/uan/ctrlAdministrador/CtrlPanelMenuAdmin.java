@@ -219,8 +219,8 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		lbRol.setText(LoginDAO.getInstancePersona().getLogin().getTipoPersona());
-		lbNombre.setText(LoginDAO.getInstancePersona().getNombre());
+		//lbRol.setText(LoginDAO.getInstancePersona().getLogin().getTipoPersona());
+		//lbNombre.setText(LoginDAO.getInstancePersona().getNombre());
 	}
 
 }

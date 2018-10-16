@@ -39,9 +39,9 @@ public class CtrlLogin {
 		if (txtPass.getText().equals("") || txtUser.getText().equals("")) {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
 		} else {
-			LoginDAO loginDAO = new LoginDAO();
+			//LoginDAO loginDAO = new LoginDAO();
 
-			if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
+			//if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
 
 				root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
 				Scene scene = new Scene(root);
@@ -56,10 +56,10 @@ public class CtrlLogin {
 				if(CtrlPanelMenuAdmin.primaryStage!=null) {
 					CtrlPanelMenuAdmin.cerrarVentana();
 				}
-			} else {
-				displayAlert(AlertType.INFORMATION, "Error al ingresar",
-						"Usuario y/o contraseña incorrectos" + ", verifique su usuario y contraseña");
-			}
+			//} else {
+			//	displayAlert(AlertType.INFORMATION, "Error al ingresar",
+				//		"Usuario y/o contraseña incorrectos" + ", verifique su usuario y contraseña");
+			//}
 		}
 	}
 

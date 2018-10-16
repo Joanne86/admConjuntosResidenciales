@@ -12,11 +12,15 @@ public class Propietario extends Persona{
 		super(documento, nombre, correo, login);
 	}
 
-	public Propietario(int documento, String nombre, String correo, Login login, int nTorre, Apartamento apart) {
-		super(documento, nombre, correo, login);
+	
+
+	public Propietario(int documento, String nombre, String telefono, String nacimiento, String correo,  Login login, int nTorre, Apartamento apartamento) {
+		super(documento, nombre, telefono, nacimiento, correo, login);
 		this.nTorre = nTorre;
-		this.apartamento = apart;
+		this.apartamento = apartamento;
 	}
+
+
 
 	public Propietario() {	
 	}

@@ -9,6 +9,15 @@ public abstract class Persona {
     private String correo;
     private Login login;
 
+    public Persona(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
+        super();
+        this.documento = documento;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.nacimiento = nacimiento;
+        this.correo = correo;
+        this.login = login;
+    }
 
 	public Persona(int documento, String nombre, String correo, Login login) {
 		super();
@@ -21,15 +30,7 @@ public abstract class Persona {
     public Persona() {
     }
     
-    public Persona(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
-        super();
-        this.documento = documento;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.nacimiento = nacimiento;
-        this.correo = correo;
-        this.login = login;
-    }
+   
 
     //public abstract static Persona getInstrance();
     public int getDocumento() {
