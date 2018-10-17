@@ -7,7 +7,6 @@ import co.edu.uan.DBAdapter.IDBAdapter;
 import co.edu.uan.cifrar.metodo.Cifrado;
 import co.edu.uan.entidad.Propietario;
 import co.edu.uan.entidad.PropietarioTabla;
-import co.edu.uan.torreBuilder.TorreCom;
 import javafx.collections.ObservableList;
 
 import java.nio.charset.StandardCharsets;
@@ -27,6 +26,33 @@ public class PropietarioDAO {
 	public PropietarioDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
+	
+	public boolean verificarProp(String documento) {
+		boolean encontrado=false;
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT documento FROM persona WHERE documento=?";
+		try {
+			
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, documento);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				encontrado=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+		return encontrado;
+	}
+	
 	public void buscarProp( String documento, ObservableList<PropietarioTabla> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;

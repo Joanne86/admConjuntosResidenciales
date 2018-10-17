@@ -173,6 +173,7 @@ public class TorreDAO {
 		}
 		
 	}
+	
 	public void traerAptos(ObservableList<Integer> listaAptos, int torre) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps2 = null;
@@ -184,6 +185,28 @@ public class TorreDAO {
 			ps2 = connection.prepareStatement(sql2);
 			ps2.setInt(1, torre);
 			ps2.setString(2, "");
+			rs2 = ps2.executeQuery();
+			while (rs2.next()) {
+				listaAptos.add(rs2.getInt(1));			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+	}
+	public void traerAptosOcupados(ObservableList<Integer> listaAptos, int torre) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps2 = null;
+		ResultSet rs2 = null;
+		String sql2 = "SELECT napartamento FROM torreapart WHERE ntorre=? && (reside=? || reside=?)";
+		
+		//aptos
+		try {
+			ps2 = connection.prepareStatement(sql2);
+			ps2.setInt(1, torre);
+			ps2.setString(2, "si");
+			ps2.setString(3, "no");
 			rs2 = ps2.executeQuery();
 			while (rs2.next()) {
 				listaAptos.add(rs2.getInt(1));			

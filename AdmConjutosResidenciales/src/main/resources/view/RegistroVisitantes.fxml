@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlRegistroVisitantes">
    <children>
-      <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" layoutX="7.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/conjuto.jpg" />
          </image>
@@ -64,11 +64,6 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.rowIndex="1">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="fecha">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrada">
                      <font>
                         <Font size="15.0" />
@@ -118,7 +113,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <JFXComboBox fx:id="cbTorre" prefHeight="34.0" prefWidth="102.0" promptText="TORRE" style="-fx-background-color: white;" />
+                  <JFXComboBox fx:id="cbTorre" onAction="#seleccionTorre" prefHeight="34.0" prefWidth="102.0" promptText="TORRE" style="-fx-background-color: white;" />
                   <JFXComboBox fx:id="cbApart" prefHeight="33.0" prefWidth="137.0" promptText="APARTAMENTO" style="-fx-background-color: white;" />
                </children>
                <padding>
@@ -145,11 +140,6 @@
             </JFXTextField>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.rowIndex="3">
                <children>
-                  <Text fx:id="fecha" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="fecha">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Text>
                   <Text fx:id="salida" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Salida">
                      <font>
                         <Font size="15.0" />
@@ -206,13 +196,13 @@
             <Insets />
          </opaqueInsets>
       </HBox>
-      <TableView layoutX="72.0" layoutY="347.0" opacity="0.84" prefHeight="201.0" prefWidth="772.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="347.0">
+      <TableView fx:id="tvVisitantes" layoutX="72.0" layoutY="347.0" opacity="0.84" prefHeight="201.0" prefWidth="772.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="347.0">
         <columns>
-          <TableColumn prefWidth="147.0" text="Documento" />
-          <TableColumn minWidth="3.0" prefWidth="135.0" text="Nombre" />
-            <TableColumn prefWidth="195.0" text="Destino" />
-            <TableColumn prefWidth="141.0" text="Entrada" />
-            <TableColumn prefWidth="150.0" text="Salida" />
+          <TableColumn fx:id="clDocumento" prefWidth="147.0" text="Documento" />
+          <TableColumn fx:id="clNombre" minWidth="3.0" prefWidth="135.0" text="Nombre" />
+            <TableColumn fx:id="clDestino" prefWidth="195.0" text="Destino" />
+            <TableColumn fx:id="clEntrada" prefWidth="141.0" text="Entrada" />
+            <TableColumn fx:id="clSalida" prefWidth="150.0" text="Salida" />
         </columns>
       </TableView>
       <JFXButton fx:id="btnRegistrarEnt" layoutX="926.0" layoutY="347.0" onAction="#registrarEntrada" prefHeight="46.0" prefWidth="176.0" style="-fx-background-color: #242D73; -fx-background-radius: 5;" text="Registrar entrada" textFill="WHITE">

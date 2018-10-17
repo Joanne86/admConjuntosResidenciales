@@ -31,8 +31,6 @@ import co.edu.uan.envioCorreoProxy.Correo;
 import co.edu.uan.envioCorreoProxy.ProxyEnvioCorreo;
 import co.edu.uan.torreBuilder.Apartamento;
 
-
-
 public class CtrlRegistro implements Initializable {
 
 	@FXML
@@ -100,9 +98,9 @@ public class CtrlRegistro implements Initializable {
 
 	@FXML
 	private TableColumn<PropietarioTabla, String> clApart;
-	
-    @FXML
-    private TableColumn<PropietarioTabla, String> clTelefono;
+
+	@FXML
+	private TableColumn<PropietarioTabla, String> clTelefono;
 
 	@FXML
 	private JFXComboBox<Integer> cbApart;
@@ -121,7 +119,7 @@ public class CtrlRegistro implements Initializable {
 
 	@FXML
 	private JFXButton btnBuscar;
-	
+
 	// colecciones
 	private ObservableList<PropietarioTabla> listaProp;
 
@@ -144,16 +142,16 @@ public class CtrlRegistro implements Initializable {
 			clApart.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("apart"));
 			clReside.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("reside"));
 			clParqueadero.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("reside"));
-			
+
 		}
 	}
 
 	@FXML
 	void registrar(ActionEvent event) {
-		
+
 		if (txtDocumento.getText().isEmpty() || calenFechaNac.getValue() == null || txtEmail.getText().isEmpty()
-				|| txtNombre.getText().isEmpty() || txtDocumento.getText().isEmpty() ||cbTorre.getValue()==null
-				|| cbApart.getValue()==null || txtTelefono.getText().isEmpty()
+				|| txtNombre.getText().isEmpty() || txtDocumento.getText().isEmpty() || cbTorre.getValue() == null
+				|| cbApart.getValue() == null || txtTelefono.getText().isEmpty()
 				|| (!rbSiP.isSelected() && !rbNoP.isSelected()) || (!rbSiR.isSelected() && !rbNoR.isSelected())) {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos de registro llenos");
 		} else {
@@ -168,13 +166,14 @@ public class CtrlRegistro implements Initializable {
 			String parqueadero = "";
 			if (rbSiR.isSelected()) {
 				reside = "si";
-			} else {
+			} else if (rbNoR.isSelected()) {
 				reside = "no";
 			}
 			if (rbSiP.isSelected()) {
 				parqueadero = "si";
-			} else {
-				parqueadero = "No";
+			} else if (rbNoP.isSelected()) {
+				System.out.println("entra aqui");
+				parqueadero = "no";
 			}
 			int torre = cbTorre.getValue();
 			Apartamento apart = new Apartamento(cbApart.getValue(), reside, parqueadero);
@@ -183,37 +182,45 @@ public class CtrlRegistro implements Initializable {
 			Propietario propietario = new Propietario(Integer.parseInt(txtDocumento.getText()), txtNombre.getText(),
 					txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(), login, torre,
 					apart);
+			PropietarioDAO propDAO = new PropietarioDAO();
+			if (propDAO.verificarProp(txtDocumento.getText())) {
+				displayAlert(AlertType.INFORMATION, "PROPIETARIO YA EXISTE",
+						"El propietario con el documento " + txtDocumento.getText() + " ya existe");
+			} else {
+				Correo proxyEnvio = new ProxyEnvioCorreo();
+				if (proxyEnvio.enviarCorreo(propietario)) {
 
-			Correo proxyEnvio = new ProxyEnvioCorreo();
-			if(proxyEnvio.enviarCorreo(propietario)) {
-				PropietarioDAO propDAO = new PropietarioDAO();
-				if (propDAO.createPropietario(propietario)) {
-					
-					displayAlert(AlertType.INFORMATION, "Registro exitoso", "Registro del propietario exitoso, el usuario y la contraseña se acaba de enviar al correo electronico del propietario");
-					listaProp.add(new PropietarioTabla(txtDocumento.getText(), txtNombre.getText(), txtTelefono.getText()
-							,calenFechaNac.getValue().toString(),txtEmail.getText(), Integer.toString(torre)
-							, cbApart.getValue().toString(), reside, parqueadero));			
-				limpiarcampos();
-				} else {
-					displayAlert(AlertType.ERROR, "Error guardar Propietario", "Error al guardar el Propietario");
+					if (propDAO.createPropietario(propietario)) {
+
+						displayAlert(AlertType.INFORMATION, "Registro exitoso",
+								"Registro del propietario exitoso, el usuario y la contraseña se acaba de enviar al correo electronico del propietario");
+						listaProp.add(new PropietarioTabla(txtDocumento.getText(), txtNombre.getText(),
+								txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(),
+								Integer.toString(torre), cbApart.getValue().toString(), reside, parqueadero));
+						limpiarcampos();
+					} else {
+						displayAlert(AlertType.ERROR, "Error guardar Propietario", "Error al guardar el Propietario");
+					}
 				}
-			}	
+			}
 		}
 	}
-	public void limpiarcampos(){
+
+	public void limpiarcampos() {
 		txtDocumento.setText("");
 		calenFechaNac.setValue(null);
 		txtEmail.setText("");
 		txtNombre.setText("");
-		txtDocumento.setText(""); 
-		cbTorre.setValue(null);
-		cbApart.setValue(null);
+		txtDocumento.setText("");
+		cbTorre.getSelectionModel().clearSelection();
+		cbApart.getSelectionModel().clearSelection();
 		txtTelefono.setText("");
 		rbSiP.setSelected(false);
 		rbNoP.setSelected(false);
 		rbSiR.setSelected(false);
 		rbNoR.setSelected(false);
-			
+		// inicializarTorres();
+
 	}
 
 	@FXML
@@ -226,11 +233,12 @@ public class CtrlRegistro implements Initializable {
 
 	}
 
-    @FXML
-    void actualizarDatos(ActionEvent event) {
-    	inicializarTorres();
+	@FXML
+	void actualizarDatos(ActionEvent event) {
+		inicializarTorres();
 		inicializarTabla();
-    }
+	}
+
 	private void displayAlert(AlertType type, String title, String message) {
 		Alert alert = new Alert(type);
 		alert.setTitle(title);
@@ -240,11 +248,15 @@ public class CtrlRegistro implements Initializable {
 
 	@FXML
 	void seleccionTorre(ActionEvent event) {
-		
-		ObservableList<Integer> listaAptos = FXCollections.observableArrayList();
-		TorreDAO torreDAO = new TorreDAO();
-		torreDAO.traerAptos(listaAptos, cbTorre.getValue());	
-		cbApart.setItems(listaAptos);
+		try {
+			ObservableList<Integer> listaAptos = FXCollections.observableArrayList();
+			TorreDAO torreDAO = new TorreDAO();
+
+			torreDAO.traerAptos(listaAptos, cbTorre.getValue());
+			cbApart.setItems(listaAptos);
+		} catch (NullPointerException e) {
+
+		}
 	}
 
 	@FXML
@@ -252,7 +264,7 @@ public class CtrlRegistro implements Initializable {
 
 		if (cbApart.getItems().size() == 0) {
 			displayAlert(AlertType.ERROR, "SELECCIONE UNA TORRE", "SELECCIONE UNA TORRE PRIMER");
-		} 
+		}
 	}
 
 	@Override
@@ -260,15 +272,16 @@ public class CtrlRegistro implements Initializable {
 		inicializarTorres();
 		inicializarTabla();
 	}
+
 	public void inicializarTabla() {
 		listaProp = FXCollections.observableArrayList();
-		
+
 		PropietarioDAO propDAO = new PropietarioDAO();
-		
+
 		propDAO.traerDatosTabla(listaProp);
-		
+
 		tvTabla.setItems(listaProp);
-		
+
 		clDocumento.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("documento"));
 		clNombre.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("nombre"));
 		clTelefono.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("telefono"));
@@ -277,17 +290,22 @@ public class CtrlRegistro implements Initializable {
 		clTorre.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("torre"));
 		clApart.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("apart"));
 		clReside.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("reside"));
-		clParqueadero.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("reside"));
-		
-	}
-	public void inicializarTorres() {
-		// carga los combos
-		ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
-		
-		TorreDAO torreDAO = new TorreDAO();
-		torreDAO.traerTorres(listaTorres);
+		clParqueadero.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("parqueadero"));
 
-		cbTorre.setItems(listaTorres);
+	}
+
+	public void inicializarTorres() {
+		try {
+
+			ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
+
+			TorreDAO torreDAO = new TorreDAO();
+			torreDAO.traerTorres(listaTorres);
+
+			cbTorre.setItems(listaTorres);
+		} catch (NullPointerException e) {
+
+		}
 	}
 
 }
