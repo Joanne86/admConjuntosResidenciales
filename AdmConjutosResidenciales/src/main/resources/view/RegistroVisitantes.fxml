@@ -64,7 +64,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="50.0" GridPane.rowIndex="1">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrada">
+                  <Text fx:id="entrada" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrada">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -49,6 +49,8 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 	@FXML
 	private JFXButton btnActualizar;
+    @FXML
+    private Text entrada;
 
 	@FXML
 	private Text lbHoraSal;
@@ -240,6 +242,8 @@ public class CtrlRegistroVisitantes implements Initializable {
 		btnCaptSal.setVisible(false);
 		lbFechaSal.setVisible(false);
 		lbHoraSal.setVisible(false);
+		lbFechaSal.setText("<fecha>");
+		lbHoraSal.setText("<hora>");
 	}
 	public void mostrarSalida() {
 		salida.setVisible(true);
@@ -249,13 +253,16 @@ public class CtrlRegistroVisitantes implements Initializable {
 		lbHoraSal.setVisible(true);
 	}
 	public void bloquearEntrada() {
-		//.setVisible(false);
+	    entrada.setVisible(false);
 		btnRegistrarEnt.setVisible(false);
 		btnCaptEnt.setVisible(false);
 		lbfechaEnt.setVisible(false);
 		lbHoraEnt.setVisible(false);
+		lbfechaEnt.setText("<fecha>");
+		lbHoraEnt.setText("<hora>");
 	}
 	public void mostrarEntrada() {
+		entrada.setVisible(true);
 		btnRegistrarEnt.setVisible(true);
 		btnCaptEnt.setVisible(true);
 		lbfechaEnt.setVisible(true);
