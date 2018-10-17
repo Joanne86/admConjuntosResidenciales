@@ -4,22 +4,24 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-
 import co.edu.uan.dao.TorreDAO;
 import co.edu.uan.dao.VisitanteDAO;
 import co.edu.uan.entidad.Visitante;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,23 +29,27 @@ import javafx.scene.text.Text;
 
 public class CtrlRegistroVisitantes implements Initializable {
 
+	@FXML
+	private TableColumn<Visitante, String> clNombre;
 
-    @FXML
-    private TableColumn<Visitante, String> clNombre;
+	@FXML
+	private TableColumn<Visitante, String> clSalida;
+	@FXML
+	private TableView<Visitante> tvVisitantes;
 
-    @FXML
-    private TableColumn<Visitante, String> clSalida;
-    @FXML
-    private TableView<Visitante> tvVisitantes;
+	@FXML
+	private TableColumn<Visitante, String> clDocumento;
+	@FXML
+	private TableColumn<Visitante, Integer> clTorre;
+	@FXML
+	private TableColumn<Visitante, Integer> clApart;
 
-    @FXML
-    private TableColumn<Visitante, String> clDocumento;
-    @FXML
-    private TableColumn<Visitante, String> clDestino;
+	@FXML
+	private TableColumn<Visitante, String> clEntrada;
 
-    @FXML
-    private TableColumn<Visitante, String> clEntrada;
-	
+	@FXML
+	private JFXButton btnActualizar;
+
 	@FXML
 	private Text lbHoraSal;
 
@@ -90,9 +96,13 @@ public class CtrlRegistroVisitantes implements Initializable {
 	private Text salida;
 
 	@FXML
-	private Text fecha;
-	
+	private Label lbDocumento;
+
 	private ObservableList<Visitante> listaVis;
+
+	private int posicionVisitEnTabla;
+
+	private Visitante visi;
 
 	@FXML
 	void capSalida(ActionEvent event) {
@@ -125,7 +135,18 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 	@FXML
 	void buscar(ActionEvent event) {
-
+		if (txtDocumentoBuscar.getText().isEmpty()) {
+			displayAlert(AlertType.INFORMATION, "CAMPO DE BUSQUEDA VACIO", "Debe tener el campo de busqueda lleno");
+		} else {
+			VisitanteDAO visDAO = new VisitanteDAO();
+			listaVis = FXCollections.observableArrayList();
+			visDAO.buscarVisitante(listaVis, txtDocumentoBuscar.getText());
+			tvVisitantes.setItems(listaVis);
+			if(tvVisitantes.getItems().isEmpty()) {
+				displayAlert(AlertType.INFORMATION, "NO ENCONTRADO", "La persona con ese documento no existe o ya salio");
+			}
+			txtDocumentoBuscar.setText("");
+		}
 	}
 
 	@FXML
@@ -134,24 +155,37 @@ public class CtrlRegistroVisitantes implements Initializable {
 				|| lbHoraEnt.getText().equals("<hora>")) {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos de registro llenos");
 		} else {
-			Visitante visitante = new Visitante(txtDocumento.getText(), txtNombre.getText(),
-					Integer.toString(cbTorre.getValue())+"-"+Integer.toString(cbApart.getValue()), 
-					lbfechaEnt.getText()+"-"+lbHoraEnt.getText(), "");
-			visitante.setTorre(Integer.toString(cbTorre.getValue()));
-			visitante.setApart(Integer.toString(cbApart.getValue()));
-			
+			Visitante visitante = new Visitante(txtDocumento.getText(), txtNombre.getText(), cbTorre.getValue(),
+					cbApart.getValue(), lbfechaEnt.getText() + "-" + lbHoraEnt.getText(), "");
+
 			VisitanteDAO visDAO = new VisitanteDAO();
-			if(visDAO.createVisitante(visitante)) {
+			if (visDAO.createVisitante(visitante)) {
 				displayAlert(AlertType.INFORMATION, "REGISTRO EXITOSO", "Registro del visitante exitoso");
-			listaVis.add(visitante);
-			}else {
-				displayAlert(AlertType.ERROR, "ERROR AL REGISTRAR","ERROR al guardar visitante");
+				listaVis.add(visitante);
+			} else {
+				displayAlert(AlertType.ERROR, "ERROR AL REGISTRAR", "ERROR al guardar visitante");
 			}
 		}
 	}
 
 	@FXML
 	void registrarSalida(ActionEvent event) {
+
+		if (lbFechaSal.getText().equals("<fecha>") && lbHoraSal.getText().equals("<hora>")) {
+			displayAlert(AlertType.WARNING, "SIN REGISTRO DE SALIDA",
+					"Debe capturar la fecha y hora de salida del visitante");
+		} else {
+			VisitanteDAO visDAO = new VisitanteDAO();
+			this.visi.setSalida(lbFechaSal.getText()+"-"+lbHoraSal.getText());
+			if(visDAO.registrarSalida(this.visi)) {
+				displayAlert(AlertType.INFORMATION, "REGISTRO EXITOSO", "Registro de salidaa regitrado");
+			listaVis.set(posicionVisitEnTabla, this.visi);
+			mostrarEntrada();
+			bloquearSalida();
+			}else {
+				displayAlert(AlertType.ERROR, "ERROR AL REGISTRAR SALIDA", "ERROR al registrar salida del visitante");
+			}
+		}
 
 	}
 
@@ -174,31 +208,67 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 		}
 	}
+
 	public void inicializarTabla() {
-		 listaVis = FXCollections.observableArrayList();
+		listaVis = FXCollections.observableArrayList();
 
 		VisitanteDAO visDAO = new VisitanteDAO();
 
 		visDAO.traerDatosTabla(listaVis);
 
 		tvVisitantes.setItems(listaVis);
+		// agrega el listener a la tabla
+		final ObservableList<Visitante> tablaVisitSel = tvVisitantes.getSelectionModel().getSelectedItems();
+		tablaVisitSel.addListener(selectorTablaPersonas);
 
 		clDocumento.setCellValueFactory(new PropertyValueFactory<Visitante, String>("documento"));
 		clNombre.setCellValueFactory(new PropertyValueFactory<Visitante, String>("nombre"));
-		clDestino.setCellValueFactory(new PropertyValueFactory<Visitante, String>("destino"));
+		clTorre.setCellValueFactory(new PropertyValueFactory<Visitante, Integer>("torre"));
+		clApart.setCellValueFactory(new PropertyValueFactory<Visitante, Integer>("apart"));
 		clEntrada.setCellValueFactory(new PropertyValueFactory<Visitante, String>("entrada"));
 		clSalida.setCellValueFactory(new PropertyValueFactory<Visitante, String>("salida"));
-		}
+	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		fecha.setVisible(false);
+	@FXML
+	void actualizarDatos(ActionEvent event) {
+		inicializarTabla();
+		inicializarTorres();
+	}
+	public void bloquearSalida() {
 		salida.setVisible(false);
 		btnRegistrarSal.setVisible(false);
 		btnCaptSal.setVisible(false);
 		lbFechaSal.setVisible(false);
 		lbHoraSal.setVisible(false);
+	}
+	public void mostrarSalida() {
+		salida.setVisible(true);
+		btnRegistrarSal.setVisible(true);
+		btnCaptSal.setVisible(true);
+		lbFechaSal.setVisible(true);
+		lbHoraSal.setVisible(true);
+	}
+	public void bloquearEntrada() {
+		//.setVisible(false);
+		btnRegistrarEnt.setVisible(false);
+		btnCaptEnt.setVisible(false);
+		lbfechaEnt.setVisible(false);
+		lbHoraEnt.setVisible(false);
+	}
+	public void mostrarEntrada() {
+		btnRegistrarEnt.setVisible(true);
+		btnCaptEnt.setVisible(true);
+		lbfechaEnt.setVisible(true);
+		lbHoraEnt.setVisible(true);
+	}
+	
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		bloquearSalida();
 		inicializarTorres();
+		inicializarTabla();
+
 		// carga combo de la base de datos
 
 	}
@@ -210,4 +280,42 @@ public class CtrlRegistroVisitantes implements Initializable {
 		alert.showAndWait();
 	}
 
+	private final ListChangeListener<Visitante> selectorTablaPersonas = new ListChangeListener<Visitante>() {
+		@Override
+		public void onChanged(ListChangeListener.Change<? extends Visitante> c) {
+			System.out.println("entra aqui");
+			ponerVisitanteSeleccionado();
+		}
+	};
+
+	/**
+	 * MÃ©todo para poner en los textFields la tupla que selccionemos
+	 */
+
+	public void ponerVisitanteSeleccionado() {
+		final Visitante visitante = getTablaPersonasSeleccionada();
+		posicionVisitEnTabla = listaVis.indexOf(visitante);
+		if (visitante != null) {
+			this.visi = visitante;
+			lbDocumento.setText(visitante.getDocumento());
+			bloquearEntrada();
+			mostrarSalida();
+		}
+	}
+
+	/**
+	 * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+	 */
+	public Visitante getTablaPersonasSeleccionada() {
+
+		if (tvVisitantes != null) {
+			List<Visitante> tabla = tvVisitantes.getSelectionModel().getSelectedItems();
+			if (tabla.size() == 1) {
+				final Visitante competicionSeleccionada = tabla.get(0);
+				return competicionSeleccionada;
+			}
+		}
+		return null;
+
+	}
 }

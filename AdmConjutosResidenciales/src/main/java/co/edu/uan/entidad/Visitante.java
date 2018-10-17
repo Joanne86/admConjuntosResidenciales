@@ -1,43 +1,39 @@
 package co.edu.uan.entidad;
 
 public class Visitante {
+	
 	private String documento;
 	private String nombre;
-	private String destino;
+	private int torre;
+	private int apart;
 	private String entrada;
 	private String salida;
-	private String torre;
-	private String apart;
-	
-	public Visitante(String documento, String nombre, String destino, String entrada, String salida) {
+
+	public Visitante(String documento, String nombre, int torre, int apart, String entrada, String salida) {
 		super();
 		this.documento = documento;
 		this.nombre = nombre;
-		this.destino = destino;
+		this.torre = torre;
+		this.apart = apart;
 		this.entrada = entrada;
 		this.salida = salida;
 	}
-	
-	
-	public String getTorre() {
+
+	public int getTorre() {
 		return torre;
 	}
 
-
-	public void setTorre(String torre) {
+	public void setTorre(int torre) {
 		this.torre = torre;
 	}
 
-
-	public String getApart() {
+	public int getApart() {
 		return apart;
 	}
 
-
-	public void setApart(String apart) {
+	public void setApart(int apart) {
 		this.apart = apart;
 	}
-
 
 	public String getDocumento() {
 		return documento;
@@ -51,12 +47,6 @@ public class Visitante {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getDestino() {
-		return destino;
-	}
-	public void setDestino(String destino) {
-		this.destino = destino;
-	}
 	public String getEntrada() {
 		return entrada;
 	}
@@ -69,5 +59,12 @@ public class Visitante {
 	public void setSalida(String salida) {
 		this.salida = salida;
 	}
+
+	@Override
+	public String toString() {
+		return "Visitante [documento=" + documento + ", nombre=" + nombre + ", torre=" + torre + ", apart=" + apart
+				+ ", entrada=" + entrada + ", salida=" + salida + "]";
+	}
+	
 	
 }
