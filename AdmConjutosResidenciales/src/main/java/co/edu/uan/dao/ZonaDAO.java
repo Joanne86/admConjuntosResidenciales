@@ -7,8 +7,7 @@ import java.sql.SQLException;
 
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
-import co.edu.uan.torreBuilder.Parqueadero;
-import co.edu.uan.torreBuilder.Zona;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

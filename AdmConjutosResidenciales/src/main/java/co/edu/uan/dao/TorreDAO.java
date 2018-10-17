@@ -8,10 +8,8 @@ import java.sql.SQLException;
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
 
-import co.edu.uan.torreBuilder.Apartamento;
 import co.edu.uan.torreBuilder.Torre;
 import co.edu.uan.torreBuilder.TorreCom;
-import co.edu.uan.torreBuilder.Zona;
 import javafx.collections.ObservableList;
 
 public class TorreDAO {
@@ -148,28 +146,22 @@ public class TorreDAO {
 		}
 	}
 	
-	public void traerTorresAptos(ObservableList<Integer> listaTorres, ObservableList<Integer> listaAptos) {
+	public void traerTorres(ObservableList<Integer> listaTorres) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		PreparedStatement ps2 = null;
-		ResultSet rs2 = null;
+		
 		
 		String sql = "SELECT numero FROM torre";
-		String sql2 = "SELECT numero FROM apartamento";
+		
 		try {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listaTorres.add(rs.getInt(1));			
 			}
-			//aptos
-			ps2 = connection.prepareStatement(sql2);
-			rs2 = ps2.executeQuery();
-			while (rs2.next()) {
-				listaAptos.add(rs2.getInt(1));			
-			}			
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -181,7 +173,27 @@ public class TorreDAO {
 		}
 		
 	}
-	
+	public void traerAptos(ObservableList<Integer> listaAptos, int torre) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps2 = null;
+		ResultSet rs2 = null;
+		String sql2 = "SELECT napartamento FROM torreapart WHERE ntorre=? && reside=?";
+		
+		//aptos
+		try {
+			ps2 = connection.prepareStatement(sql2);
+			ps2.setInt(1, torre);
+			ps2.setString(2, "");
+			rs2 = ps2.executeQuery();
+			while (rs2.next()) {
+				listaAptos.add(rs2.getInt(1));			
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+	}
 	public void deleteTorre() {
 
 	}

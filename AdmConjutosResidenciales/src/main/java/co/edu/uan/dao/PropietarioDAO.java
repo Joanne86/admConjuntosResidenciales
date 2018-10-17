@@ -3,12 +3,14 @@ package co.edu.uan.dao;
 
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
-import co.edu.uan.cifrar.impl.DefaultMessageEncryptImpl;
-import co.edu.uan.cifrar.impl.IMessageEncrypt;
-import co.edu.uan.cifrar.metodo.AESEncryptAlgorithm;
+
 import co.edu.uan.cifrar.metodo.Cifrado;
 import co.edu.uan.entidad.Propietario;
+import co.edu.uan.entidad.PropietarioTabla;
+import co.edu.uan.torreBuilder.TorreCom;
+import javafx.collections.ObservableList;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +27,36 @@ public class PropietarioDAO {
 	public PropietarioDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
+	public void buscarProp( String documento, ObservableList<PropietarioTabla> lista) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM apartprop WHERE documento=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, documento);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				lista.add(new PropietarioTabla(rs.getString(1)
+						, rs.getString(2)
+						, rs.getString(3)
+						, rs.getString(4)
+						, rs.getString(5)
+						, rs.getString(6)
+						, rs.getString(7)
+						, rs.getString(8)
+						, rs.getString(9)));	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 
 	/**
 	 *  metodo que crea un nuevo propietario en la BD
@@ -40,7 +72,7 @@ public class PropietarioDAO {
 			PreparedStatement sentencialogin = connection
 					.prepareStatement("INSERT into sesion" + "(usuario, contraseña, id_tipo) values(?,?,?)");
 			sentencialogin.setString(1, Integer.toString(prop.getDocumento()));
-			sentencialogin.setBytes(2, Cifrado.claveCifrada(prop.getLogin().getContraseña()));
+			sentencialogin.setString(2, new String(Cifrado.claveCifrada(prop.getLogin().getContraseña()), StandardCharsets.UTF_8));
 			sentencialogin.setString(3, prop.getLogin().getTipoPersona());
 			sentencialogin.execute();
 			
@@ -61,6 +93,16 @@ public class PropietarioDAO {
 					sentencia.setString(6, rs.getString(1));
 				}
 				sentencia.execute();
+			//datos de la propiedad
+				PreparedStatement propiedad = connection.prepareStatement("UPDATE torreapart SET "
+						+ "reside=?, parqueadero=?, documento=? WHERE ntorre=? && napartamento=?");
+						
+				propiedad.setString(1, prop.getApartamento().getReside());
+				propiedad.setString(2, prop.getApartamento().getParqueadero());
+				propiedad.setString(3, Integer.toString(prop.getDocumento()));
+				propiedad.setInt(4, prop.getnTorre());
+				propiedad.setInt(5, prop.getApartamento().getNumero());
+				propiedad.execute();
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -73,5 +115,34 @@ public class PropietarioDAO {
 		}
 
 	}
-
+	public void traerDatosTabla(ObservableList<PropietarioTabla> lista) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM apartprop";
+		
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				lista.add(new PropietarioTabla(rs.getString(1)
+						, rs.getString(2)
+						, rs.getString(3)
+						, rs.getString(4)
+						, rs.getString(5)
+						, rs.getString(6)
+						, rs.getString(7)
+						, rs.getString(8)
+						, rs.getString(9)));		
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 }

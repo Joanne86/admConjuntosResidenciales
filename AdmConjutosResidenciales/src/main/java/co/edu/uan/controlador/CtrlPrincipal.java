@@ -2,7 +2,6 @@ package co.edu.uan.controlador;
 
 import java.io.IOException;
 
-import co.edu.uan.cifrar.metodo.Cifrado;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

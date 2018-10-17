@@ -50,7 +50,7 @@ public class AESEncryptAlgorithm implements IEncryptAlgorithm {
 
 	@Override
 	public byte[] cifrarMensaje(String mensaje) {
-		String mensajeCifrado = null;
+	
 		byte[] BytesEncriptados = null;
 
 		try {
@@ -66,6 +66,7 @@ public class AESEncryptAlgorithm implements IEncryptAlgorithm {
 			// ex);
 		}
 
+                
 		return BytesEncriptados;
 	}
 

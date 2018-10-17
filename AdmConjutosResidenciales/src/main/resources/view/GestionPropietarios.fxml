@@ -60,7 +60,7 @@
          <columns>
             <TableColumn fx:id="clDocumento" prefWidth="120.0" text="Documento" />
             <TableColumn fx:id="clNombre" prefWidth="109.0" text="Nombre" />
-            <TableColumn prefWidth="108.0" text="telefono" />
+            <TableColumn fx:id="clTelefono" prefWidth="108.0" text="telefono" />
             <TableColumn fx:id="clFechaNac" prefWidth="128.0" text="fecha nacimiento" />
             <TableColumn fx:id="clCorreo" prefWidth="96.0" text="Correo" />
             <TableColumn fx:id="clTorre" prefWidth="62.0" text="torre" />
@@ -111,12 +111,12 @@
             </JFXTextField>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <JFXComboBox fx:id="cbTorre" prefHeight="34.0" prefWidth="102.0" promptText="TORRE" style="-fx-background-color: white;">
+                  <JFXComboBox fx:id="cbTorre" onAction="#seleccionTorre" prefHeight="34.0" prefWidth="102.0" promptText="TORRE" style="-fx-background-color: white;">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="cbApart" prefHeight="33.0" prefWidth="140.0" promptText="APARTAMENTO" style="-fx-background-color: white;">
+                  <JFXComboBox fx:id="cbApart" onAction="#seleccionApart" prefHeight="33.0" prefWidth="140.0" promptText="APARTAMENTO" style="-fx-background-color: white;">
                      <HBox.margin>
                         <Insets left="30.0" top="10.0" />
                      </HBox.margin>
@@ -195,7 +195,7 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton fx:id="btnEliminar" layoutX="907.0" layoutY="473.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="99.0">
+      <JFXButton fx:id="btnEliminar" disable="true" layoutX="907.0" layoutY="473.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="99.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -203,7 +203,7 @@
             <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnModificar" layoutX="904.0" layoutY="402.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
+      <JFXButton fx:id="btnModificar" disable="true" layoutX="904.0" layoutY="402.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -214,7 +214,7 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton fx:id="btnActualizarTv" layoutX="37.0" layoutY="279.0" onAction="#actualizarTabla" prefHeight="37.0" prefWidth="49.0" text=".">
+      <JFXButton fx:id="btnActualizarTv" layoutX="37.0" layoutY="279.0" onAction="#actualizarDatos" prefHeight="37.0" prefWidth="49.0" text=".">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
          </graphic>

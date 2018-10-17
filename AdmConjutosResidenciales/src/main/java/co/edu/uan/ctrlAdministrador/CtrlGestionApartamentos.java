@@ -106,9 +106,9 @@ public class CtrlGestionApartamentos implements Initializable {
 			displayAlert(AlertType.INFORMATION, "DATOS INVALIDOS",
 					"DEBE INGRESAR DATOS NUMERICOS ENTEROS EN EL CAMPO DE TORRE Y APARTAMENTOS");
 		
-		} else if(Integer.parseInt(txtApartamento.getText())>24){
+		} else if(Integer.parseInt(txtApartamento.getText())>24||Integer.parseInt(txtApartamento.getText())<=0){
 			displayAlert(AlertType.WARNING, "DATOS INVALIDOS",
-					"El numero de apartamentos por cada torre no debe de superar los 24");			
+					"El numero de apartamentos por cada torre no debe de superar los 24 y no puede ser menor o igual a 0");			
 		}else{
 		
 
@@ -149,7 +149,7 @@ public class CtrlGestionApartamentos implements Initializable {
 			} else {
 				if (torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
 										.setZona(idZona, tipo, Float.parseFloat(txtCostoAdmin.getText()),
-												numeroPuestosParq, Float.parseFloat(txtCostoParqueadero.getText()))
+										numeroPuestosParq, Float.parseFloat(txtCostoParqueadero.getText()))
 										.build())) {
 					displayAlert(AlertType.INFORMATION, "TORRE CREADA", "Torre guardada con exito");
 
