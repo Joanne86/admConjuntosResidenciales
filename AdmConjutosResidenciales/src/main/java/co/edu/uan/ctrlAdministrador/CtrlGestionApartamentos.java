@@ -142,7 +142,7 @@ public class CtrlGestionApartamentos implements Initializable {
 				torreBuilder.addApartamentos(apt, "", "");
 			}
 
-			TorreDAO torreDAO = new TorreDAO();
+			TorreDAO torreDAO = TorreDAO.getInstace();
 
 			if (torreDAO.verificarTorre(txtTorre.getText())) {
 				displayAlert(AlertType.INFORMATION, "TORRE EXISTENTE", "El numero de la torre ya existe");
@@ -194,7 +194,7 @@ public class CtrlGestionApartamentos implements Initializable {
 			displayAlert(AlertType.INFORMATION, "CAMPO VACIO", "Debe tener el campo de busqueda lleno");
 		} else {
 
-			TorreDAO torreDAO = new TorreDAO();
+			TorreDAO torreDAO = TorreDAO.getInstace();
 			listaTorre = FXCollections.observableArrayList();
 
 			torreDAO.buscarZona(listaTorre, txtTipoBusqueda.getText());
@@ -228,7 +228,7 @@ public class CtrlGestionApartamentos implements Initializable {
 
 	public void iniciarlizarLista() {
 		listaTorre = FXCollections.observableArrayList();
-		TorreDAO torreDAO = new TorreDAO();
+		TorreDAO torreDAO = TorreDAO.getInstace();
 
 		torreDAO.traerDatosTabla(listaTorre);
 

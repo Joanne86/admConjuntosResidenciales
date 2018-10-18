@@ -21,10 +21,16 @@ import java.sql.SQLException;
  */
 public class PropietarioDAO {
 	private IDBAdapter dbAdapter;
-	
+	private static PropietarioDAO propietarioDAO = null;
 
-	public PropietarioDAO() {
+	private PropietarioDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
+	}
+	public static PropietarioDAO getInstance() {
+		if(propietarioDAO==null) {
+			propietarioDAO = new PropietarioDAO();
+		}
+		return propietarioDAO;
 	}
 	
 	public boolean verificarProp(String documento) {

@@ -140,7 +140,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 		if (txtDocumentoBuscar.getText().isEmpty()) {
 			displayAlert(AlertType.INFORMATION, "CAMPO DE BUSQUEDA VACIO", "Debe tener el campo de busqueda lleno");
 		} else {
-			VisitanteDAO visDAO = new VisitanteDAO();
+			VisitanteDAO visDAO = VisitanteDAO.getInstance();
 			listaVis = FXCollections.observableArrayList();
 			visDAO.buscarVisitante(listaVis, txtDocumentoBuscar.getText());
 			tvVisitantes.setItems(listaVis);
@@ -160,7 +160,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 			Visitante visitante = new Visitante(txtDocumento.getText(), txtNombre.getText(), cbTorre.getValue(),
 					cbApart.getValue(), lbfechaEnt.getText() + "-" + lbHoraEnt.getText(), "");
 
-			VisitanteDAO visDAO = new VisitanteDAO();
+			VisitanteDAO visDAO = VisitanteDAO.getInstance();
 			if (visDAO.createVisitante(visitante)) {
 				displayAlert(AlertType.INFORMATION, "REGISTRO EXITOSO", "Registro del visitante exitoso");
 				listaVis.add(visitante);
@@ -177,7 +177,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 			displayAlert(AlertType.WARNING, "SIN REGISTRO DE SALIDA",
 					"Debe capturar la fecha y hora de salida del visitante");
 		} else {
-			VisitanteDAO visDAO = new VisitanteDAO();
+			VisitanteDAO visDAO = VisitanteDAO.getInstance();
 			this.visi.setSalida(lbFechaSal.getText()+"-"+lbHoraSal.getText());
 			if(visDAO.registrarSalida(this.visi)) {
 				displayAlert(AlertType.INFORMATION, "REGISTRO EXITOSO", "Registro de salidaa regitrado");
@@ -193,7 +193,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 	public void inicializarTorres() {
 		ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
-		TorreDAO torreDAO = new TorreDAO();
+		TorreDAO torreDAO = TorreDAO.getInstace();
 		torreDAO.traerTorres(listaTorres);
 		cbTorre.setItems(listaTorres);
 	}
@@ -202,7 +202,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 	void seleccionTorre(ActionEvent event) {
 		try {
 			ObservableList<Integer> listaAptos = FXCollections.observableArrayList();
-			TorreDAO torreDAO = new TorreDAO();
+			TorreDAO torreDAO = TorreDAO.getInstace();
 
 			torreDAO.traerAptosOcupados(listaAptos, cbTorre.getValue());
 			cbApart.setItems(listaAptos);
@@ -214,7 +214,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 	public void inicializarTabla() {
 		listaVis = FXCollections.observableArrayList();
 
-		VisitanteDAO visDAO = new VisitanteDAO();
+		VisitanteDAO visDAO = VisitanteDAO.getInstance();
 
 		visDAO.traerDatosTabla(listaVis);
 
@@ -290,7 +290,6 @@ public class CtrlRegistroVisitantes implements Initializable {
 	private final ListChangeListener<Visitante> selectorTablaPersonas = new ListChangeListener<Visitante>() {
 		@Override
 		public void onChanged(ListChangeListener.Change<? extends Visitante> c) {
-			System.out.println("entra aqui");
 			ponerVisitanteSeleccionado();
 		}
 	};

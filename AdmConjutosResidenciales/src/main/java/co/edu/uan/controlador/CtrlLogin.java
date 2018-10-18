@@ -9,7 +9,6 @@ import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uan.AdminConjuntos.AppAdminConjuntos;
 import co.edu.uan.cifrar.metodo.AESEncryptAlgorithm;
-import co.edu.uan.cifrar.metodo.Cifrado;
 import co.edu.uan.cifrar.metodo.IEncryptAlgorithm;
 import co.edu.uan.ctrlAdministrador.CtrlPanelMenuAdmin;
 import co.edu.uan.dao.LoginDAO;
@@ -42,17 +41,17 @@ public class CtrlLogin {
 		if (txtPass.getText().equals("") || txtUser.getText().equals("")) {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
 		} else {
-			LoginDAO loginDAO = new LoginDAO();
-			String contraseñaDecifrada;
-			IEncryptAlgorithm  aes= new AESEncryptAlgorithm();
-			byte[]contraseñaCifrada=aes.cifrarMensaje(txtPass.getText());
-			String bytess =new String(contraseñaCifrada, StandardCharsets.UTF_8);
-			
-			System.out.println(bytess.length());
-			contraseñaDecifrada= aes.descifrarMensaje(contraseñaCifrada);				
-			System.out.println(contraseñaDecifrada);
+			LoginDAO loginDAO = LoginDAO.getInstance();
+			/*String contraseñaDecifrada;
+			IEncryptAlgorithm aes = new AESEncryptAlgorithm();
+			byte[] contraseñaCifrada = aes.cifrarMensaje(txtPass.getText());
+			String bytess = new String(contraseñaCifrada, StandardCharsets.UTF_8);
 
-		if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
+			System.out.println(bytess.length());
+			contraseñaDecifrada = aes.descifrarMensaje(contraseñaCifrada);
+			System.out.println(contraseñaDecifrada);
+*/
+			if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
 
 				root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));
 				Scene scene = new Scene(root);
@@ -60,16 +59,16 @@ public class CtrlLogin {
 
 				primaryStage.show();
 				primaryStage.setMaximized(true);
-				
-				if(AppAdminConjuntos.stage!=null) {
+
+				if (AppAdminConjuntos.stage != null) {
 					AppAdminConjuntos.cerrarVentana();
 				}
-				if(CtrlPanelMenuAdmin.primaryStage!=null) {
+				if (CtrlPanelMenuAdmin.primaryStage != null) {
 					CtrlPanelMenuAdmin.cerrarVentana();
 				}
 			} else {
 				displayAlert(AlertType.INFORMATION, "Error al ingresar",
-					"Usuario y/o contraseña incorrectos" + ", verifique su usuario y contraseña");
+						"Usuario y/o contraseña incorrectos" + ", verifique su usuario y contraseña");
 			}
 		}
 	}

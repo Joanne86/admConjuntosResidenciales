@@ -129,7 +129,7 @@ public class CtrlRegistro implements Initializable {
 		if (txtNdocumento.getText().isEmpty()) {
 			displayAlert(AlertType.INFORMATION, "CAMPO DE BUSQUEDA VACIO", "Debe tener el campo de busqueda lleno");
 		} else {
-			PropietarioDAO propDAO = new PropietarioDAO();
+			PropietarioDAO propDAO = PropietarioDAO.getInstance();
 			listaProp = FXCollections.observableArrayList();
 			propDAO.buscarProp(txtNdocumento.getText(), listaProp);
 			tvTabla.setItems(listaProp);
@@ -182,7 +182,7 @@ public class CtrlRegistro implements Initializable {
 			Propietario propietario = new Propietario(Integer.parseInt(txtDocumento.getText()), txtNombre.getText(),
 					txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(), login, torre,
 					apart);
-			PropietarioDAO propDAO = new PropietarioDAO();
+			PropietarioDAO propDAO = PropietarioDAO.getInstance();
 			if (propDAO.verificarProp(txtDocumento.getText())) {
 				displayAlert(AlertType.INFORMATION, "PROPIETARIO YA EXISTE",
 						"El propietario con el documento " + txtDocumento.getText() + " ya existe");
@@ -250,7 +250,7 @@ public class CtrlRegistro implements Initializable {
 	void seleccionTorre(ActionEvent event) {
 		try {
 			ObservableList<Integer> listaAptos = FXCollections.observableArrayList();
-			TorreDAO torreDAO = new TorreDAO();
+			TorreDAO torreDAO = TorreDAO.getInstace();
 
 			torreDAO.traerAptos(listaAptos, cbTorre.getValue());
 			cbApart.setItems(listaAptos);
@@ -276,7 +276,7 @@ public class CtrlRegistro implements Initializable {
 	public void inicializarTabla() {
 		listaProp = FXCollections.observableArrayList();
 
-		PropietarioDAO propDAO = new PropietarioDAO();
+		PropietarioDAO propDAO = PropietarioDAO.getInstance();
 
 		propDAO.traerDatosTabla(listaProp);
 
@@ -299,7 +299,7 @@ public class CtrlRegistro implements Initializable {
 
 			ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
 
-			TorreDAO torreDAO = new TorreDAO();
+			TorreDAO torreDAO = TorreDAO.getInstace();;
 			torreDAO.traerTorres(listaTorres);
 
 			cbTorre.setItems(listaTorres);

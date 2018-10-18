@@ -13,10 +13,17 @@ import co.edu.uan.torreBuilder.TorreCom;
 import javafx.collections.ObservableList;
 
 public class TorreDAO {
+	private static TorreDAO torreDAO=null;
 	private IDBAdapter dbAdapter;
 
-	public TorreDAO() {
+	private TorreDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
+	}
+	public static TorreDAO getInstace() {
+		if(torreDAO==null) {
+			 torreDAO = new TorreDAO();			 
+		}
+		return torreDAO;
 	}
 
 	public boolean createTorre(Torre torre) {

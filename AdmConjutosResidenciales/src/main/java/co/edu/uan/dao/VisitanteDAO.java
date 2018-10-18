@@ -11,10 +11,17 @@ import co.edu.uan.entidad.Visitante;
 import javafx.collections.ObservableList;
 
 public class VisitanteDAO {
+	private static VisitanteDAO visitanteDAO=null;
 	private IDBAdapter dbAdapter;
 
-	public VisitanteDAO() {
+	private VisitanteDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
+	}
+	public static VisitanteDAO getInstance() {
+		if(visitanteDAO==null) {
+			visitanteDAO = new VisitanteDAO();
+		}
+		return visitanteDAO;
 	}
 
 	public void traerDatosTabla(ObservableList<Visitante> lista) {

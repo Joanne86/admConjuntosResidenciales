@@ -1,20 +1,16 @@
 package co.edu.uan.dao;
 
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Blob;
-
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
 import co.edu.uan.PersonaFactoryLogin.AdminFactory;
 import co.edu.uan.PersonaFactoryLogin.PersonaManager;
 import co.edu.uan.PersonaFactoryLogin.PropietarioFactory;
-import co.edu.uan.cifrar.metodo.AESEncryptAlgorithm;
-import co.edu.uan.cifrar.metodo.IEncryptAlgorithm;
+//import co.edu.uan.cifrar.metodo.AESEncryptAlgorithm;
+//import co.edu.uan.cifrar.metodo.IEncryptAlgorithm;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Persona;
 
@@ -22,9 +18,16 @@ import co.edu.uan.entidad.Persona;
 public class LoginDAO {
 	private IDBAdapter dbAdapter;
 	private static Persona persona;
+	private static LoginDAO loginDAO=null;
 
-	public LoginDAO() {
+	private LoginDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
+	}
+	public static LoginDAO getInstance() {
+		if(loginDAO==null) {
+			loginDAO=new LoginDAO();
+		}
+		return loginDAO;
 	}
 
 	public boolean iniciarSesion(String usuario, String contraseña) {
