@@ -164,10 +164,19 @@ public class CtrlRegistroVisitantes implements Initializable {
 			if (visDAO.createVisitante(visitante)) {
 				displayAlert(AlertType.INFORMATION, "REGISTRO EXITOSO", "Registro del visitante exitoso");
 				listaVis.add(visitante);
+				limpiarCampos();
 			} else {
 				displayAlert(AlertType.ERROR, "ERROR AL REGISTRAR", "ERROR al guardar visitante");
 			}
 		}
+	}
+	public void limpiarCampos() {
+		txtDocumento.setText(null);
+		txtNombre.setText(null);
+		lbfechaEnt.setText("<fecha>");
+		lbHoraEnt.setText("<hora>");
+		cbApart.setValue(null);
+		cbTorre.setValue(null);
 	}
 
 	@FXML
