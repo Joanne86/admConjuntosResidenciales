@@ -2,14 +2,14 @@ package co.edu.uan.entidad;
 
 public abstract class Persona {
 
-    private int documento;
+    private String documento;
     private String nombre;
     private String telefono;
     private String nacimiento;
     private String correo;
     private Login login;
 
-    public Persona(int documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
+    public Persona(String documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
         super();
         this.documento = documento;
         this.nombre = nombre;
@@ -19,7 +19,7 @@ public abstract class Persona {
         this.login = login;
     }
 
-	public Persona(int documento, String nombre, String correo, Login login) {
+	public Persona(String documento, String nombre, String correo, Login login) {
 		super();
 		this.documento = documento;
 		this.nombre = nombre;
@@ -30,18 +30,16 @@ public abstract class Persona {
     public Persona() {
     }
     
-   
 
-    //public abstract static Persona getInstrance();
-    public int getDocumento() {
-        return documento;
-    }
+    public String getDocumento() {
+		return documento;
+	}
 
-    public void setDocumento(int documento) {
-        this.documento = documento;
-    }
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
 
-    public String getNombre() {
+	public String getNombre() {
         return nombre;
     }
 

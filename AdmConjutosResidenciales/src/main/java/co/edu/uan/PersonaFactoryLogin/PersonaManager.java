@@ -14,7 +14,7 @@ public class PersonaManager {
 		this.personaF = personaF;
 	}
 
-	public void crearPersona(int documento, String nombre, String correo,
+	public void crearPersona(String documento, String nombre, String correo,
 			Login login) {
 		this.persona = personaF.createPersona(documento, nombre, correo, login);
 	}

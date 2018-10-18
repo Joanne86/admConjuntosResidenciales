@@ -17,7 +17,7 @@ public class ProxyEnvioCorreo implements Correo{
 	@Override
 	public boolean enviarCorreo(Propietario prop) {
 		boolean envio=false;
-		if(isNumeric(Integer.toString(prop.getDocumento()))) {
+		if(isNumeric(prop.getDocumento())) {
 			if(isNumeric(prop.getTelefono())) {
 				if(isEmail(prop.getCorreo())) {
 					if(mayorEdad(prop.getNacimiento())) {

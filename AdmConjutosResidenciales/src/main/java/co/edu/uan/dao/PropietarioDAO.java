@@ -103,14 +103,14 @@ public class PropietarioDAO {
 		try {
 			PreparedStatement sentencialogin = connection
 					.prepareStatement("INSERT into sesion" + "(usuario, contraseña, id_tipo) values(?,?,?)");
-			sentencialogin.setString(1, Integer.toString(prop.getDocumento()));
+			sentencialogin.setString(1, prop.getDocumento());
 			sentencialogin.setString(2, new String(Cifrado.claveCifrada(prop.getLogin().getContraseña()), StandardCharsets.UTF_8));
 			sentencialogin.setString(3, prop.getLogin().getTipoPersona());
 			sentencialogin.execute();
 			
 			PreparedStatement sentencia = connection.prepareStatement("INSERT into persona"
 					+ "(documento, nombre, telefono, nacimiento, correo, id_sesion) values(?,?,?,?,?,?)");
-			sentencia.setInt(1, prop.getDocumento());
+			sentencia.setString(1, prop.getDocumento());
 			sentencia.setString(2, prop.getNombre());
 			sentencia.setString(3, prop.getTelefono());
 			sentencia.setString(4, prop.getNacimiento());
@@ -119,7 +119,7 @@ public class PropietarioDAO {
 			String sql = "SELECT id FROM sesion WHERE usuario=?";
 		
 				ps = connection.prepareStatement(sql);
-				ps.setString(1, Integer.toString(prop.getDocumento()));
+				ps.setString(1,prop.getDocumento());
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					sentencia.setString(6, rs.getString(1));
@@ -131,7 +131,7 @@ public class PropietarioDAO {
 						
 				propiedad.setString(1, prop.getApartamento().getReside());
 				propiedad.setString(2, prop.getApartamento().getParqueadero());
-				propiedad.setString(3, Integer.toString(prop.getDocumento()));
+				propiedad.setString(3, prop.getDocumento());
 				propiedad.setInt(4, prop.getnTorre());
 				propiedad.setInt(5, prop.getApartamento().getNumero());
 				propiedad.execute();

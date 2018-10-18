@@ -179,7 +179,7 @@ public class CtrlRegistro implements Initializable {
 			Apartamento apart = new Apartamento(cbApart.getValue(), reside, parqueadero);
 			// OBJETO PROPIETARIO
 
-			Propietario propietario = new Propietario(Integer.parseInt(txtDocumento.getText()), txtNombre.getText(),
+			Propietario propietario = new Propietario(txtDocumento.getText(), txtNombre.getText(),
 					txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(), login, torre,
 					apart);
 			PropietarioDAO propDAO = PropietarioDAO.getInstance();
