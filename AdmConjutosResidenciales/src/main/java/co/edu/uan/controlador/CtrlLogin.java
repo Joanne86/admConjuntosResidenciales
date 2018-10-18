@@ -1,15 +1,11 @@
 package co.edu.uan.controlador;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 import co.edu.uan.AdminConjuntos.AppAdminConjuntos;
-import co.edu.uan.cifrar.metodo.AESEncryptAlgorithm;
-import co.edu.uan.cifrar.metodo.IEncryptAlgorithm;
 import co.edu.uan.ctrlAdministrador.CtrlPanelMenuAdmin;
 import co.edu.uan.dao.LoginDAO;
 import javafx.event.ActionEvent;
@@ -42,15 +38,6 @@ public class CtrlLogin {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
 		} else {
 			LoginDAO loginDAO = LoginDAO.getInstance();
-			/*String contraseñaDecifrada;
-			IEncryptAlgorithm aes = new AESEncryptAlgorithm();
-			byte[] contraseñaCifrada = aes.cifrarMensaje(txtPass.getText());
-			String bytess = new String(contraseñaCifrada, StandardCharsets.UTF_8);
-
-			System.out.println(bytess.length());
-			contraseñaDecifrada = aes.descifrarMensaje(contraseñaCifrada);
-			System.out.println(contraseñaDecifrada);
-*/
 			if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
 
 				root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));

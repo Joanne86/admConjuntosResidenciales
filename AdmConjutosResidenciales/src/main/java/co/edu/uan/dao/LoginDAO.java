@@ -9,8 +9,7 @@ import co.edu.uan.DBAdapter.IDBAdapter;
 import co.edu.uan.PersonaFactoryLogin.AdminFactory;
 import co.edu.uan.PersonaFactoryLogin.PersonaManager;
 import co.edu.uan.PersonaFactoryLogin.PropietarioFactory;
-//import co.edu.uan.cifrar.metodo.AESEncryptAlgorithm;
-//import co.edu.uan.cifrar.metodo.IEncryptAlgorithm;
+import co.edu.uan.cifrar.metodo.Cifrado;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Persona;
 
@@ -41,33 +40,32 @@ public class LoginDAO {
 		PreparedStatement ps1 = null;
 		ResultSet rs1 = null;
 		
-		//String sql1 = "SELECT contraseña FROM loginpersona WHERE usuario =?";
+		String sql1 = "SELECT contraseña FROM loginpersona WHERE usuario =?";
 		String sql = "SELECT * FROM loginpersona WHERE usuario =?"; 
-		// usar bridge para ciffrar contraseñas
+		
 		PersonaManager personaManager = new PersonaManager();
 
 		try {
-			/*String contraseñaDecifrada = null;
+			String contraseñaDecifrada = null;
 			ps1 = connection.prepareStatement(sql1);// prepara la consulta
 			ps1.setString(1, usuario);// se elvia el valor
 			rs1 = ps1.executeQuery();// busca un nombre de usuario en la bd
 			if (rs1.next()) {
-				byte[] contraseñaCifrada= rs1.getString(1).getBytes(StandardCharsets.UTF_8);
-				IEncryptAlgorithm  aes= new AESEncryptAlgorithm();
-				contraseñaDecifrada= aes.descifrarMensaje(contraseñaCifrada);		
+				String contraseñaCifrada= rs1.getString(1);
+				contraseñaDecifrada=Cifrado.claveDecifrada(contraseñaCifrada);	
 				System.out.println("contraseña descifrada: "+contraseñaDecifrada);
-			}	*/		
+			}			
 			ps = connection.prepareStatement(sql);// prepara la consulta
 			ps.setString(1, usuario);// se elvia el valor
 			rs = ps.executeQuery();// busca un nombre de usuario en la bd
 			if (rs.next()) {
 
-				if (contraseña.equals(rs.getString(8))) {
+				if (contraseña.equals(contraseñaDecifrada)) {
 
 					String tipo = rs.getString(6);
 					Login login = new Login();			
 					login.setUsuario(rs.getString(7));
-					login.setContraseña(rs.getString(8));
+					login.setContraseña(contraseñaDecifrada);
 					login.setTipoPersona(tipo);
 
 					if (tipo.equals("administrador")) {

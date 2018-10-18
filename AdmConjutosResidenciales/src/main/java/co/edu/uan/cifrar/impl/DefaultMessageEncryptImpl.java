@@ -10,12 +10,12 @@ public class DefaultMessageEncryptImpl implements IMessageEncrypt{
     }
     
     @Override
-    public byte[] encryptMessage(String password)throws Exception {
+    public String encryptMessage(String password)throws Exception {
         return encryptAlgorith.cifrarMensaje(password);
     }
 
 	@Override
-	public String decryptMessage(byte[] mensaje) {
+	public String decryptMessage(String mensaje) {
 		return encryptAlgorith.descifrarMensaje(mensaje);
 	}
 }

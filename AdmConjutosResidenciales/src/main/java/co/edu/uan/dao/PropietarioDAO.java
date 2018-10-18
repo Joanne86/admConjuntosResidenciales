@@ -8,8 +8,6 @@ import co.edu.uan.cifrar.metodo.Cifrado;
 import co.edu.uan.entidad.Propietario;
 import co.edu.uan.entidad.PropietarioTabla;
 import javafx.collections.ObservableList;
-
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,7 +102,7 @@ public class PropietarioDAO {
 			PreparedStatement sentencialogin = connection
 					.prepareStatement("INSERT into sesion" + "(usuario, contraseña, id_tipo) values(?,?,?)");
 			sentencialogin.setString(1, prop.getDocumento());
-			sentencialogin.setString(2, new String(Cifrado.claveCifrada(prop.getLogin().getContraseña()), StandardCharsets.UTF_8));
+			sentencialogin.setString(2, Cifrado.claveCifrada(prop.getLogin().getContraseña()));
 			sentencialogin.setString(3, prop.getLogin().getTipoPersona());
 			sentencialogin.execute();
 			

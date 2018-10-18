@@ -4,10 +4,8 @@ import co.edu.uan.cifrar.impl.DefaultMessageEncryptImpl;
 import co.edu.uan.cifrar.impl.IMessageEncrypt;
 
 public class Cifrado {
-
-	public static byte[] claveCifrada(String contraseña) {
-		String mensaje = "Siempre es bueno prevenir la musica antes de que empiece el baile";
-        byte[] passwordCifrado = null;
+	public static String claveCifrada(String mensaje) {
+		String passwordCifrado = null;
     	
         IMessageEncrypt aesImpl = new DefaultMessageEncryptImpl(new AESEncryptAlgorithm());
 		try {
@@ -18,12 +16,12 @@ public class Cifrado {
 		}
 		return passwordCifrado;
 	}
-	public static String claveDescifrada(byte[] contraseñaCifrada) {
+	public static String claveDecifrada(String mensaje) {
 		String contraseñaDescifrada=null;
 		IMessageEncrypt aesImpl = new DefaultMessageEncryptImpl(new AESEncryptAlgorithm());
 		try {
 			
-			contraseñaDescifrada =aesImpl.decryptMessage(contraseñaCifrada);
+			contraseñaDescifrada =aesImpl.decryptMessage(mensaje);
 			System.out.println("mensaje decifrado > " + contraseñaDescifrada + "\n");
 		} catch (Exception e) {
 			e.printStackTrace();
