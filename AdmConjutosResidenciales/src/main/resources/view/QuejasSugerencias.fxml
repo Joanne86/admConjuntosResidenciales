@@ -28,12 +28,12 @@
       </Text>
       <TableView fx:id="tablaQuejasSugerencias" layoutX="104.0" layoutY="325.0" opacity="0.84" prefHeight="201.0" prefWidth="935.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="104.0" AnchorPane.topAnchor="325.0">
          <columns>
-            <TableColumn fx:id="clTorre" prefWidth="147.0" text="Torre" />
-            <TableColumn fx:id="clApart" minWidth="3.0" prefWidth="135.0" text="Apartamento" />
-            <TableColumn fx:id="clTipoResidente" prefWidth="195.0" text="Tipo residente" />
-            <TableColumn fx:id="clResidente" prefWidth="141.0" text="Residente" />
-            <TableColumn fx:id="clNotificacion" prefWidth="123.0" text="Notificacion" />
-            <TableColumn fx:id="clAsunto" prefWidth="192.0" text="Asunto" />
+            <TableColumn fx:id="clTorre" prefWidth="90.0" text="Torre" />
+            <TableColumn fx:id="clApart" minWidth="3.0" prefWidth="110.0" text="Apartamento" />
+            <TableColumn fx:id="clTipoResidente" prefWidth="166.0" text="Tipo residente" />
+            <TableColumn fx:id="clResidente" prefWidth="252.0" text="Residente" />
+            <TableColumn fx:id="clNotificacion" prefWidth="136.0" text="Notificacion" />
+            <TableColumn fx:id="clAsunto" prefWidth="179.0" text="Asunto" />
          </columns>
       </TableView>
       <JFXButton fx:id="btnActualizar" layoutX="104.0" layoutY="252.0" onAction="#actualizar" prefHeight="46.0" prefWidth="176.0" style="-fx-background-color: #242D73; -fx-background-radius: 5;" text="Actualizar" textFill="WHITE">

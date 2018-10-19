@@ -4,8 +4,8 @@ import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-
 import co.edu.uan.AdminConjuntos.AppAdminConjuntos;
+import co.edu.uan.cifrar.metodo.Cifrado;
 import co.edu.uan.ctrlAdministrador.CtrlPanelMenuAdmin;
 import co.edu.uan.dao.LoginDAO;
 import javafx.event.ActionEvent;
@@ -38,6 +38,8 @@ public class CtrlLogin {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
 		} else {
 			LoginDAO loginDAO = LoginDAO.getInstance();
+			System.out.println(Cifrado.claveCifrada(txtPass.getText()));
+			
 			if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
 
 				root = FXMLLoader.load(getClass().getResource("/view/PrincipalAdmin.fxml"));

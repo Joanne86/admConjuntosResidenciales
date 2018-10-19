@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlQuejasSugerenciasProp">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/conjuto.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="424.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Módulo para registro de quejas y sugerencias de los residentes del conjunto UANConjuntos." wrappingWidth="321.21875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="424.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de novedad">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnEnviar" layoutX="695.0" layoutY="428.0" onAction="#enviar" prefHeight="46.0" prefWidth="176.0" style="-fx-background-color: #242D73; -fx-background-radius: 5;" text="Enviar" textFill="WHITE" AnchorPane.rightAnchor="272.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="SEND" size="1.5em" />
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXButton>
+      <JFXTextArea fx:id="txtAreaDetalles" layoutX="272.0" layoutY="219.0" maxWidth="599.0" minWidth="548.0" prefHeight="190.0" prefWidth="599.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="272.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextArea>
+      <Text fill="WHITE" layoutX="272.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de novedad:" wrappingWidth="139.21875">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="rbQueja" layoutX="424.0" layoutY="441.0" mnemonicParsing="false" text="Queja" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="novedad" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbSugerencia" layoutX="504.0" layoutY="441.0" mnemonicParsing="false" text="Sugerencia" textFill="WHITE" toggleGroup="$novedad">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+      <Text fill="WHITE" layoutX="272.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion de la novedad:" wrappingWidth="198.21875">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

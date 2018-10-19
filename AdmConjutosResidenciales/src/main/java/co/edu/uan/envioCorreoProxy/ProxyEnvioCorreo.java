@@ -38,13 +38,20 @@ public class ProxyEnvioCorreo implements Correo{
 		return envio;
 	}
 	private boolean isNumeric(String cadena) {
-		try {
-			Integer.parseInt(cadena);
-			return true;
-		} catch (NumberFormatException nfe) {
-			
-			return false;
+		int i=0;
+		if(cadena.charAt(0)=='-') {
+			if(cadena.length()>1) {
+			i++;
+			}else {
+				return false;
+			}
 		}
+		for(; i< cadena.length(); i++) {
+			if(!Character.isDigit(cadena.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 	private boolean isEmail(String email) {
 		// Patrón para validar el email
