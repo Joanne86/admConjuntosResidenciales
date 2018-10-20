@@ -32,21 +32,10 @@
             <TableColumn fx:id="clApart" minWidth="3.0" prefWidth="110.0" text="Apartamento" />
             <TableColumn fx:id="clTipoResidente" prefWidth="166.0" text="Tipo residente" />
             <TableColumn fx:id="clResidente" prefWidth="252.0" text="Residente" />
-            <TableColumn fx:id="clNotificacion" prefWidth="136.0" text="Notificacion" />
-            <TableColumn fx:id="clAsunto" prefWidth="179.0" text="Asunto" />
+            <TableColumn fx:id="clTipoNovedad" prefWidth="136.0" text="Tipo de novedad" />
+            <TableColumn fx:id="clDetalleNovedad" prefWidth="179.0" text="Detalle novedad" />
          </columns>
       </TableView>
-      <JFXButton fx:id="btnActualizar" layoutX="104.0" layoutY="252.0" onAction="#actualizar" prefHeight="46.0" prefWidth="176.0" style="-fx-background-color: #242D73; -fx-background-radius: 5;" text="Actualizar" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="1.5em" />
-         </graphic>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXButton>
       <JFXTextArea fx:id="txtAreaDetalles" layoutX="492.0" layoutY="123.0" maxWidth="548.0" minWidth="548.0" prefHeight="152.0" prefWidth="548.0" style="-fx-background-color: white;">
          <font>
             <Font size="15.0" />
@@ -57,5 +46,10 @@
             <Font size="19.0" />
          </font>
       </Text>
+      <JFXButton fx:id="btnActualizar" layoutX="104.0" layoutY="279.0" onAction="#actualizar" prefHeight="37.0" prefWidth="49.0" text=".">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

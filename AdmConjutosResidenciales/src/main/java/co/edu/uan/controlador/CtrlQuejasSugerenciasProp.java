@@ -3,8 +3,8 @@ package co.edu.uan.controlador;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 
+import co.edu.uan.dao.LoginDAO;
 import co.edu.uan.dao.NovedadDAO;
-import co.edu.uan.entidad.Novedad;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -37,9 +37,17 @@ public class CtrlQuejasSugerenciasProp {
     		if(rbSugerencia.isSelected()){
     			tipoNovedad="Sugerencia";
     		}
-    		//Novedad novedad = new Novedad();
+    		
     		NovedadDAO novedadDAO = NovedadDAO.getInstance();
-    		//novedadDAO.guardarNovedad(novedad);
+    		if(novedadDAO.guardarNovedad(tipoNovedad,txtAreaDetalles.getText(), LoginDAO.getInstancePersona().getDocumento())) {
+    			displayAlert(AlertType.INFORMATION, "NOVEDAD ENVIADA", "Su novedad acaba de ser enviada al administrador");
+    			txtAreaDetalles.setText("");
+    			rbQueja.setSelected(false);
+    			rbSugerencia.setSelected(false);
+    		}else{
+    			displayAlert(AlertType.ERROR, "ERROR AL ENVIAR", "Ocurrio un error al enviar la novedad");
+    		}
+    		
     	}
     } 
     private void displayAlert(AlertType type, String title, String message) {

@@ -5,6 +5,7 @@ import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
 
 import co.edu.uan.cifrar.metodo.Cifrado;
+import co.edu.uan.entidad.Novedad;
 import co.edu.uan.entidad.Propietario;
 import co.edu.uan.entidad.PropietarioTabla;
 import javafx.collections.ObservableList;
@@ -17,16 +18,16 @@ import java.sql.SQLException;
  *
  * @author LEIDY RODRIGUEZ
  */
-public class PropietarioDAO {
+public class ResidenteDAO {
 	private IDBAdapter dbAdapter;
-	private static PropietarioDAO propietarioDAO = null;
+	private static ResidenteDAO propietarioDAO = null;
 
-	private PropietarioDAO() {
+	private ResidenteDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
-	public static PropietarioDAO getInstance() {
+	public static ResidenteDAO getInstance() {
 		if(propietarioDAO==null) {
-			propietarioDAO = new PropietarioDAO();
+			propietarioDAO = new ResidenteDAO();
 		}
 		return propietarioDAO;
 	}
@@ -174,5 +175,28 @@ public class PropietarioDAO {
 			} catch (SQLException e) {
 			}
 		}
+	}
+	public void traerApart(Novedad novedad, String documento) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT ntorre, napartamento FROM apartprop WHERE documento=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1,documento);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				novedad.setTorre(rs.getString(1));
+				novedad.setApart(rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+		
 	}
 }

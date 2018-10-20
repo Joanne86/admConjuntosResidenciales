@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 
+import co.edu.uan.dao.NovedadDAO;
 import co.edu.uan.entidad.Novedad;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CtrlQuejasSugerencias implements Initializable{
 
@@ -24,7 +26,7 @@ public class CtrlQuejasSugerencias implements Initializable{
     private TableColumn<Novedad, String> clTipoResidente;
 
     @FXML
-    private TableColumn<Novedad, String> clAsunto;
+    private TableColumn<Novedad, String> clDetalleNovedad;
 
     @FXML
     private TableColumn<Novedad, String> clResidente;
@@ -39,7 +41,7 @@ public class CtrlQuejasSugerencias implements Initializable{
     private TableColumn<Novedad, String> clTorre;
 
     @FXML
-    private TableColumn<Novedad, String> clNotificacion;
+    private TableColumn<Novedad, String> clTipoNovedad;
 
     @FXML
     private JFXButton btnActualizar;
@@ -53,13 +55,22 @@ public class CtrlQuejasSugerencias implements Initializable{
 
     public void inicializarTabla() {
     	listaNovedad =  FXCollections.observableArrayList();
+    	NovedadDAO novedadDAO = NovedadDAO.getInstance();
+    	novedadDAO.traerDatosTabla(listaNovedad);
+    	tablaQuejasSugerencias.setItems(listaNovedad);
     	
-    	//dao
+    	clTorre.setCellValueFactory(new PropertyValueFactory<Novedad, String>("torre"));
+		clApart.setCellValueFactory(new PropertyValueFactory<Novedad, String>("apart"));
+		clTipoResidente.setCellValueFactory(new PropertyValueFactory<Novedad, String>("tipoResidente"));
+		clResidente.setCellValueFactory(new PropertyValueFactory<Novedad, String>("nombreResidente"));
+		clTipoNovedad.setCellValueFactory(new PropertyValueFactory<Novedad, String>("tipoNovedad"));
+		clDetalleNovedad.setCellValueFactory(new PropertyValueFactory<Novedad, String>("detalleNovedad"));
+
     }
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		inicializarTabla();
 	}
 
 }

@@ -239,7 +239,6 @@ public class CtrlGestionApartamentos implements Initializable {
 		clTipo.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("zona"));
 		clPuestos.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("puestos"));
 		clCosto.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("costo"));
-
 	}
 
 	@FXML

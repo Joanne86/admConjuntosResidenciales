@@ -22,7 +22,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import co.edu.uan.dao.PropietarioDAO;
+import co.edu.uan.dao.ResidenteDAO;
 import co.edu.uan.dao.TorreDAO;
 import co.edu.uan.entidad.Login;
 import co.edu.uan.entidad.Propietario;
@@ -129,7 +129,7 @@ public class CtrlRegistro implements Initializable {
 		if (txtNdocumento.getText().isEmpty()) {
 			displayAlert(AlertType.INFORMATION, "CAMPO DE BUSQUEDA VACIO", "Debe tener el campo de busqueda lleno");
 		} else {
-			PropietarioDAO propDAO = PropietarioDAO.getInstance();
+			ResidenteDAO propDAO = ResidenteDAO.getInstance();
 			listaProp = FXCollections.observableArrayList();
 			propDAO.buscarProp(txtNdocumento.getText(), listaProp);
 			tvTabla.setItems(listaProp);
@@ -182,7 +182,7 @@ public class CtrlRegistro implements Initializable {
 			Propietario propietario = new Propietario(txtDocumento.getText(), txtNombre.getText(),
 					txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(), login, torre,
 					apart);
-			PropietarioDAO propDAO = PropietarioDAO.getInstance();
+			ResidenteDAO propDAO = ResidenteDAO.getInstance();
 			if (propDAO.verificarProp(txtDocumento.getText())) {
 				displayAlert(AlertType.INFORMATION, "PROPIETARIO YA EXISTE",
 						"El propietario con el documento " + txtDocumento.getText() + " ya existe");
@@ -276,7 +276,7 @@ public class CtrlRegistro implements Initializable {
 	public void inicializarTabla() {
 		listaProp = FXCollections.observableArrayList();
 
-		PropietarioDAO propDAO = PropietarioDAO.getInstance();
+		ResidenteDAO propDAO = ResidenteDAO.getInstance();
 
 		propDAO.traerDatosTabla(listaProp);
 
