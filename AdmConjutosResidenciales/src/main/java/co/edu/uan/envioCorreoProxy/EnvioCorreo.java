@@ -12,8 +12,14 @@ import javax.mail.internet.MimeMessage;
 
 import co.edu.uan.entidad.Propietario;
 import co.edu.uan.entidad.Servicio;
+import co.edu.uan.util.PropertiesUtil;
 
 public class EnvioCorreo implements Correo {
+	 private static final String DB_PROPERTIES = "Correo.properties";
+
+	    //Propiedades de los archivos properties
+	    private static final String DB_EMAIL_PROP = "correo";
+	    private static final String DB_PASSWORD_PROP = "contraseña";
 
 	@Override
 	public boolean enviarCorreoResidente(Propietario prop) {
@@ -26,8 +32,11 @@ public class EnvioCorreo implements Correo {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "leidyjoanne86@gmail.com";
-            String passwordRemitente = "6835820gaga";
+            
+            Properties admin = PropertiesUtil.loadProperty(DB_PROPERTIES);
+            String correoRemitente = admin.getProperty(DB_EMAIL_PROP);
+            String passwordRemitente = admin.getProperty(DB_PASSWORD_PROP);
+
             String correoReceptor = prop.getCorreo();
             String asunto = "Usuario y contraseña del conjunto residencial";
             String mensaje = "Hola<br>Hola "+prop.getNombre()+", su usuario y contraseña son:<br> usuario:"+prop.getLogin().getUsuario()+" "
