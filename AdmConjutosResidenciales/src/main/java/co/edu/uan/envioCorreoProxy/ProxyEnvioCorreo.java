@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import co.edu.uan.entidad.Propietario;
+import co.edu.uan.entidad.Servicio;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -15,14 +16,14 @@ public class ProxyEnvioCorreo implements Correo{
 
 
 	@Override
-	public boolean enviarCorreo(Propietario prop) {
+	public boolean enviarCorreoResidente(Propietario prop) {
 		boolean envio=false;
 		if(isNumeric(prop.getDocumento())) {
 			if(isNumeric(prop.getTelefono())) {
 				if(isEmail(prop.getCorreo())) {
 					if(mayorEdad(prop.getNacimiento())) {
 						Correo envioCorreo = new EnvioCorreo();
-						envio= envioCorreo.enviarCorreo(prop);
+						envio= envioCorreo.enviarCorreoResidente(prop);
 					}else {
 						displayAlert(AlertType.WARNING, "Menor de edad", "el propietario tiene que ser mayor de edad");
 					}
@@ -37,6 +38,31 @@ public class ProxyEnvioCorreo implements Correo{
 		}
 		return envio;
 	}
+	
+	@Override
+	public boolean enviarCorreoPServicio(Servicio servicio) {
+		boolean envio=false;
+		if(isNumeric(servicio.getDocumento())) {
+			if(isNumeric(servicio.getTelefono())) {
+				if(isEmail(servicio.getCorreo())) {
+					if(mayorEdad(servicio.getNacimiento())) {
+						Correo envioCorreo = new EnvioCorreo();
+						envio= envioCorreo.enviarCorreoPServicio(servicio);
+					}else {
+						displayAlert(AlertType.WARNING, "Menor de edad", "el propietario tiene que ser mayor de edad");
+					}
+				}else {
+					displayAlert(AlertType.WARNING, "correo electronico invalido", "Correo electronico invalido");
+				}
+			}else {
+				displayAlert(AlertType.WARNING, "Numero telefono invalido", "Numero de telefono invalido");
+			}
+		}else {
+			displayAlert(AlertType.WARNING, "Numero documento invalido", "Numero de documento invalido");
+		}
+		return envio;
+	}
+	
 	private boolean isNumeric(String cadena) {
 		int i=0;
 		if(cadena.charAt(0)=='-') {
@@ -81,5 +107,6 @@ public class ProxyEnvioCorreo implements Correo{
 		alert.setContentText(message);
 		alert.showAndWait();
 	}
+	
 	
 }

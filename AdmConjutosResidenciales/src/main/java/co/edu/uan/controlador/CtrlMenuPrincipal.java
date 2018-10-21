@@ -70,9 +70,6 @@ public class CtrlMenuPrincipal implements Initializable {
 				panelMenu.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);			
 				drawer.setSidePane(panelMenu);
 			}
-			
-
-			
 		} catch (IOException ex) {
 			Logger.getLogger(CtrlMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
 		}

@@ -188,7 +188,7 @@ public class CtrlRegistro implements Initializable {
 						"El propietario con el documento " + txtDocumento.getText() + " ya existe");
 			} else {
 				Correo proxyEnvio = new ProxyEnvioCorreo();
-				if (proxyEnvio.enviarCorreo(propietario)) {
+				if (proxyEnvio.enviarCorreoResidente(propietario)) {
 
 					if (propDAO.createPropietario(propietario)) {
 

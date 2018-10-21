@@ -54,8 +54,6 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	@FXML
 	private JFXButton btnPagoAdmin;
 
-	@FXML
-	private JFXButton btnAsambleas;
 
 	static AnchorPane pane2;
 	static AnchorPane pane3;
@@ -187,11 +185,6 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			pane8.toFront();
 		}
     }
-
-	@FXML
-	void setAsamblea(ActionEvent event) {
-
-	}
 
 	@FXML
 	void actualizarDatos(ActionEvent event) {

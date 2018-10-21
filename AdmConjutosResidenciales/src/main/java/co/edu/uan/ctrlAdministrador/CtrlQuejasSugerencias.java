@@ -1,6 +1,7 @@
 package co.edu.uan.ctrlAdministrador;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -9,6 +10,7 @@ import com.jfoenix.controls.JFXTextArea;
 import co.edu.uan.dao.NovedadDAO;
 import co.edu.uan.entidad.Novedad;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,6 +49,7 @@ public class CtrlQuejasSugerencias implements Initializable{
     private JFXButton btnActualizar;
     
     private ObservableList<Novedad> listaNovedad;
+    private int posicionVisitEnTabla;
 
     @FXML
     void actualizar(ActionEvent event) {
@@ -58,6 +61,8 @@ public class CtrlQuejasSugerencias implements Initializable{
     	NovedadDAO novedadDAO = NovedadDAO.getInstance();
     	novedadDAO.traerDatosTabla(listaNovedad);
     	tablaQuejasSugerencias.setItems(listaNovedad);
+    	final ObservableList<Novedad> tablaVisitSel = tablaQuejasSugerencias.getSelectionModel().getSelectedItems();
+		tablaVisitSel.addListener(selectorTabla);
     	
     	clTorre.setCellValueFactory(new PropertyValueFactory<Novedad, String>("torre"));
 		clApart.setCellValueFactory(new PropertyValueFactory<Novedad, String>("apart"));
@@ -65,12 +70,47 @@ public class CtrlQuejasSugerencias implements Initializable{
 		clResidente.setCellValueFactory(new PropertyValueFactory<Novedad, String>("nombreResidente"));
 		clTipoNovedad.setCellValueFactory(new PropertyValueFactory<Novedad, String>("tipoNovedad"));
 		clDetalleNovedad.setCellValueFactory(new PropertyValueFactory<Novedad, String>("detalleNovedad"));
-
     }
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		inicializarTabla();
 	}
+	
+	private final ListChangeListener<Novedad> selectorTabla = new ListChangeListener<Novedad>() {
+		@Override
+		public void onChanged(ListChangeListener.Change<? extends Novedad> c) {
+			ponerVisitanteSeleccionado();
+		}
+	};
+
+	/**
+	 * MÃ©todo para poner en los textFields la tupla que selccionemos
+	 */
+
+	public void ponerVisitanteSeleccionado() {
+		final Novedad novedad = getTablaPersonasSeleccionada();
+		posicionVisitEnTabla = listaNovedad.indexOf(novedad);
+		if (novedad != null) {
+			txtAreaDetalles.setText(novedad.getDetalleNovedad());
+		}
+	}
+
+	/**
+	 * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+	 */
+	public Novedad getTablaPersonasSeleccionada() {
+
+		if (tablaQuejasSugerencias != null) {
+			List<Novedad> tabla = tablaQuejasSugerencias.getSelectionModel().getSelectedItems();
+			if (tabla.size() == 1) {
+				final Novedad competicionSeleccionada = tabla.get(0);
+				return competicionSeleccionada;
+			}
+		}
+		return null;
+
+	}
+	
 
 }

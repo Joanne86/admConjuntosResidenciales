@@ -55,6 +55,9 @@ public class CtrlLogin {
 				if (CtrlPanelMenuAdmin.primaryStage != null) {
 					CtrlPanelMenuAdmin.cerrarVentana();
 				}
+				if(CtrlMenuProp.primaryStage!=null) {
+					CtrlMenuProp.cerrarVentana();
+				}
 			} else {
 				displayAlert(AlertType.INFORMATION, "Error al ingresar",
 						"Usuario y/o contraseña incorrectos" + ", verifique su usuario y contraseña");

@@ -65,6 +65,10 @@ public class CtrlMenuProp implements Initializable{
 
 		CtrlLogin.cerrarVentana();
     }
+    
+    public static void cerrarVentana() {
+		primaryStage.close();
+	}
 
     @FXML
     void gestionarArrendatarios(ActionEvent event) {

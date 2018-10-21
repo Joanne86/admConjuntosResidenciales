@@ -132,7 +132,7 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton fx:id="btnEliminar" layoutX="907.0" layoutY="446.0" onAction="#eliminar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="73.0">
+      <JFXButton fx:id="btnEliminar" disable="true" layoutX="907.0" layoutY="446.0" onAction="#eliminar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="73.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -140,7 +140,7 @@
             <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnModificar" layoutX="904.0" layoutY="378.0" onAction="#modificar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="76.0">
+      <JFXButton fx:id="btnModificar" disable="true" layoutX="904.0" layoutY="378.0" onAction="#modificar" prefHeight="54.0" prefWidth="163.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="76.0">
          <font>
             <Font size="15.0" />
          </font>
