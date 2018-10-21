@@ -173,7 +173,7 @@
             <FontAwesomeIcon fill="#125b61" iconName="BUILDING" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnGestionarServicios" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#gestionarServicios" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar servicios">
+      <JFXButton fx:id="btnGestionarServicios" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#gestionarServicios" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Personal de servicios">
          <font>
             <Font size="17.0" />
          </font>

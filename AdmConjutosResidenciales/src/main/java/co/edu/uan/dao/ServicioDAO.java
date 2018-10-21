@@ -140,4 +140,34 @@ public class ServicioDAO {
 			}
 		}
 	}
+
+	public void buscarPServicio(ObservableList<Servicio> listaServ, String documento) {
+		
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM personalServicio WHERE documento=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, documento);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listaServ.add(new Servicio(rs.getString(1),
+						 rs.getString(2),
+						 rs.getString(3),
+						 rs.getString(4),
+						 rs.getString(5),
+						 rs.getString(6),
+						 rs.getString(7)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
 }

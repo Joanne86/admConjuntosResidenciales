@@ -95,7 +95,17 @@ public class CtrlGestionServicios implements Initializable {
 
 	@FXML
 	void buscar(ActionEvent event) {
-
+		if(txtNdocumento.getText().isEmpty()) {
+			displayAlert(AlertType.WARNING, "CAMPO VACIO", "Debe tener el campo de busqueda lleno");
+		}else {
+			listaServ = FXCollections.observableArrayList();
+			ServicioDAO.getInstance().buscarPServicio(listaServ, txtNdocumento.getText());
+			tvTabla.setItems(listaServ);
+			if(tvTabla.getItems().isEmpty()) {
+				displayAlert(AlertType.WARNING, "NO ENCONTRADO", "El personal de servicio con esa cedula no existe");
+			}
+			txtNdocumento.setText("");	
+		}
 	}
 
 	@FXML
