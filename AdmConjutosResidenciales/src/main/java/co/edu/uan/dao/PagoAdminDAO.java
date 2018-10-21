@@ -73,4 +73,9 @@ public class PagoAdminDAO {
 		}
 	}
 
+	public boolean guardarRecibo(Recibo recibo) {
+		
+		return false;
+	}
+
 }

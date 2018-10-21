@@ -347,6 +347,44 @@ UNLOCK TABLES;
 
 
 
+--
+-- Table structure for table `recibo`
+--
+
+DROP TABLE IF EXISTS `recibo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recibo` (
+  `codigo` int(3) NOT NULL,
+  `ntorre` int(3) NOT NULL,
+  `napart` int(3) NOT NULL,
+  `zona` varchar(15) NOT NULL,
+  `costoadmin` float NOT NULL,
+  `costoparq` float NOT NULL,
+  `total` float NOT NULL,
+  `documento` varchar(15) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `documento` (`documento`),
+  CONSTRAINT `recibo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recibo`
+--
+
+LOCK TABLES `recibo` WRITE;
+/*!40000 ALTER TABLE `recibo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recibo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recibo`
+--
+
+
+
 -- vistas
 create view loginpersona as select persona.documento, persona.nombre, persona.telefono, persona.nacimiento, persona.correo, tipo_usuario.nombre as tipo, sesion.usuario, sesion.contraseña as contraseña
 from persona inner join sesion on persona.id_sesion = sesion.id inner join tipo_usuario on sesion.id_tipo = tipo_usuario.id;

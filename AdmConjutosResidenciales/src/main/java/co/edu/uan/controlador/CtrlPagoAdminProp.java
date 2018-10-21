@@ -39,14 +39,24 @@ public class CtrlPagoAdminProp implements Initializable{
 
     @FXML
     void impRecivo(ActionEvent event) {
-
+    	guardarRecibo();
     }
 
+    public void guardarRecibo() {
+    	int numeroAleatorio = (int) (Math.random() * 999999 + 1);
+    	recibo.setCodigo(Integer.toString(numeroAleatorio));
+    	if(PagoAdminDAO.getInstance().guardarRecibo(recibo)) {
+    		
+    	}
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		recibo= new Recibo();
-		PagoAdminDAO.getInstance().traerDatosRecibo(LoginDAO.getInstancePersona().getDocumento(), recibo);
+		recibo.setDocumento(LoginDAO.getInstancePersona().getDocumento());
+		recibo.setNombre(LoginDAO.getInstancePersona().getNombre());
+		PagoAdminDAO.getInstance().traerDatosRecibo(recibo.getDocumento(), recibo);
 		lbTorre.setText(Integer.toString(recibo.getTorre()));
 		lbApart.setText(Integer.toString(recibo.getApart()));
 		lbZona.setText(recibo.getZona());

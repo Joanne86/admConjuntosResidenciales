@@ -1,18 +1,34 @@
 package co.edu.uan.entidad;
 
 public class Recibo {
-	private String codigo;
+	private String codigo;	
 	private int torre;
 	private int apart;
 	private String zona;
 	private float costoAdmin;
 	private float costoParq;
 	private float total;
-	private String fecha;
-	
+	private String documento;
+	private String nombre;
 
 
 	public Recibo() {
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
 	}
 
 	public String getCodigo() {
@@ -70,14 +86,5 @@ public class Recibo {
 	public void setTotal(float total) {
 		this.total = total;
 	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-	
 	
 }
