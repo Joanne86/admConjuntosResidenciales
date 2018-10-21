@@ -355,15 +355,15 @@ DROP TABLE IF EXISTS `recibo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `recibo` (
-  `codigo` int(3) NOT NULL,
+  `codigo` varchar(15) NOT NULL,
+  `documento` varchar(15) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
   `ntorre` int(3) NOT NULL,
   `napart` int(3) NOT NULL,
   `zona` varchar(15) NOT NULL,
   `costoadmin` float NOT NULL,
   `costoparq` float NOT NULL,
   `total` float NOT NULL,
-  `documento` varchar(15) NOT NULL,
-  `nombre` varchar(60) NOT NULL,
   PRIMARY KEY (`codigo`),
   KEY `documento` (`documento`),
   CONSTRAINT `recibo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`)

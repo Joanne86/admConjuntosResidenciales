@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AppAdminConjuntos extends Application {
-//hola
+
      public static Stage stage;
 
     @Override

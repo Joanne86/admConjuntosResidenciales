@@ -74,8 +74,37 @@ public class PagoAdminDAO {
 	}
 
 	public boolean guardarRecibo(Recibo recibo) {
-		
-		return false;
+		boolean creado = false;
+
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		String sql = "INSERT INTO recibo(codigo, documento, nombre, ntorre, napart, zona, costoadmin, costoparq, total) VALUES (?,?,?,?,?,?,?,?,?)";
+
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, recibo.getCodigo());
+			ps.setString(2, recibo.getDocumento());
+			ps.setString(3, recibo.getNombre());
+			ps.setInt(4, recibo.getTorre());
+			ps.setInt(5, recibo.getApart());
+			ps.setString(6, recibo.getZona());
+			ps.setFloat(7, recibo.getCostoAdmin());
+			ps.setFloat(8, recibo.getCostoParq());
+			ps.setFloat(9, recibo.getTotal());
+			ps.execute();
+			creado = true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			creado = false;
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+
+			}
+		}
+
+		return creado;
 	}
 
 }

@@ -11,7 +11,9 @@ import co.edu.uan.entidad.Recibo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 
 public class CtrlPagoAdminProp implements Initializable{
 
@@ -46,7 +48,9 @@ public class CtrlPagoAdminProp implements Initializable{
     	int numeroAleatorio = (int) (Math.random() * 999999 + 1);
     	recibo.setCodigo(Integer.toString(numeroAleatorio));
     	if(PagoAdminDAO.getInstance().guardarRecibo(recibo)) {
-    		
+    		displayAlert(AlertType.CONFIRMATION, "siiiiii", "Guardo");
+    	}else {
+    		displayAlert(AlertType.ERROR, "ERROR", "A ocurrido un error");
     	}
     }
     
@@ -63,9 +67,12 @@ public class CtrlPagoAdminProp implements Initializable{
 		lbAdmin.setText(Float.toString(recibo.getCostoAdmin()));
 		lbParq.setText(Float.toString(recibo.getCostoParq()));
 		lbTotal.setText(Float.toString(recibo.getTotal()));
-		
-		
-		
-		
+	
+	}
+	private void displayAlert(AlertType type, String title, String message) {
+		Alert alert = new Alert(type);
+		alert.setTitle(title);
+		alert.setContentText(message);
+		alert.showAndWait();
 	}
 }
