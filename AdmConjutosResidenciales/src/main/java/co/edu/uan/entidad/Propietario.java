@@ -38,4 +38,6 @@ public class Propietario extends Persona {
 		this.apartamento = apartamento;
 	}
 
+	
+
 }

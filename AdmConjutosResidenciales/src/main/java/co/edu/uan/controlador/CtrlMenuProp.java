@@ -38,7 +38,8 @@ public class CtrlMenuProp implements Initializable{
 
     @FXML
     private JFXButton btnCerrarSesion;
-
+    @FXML
+    private JFXButton btnPagoAdmin;
     @FXML
     private JFXButton btnPagos;
 
@@ -81,7 +82,22 @@ public class CtrlMenuProp implements Initializable{
     void solicitarZonaComun(ActionEvent event) {
 
     }
+    @FXML
+    void pagarAdministracion(ActionEvent event) throws IOException {
+    	CtrlMenuPrincipal.drawer1.close();
+		if (pane3 == null) {
 
+			pane3 = FXMLLoader.load(getClass().getResource("/view/PagoAdminProp.fxml"));
+			pane3.setLayoutX(0);
+			pane3.setLayoutY(45);
+
+			CtrlMenuPrincipal.rootP.getChildren().add(pane3);
+			pane3.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane3.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+		} else {
+			pane3.toFront();
+		}
+    }
 
 
     @FXML
