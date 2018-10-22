@@ -49,17 +49,18 @@
             <Insets left="20.0" right="20.0" />
          </opaqueInsets>
       </HBox>
-      <TableView fx:id="tvTabla" fixedCellSize="1.0" layoutX="95.0" layoutY="299.0" opacity="0.87" prefHeight="178.0" prefWidth="914.0" AnchorPane.leftAnchor="95.0">
+      <TableView fx:id="tvTabla" layoutX="39.0" layoutY="299.0" opacity="0.87" prefHeight="178.0" prefWidth="1036.0" AnchorPane.leftAnchor="39.0">
         <columns>
           <TableColumn fx:id="clCodigo" prefWidth="112.0" text="Codigo" />
           <TableColumn fx:id="clDocumento" minWidth="3.0" prefWidth="104.0" text="Documento" />
             <TableColumn fx:id="clNombre" prefWidth="154.0" text="Nombre" />
             <TableColumn fx:id="clTorre" prefWidth="53.0" text="Torre" />
             <TableColumn fx:id="clApart" prefWidth="60.0" text="Apart" />
-            <TableColumn fx:id="clAdmin" prefWidth="96.0" text="Costo Admin" />
+            <TableColumn fx:id="clZona" prefWidth="108.0" text="Zona" />
+            <TableColumn fx:id="clAdmin" prefWidth="105.0" text="Costo Admin" />
             <TableColumn fx:id="clParq" prefWidth="123.0" text="Costo parqueadero" />
-            <TableColumn fx:id="clTotal" prefWidth="120.0" text="Total" />
-            <TableColumn fx:id="clCancelado" prefWidth="89.0" text="Cancelado" />
+            <TableColumn fx:id="clTotal" prefWidth="114.0" text="Total" />
+            <TableColumn fx:id="clCancelado" prefWidth="102.0" text="Cancelado" />
         </columns>
       </TableView>
       <Text fill="WHITE" layoutX="95.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del recibo de pago del propietario:">
@@ -67,7 +68,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <JFXButton fx:id="btnPagar" layoutX="842.0" layoutY="518.0" onAction="#realizarPago" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Cancelar pago" textFill="WHITE">
+      <JFXButton fx:id="btnPagar" layoutX="902.0" layoutY="511.0" onAction="#realizarPago" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Cancelar pago" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>

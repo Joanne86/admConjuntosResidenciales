@@ -32,7 +32,7 @@ public class MySQLDBAdapter implements IDBAdapter {
         try {
             String connectionString = createConnectionString();
             Connection connection = DriverManager.getConnection(connectionString);
-            System.out.println("Connection class ==> " + connection.getClass().getName());
+            
             return connection;
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,10 +49,7 @@ public class MySQLDBAdapter implements IDBAdapter {
         String user = prop.getProperty(DB_USER_PROP);
         String password = prop.getProperty(DB_PASSWORD_PROP);
 
-       // "jdbc:mysql://localhost:3306/colegio?useSSL=false&useTimezone=true&serverTimezone=UTC";
-        //?useSSL=false&useTimezone=true&serverTimezone=UTC
         String connectionString = "jdbc:mysql://" + host + ":" + port + "/" + db + "?user=" + user + "&password=" + password;
-        System.out.println("ConnectionString ==> " + connectionString);
         return connectionString;
     }
 }

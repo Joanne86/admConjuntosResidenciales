@@ -10,7 +10,6 @@ public class Cifrado {
         IMessageEncrypt aesImpl = new DefaultMessageEncryptImpl(new AESEncryptAlgorithm());
 		try {
 			passwordCifrado = aesImpl.encryptMessage(mensaje);
-			System.out.println("mensaje cifrado > " + passwordCifrado + "\n");
 			} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -22,7 +21,6 @@ public class Cifrado {
 		try {
 			
 			contraseñaDescifrada =aesImpl.decryptMessage(mensaje);
-			System.out.println("mensaje decifrado > " + contraseñaDescifrada + "\n");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

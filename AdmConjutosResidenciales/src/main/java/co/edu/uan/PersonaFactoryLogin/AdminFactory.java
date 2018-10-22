@@ -12,7 +12,6 @@ public class AdminFactory extends PersonaFactory{
     public Persona createPersona(String documento, String nombre, String correo,
 			Login login) {
     	
-        System.out.println("creando admin");
         return new Administrador(documento, nombre, correo, login);
        
     }

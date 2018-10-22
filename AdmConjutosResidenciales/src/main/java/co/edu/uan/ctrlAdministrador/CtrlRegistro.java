@@ -172,7 +172,6 @@ public class CtrlRegistro implements Initializable {
 			if (rbSiP.isSelected()) {
 				parqueadero = "si";
 			} else if (rbNoP.isSelected()) {
-				System.out.println("entra aqui");
 				parqueadero = "no";
 			}
 			int torre = cbTorre.getValue();

@@ -65,12 +65,12 @@ public class CtrlPagoAdminProp implements Initializable{
 		recibo.setDocumento(LoginDAO.getInstancePersona().getDocumento());
 		recibo.setNombre(LoginDAO.getInstancePersona().getNombre());
 		PagoAdminDAO.getInstance().traerDatosRecibo(recibo.getDocumento(), recibo);
-		lbTorre.setText(Integer.toString(recibo.getTorre()));
-		lbApart.setText(Integer.toString(recibo.getApart()));
+		lbTorre.setText(recibo.getTorre());
+		lbApart.setText(recibo.getApart());
 		lbZona.setText(recibo.getZona());
-		lbAdmin.setText(Float.toString(recibo.getCostoAdmin()));
-		lbParq.setText(Float.toString(recibo.getCostoParq()));
-		lbTotal.setText(Float.toString(recibo.getTotal()));
+		lbAdmin.setText(recibo.getCostoAdmin());
+		lbParq.setText(recibo.getCostoParq());
+		lbTotal.setText(recibo.getTotal());
 	
 	}
 	private void displayAlert(AlertType type, String title, String message) {

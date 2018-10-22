@@ -48,11 +48,10 @@ public class CtrlMenuPrincipal implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
-		// establece la fecha
-		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = new Date();
 		String fecha = dateFormat.format(date);
+		lbConjunto.setText("UANconjuntos");
 		lbFechaSistema.setText(fecha);
 		
 		lbNombreLogeado.setText(LoginDAO.getInstancePersona().getNombre());

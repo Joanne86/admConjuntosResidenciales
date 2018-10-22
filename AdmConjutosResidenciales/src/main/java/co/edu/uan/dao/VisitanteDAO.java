@@ -120,7 +120,6 @@ public class VisitanteDAO {
 			ps.setInt(5, visitante.getApart());
 			ps.setString(6, visitante.getEntrada());
 			ps.execute();
-			System.out.println(visitante.toString());
 			creado = true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

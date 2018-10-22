@@ -38,7 +38,6 @@ public class CtrlLogin {
 			displayAlert(AlertType.INFORMATION, "CAMPOS VACIOS", "Debe tener los campos llenos");
 		} else {
 			LoginDAO loginDAO = LoginDAO.getInstance();
-			System.out.println(Cifrado.claveCifrada(txtPass.getText()));
 			
 			if (loginDAO.iniciarSesion(txtUser.getText(), txtPass.getText())) {
 

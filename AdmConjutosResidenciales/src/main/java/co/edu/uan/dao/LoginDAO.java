@@ -30,7 +30,6 @@ public class LoginDAO {
 	}
 
 	public boolean iniciarSesion(String usuario, String contraseña) {
-		System.out.println(dbAdapter);
 
 		Connection connection = dbAdapter.getConnection();
 		
@@ -53,7 +52,6 @@ public class LoginDAO {
 			if (rs1.next()) {
 				String contraseñaCifrada= rs1.getString(1);
 				contraseñaDecifrada=Cifrado.claveDecifrada(contraseñaCifrada);	
-				System.out.println("contraseña descifrada: "+contraseñaDecifrada);
 			}			
 			ps = connection.prepareStatement(sql);// prepara la consulta
 			ps.setString(1, usuario);// se elvia el valor
