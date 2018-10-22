@@ -10,9 +10,32 @@ public class Recibo {
 	private float total;
 	private String documento;
 	private String nombre;
-
+	private String cancelado;
 
 	public Recibo() {
+	}
+
+	public Recibo(String codigo, int torre, int apart, String zona, float costoAdmin, float costoParq, float total,
+			String documento, String nombre, String cancelado) {
+		super();
+		this.codigo = codigo;
+		this.torre = torre;
+		this.apart = apart;
+		this.zona = zona;
+		this.costoAdmin = costoAdmin;
+		this.costoParq = costoParq;
+		this.total = total;
+		this.documento = documento;
+		this.nombre = nombre;
+		this.cancelado = cancelado;
+	}
+
+	public String getCancelado() {
+		return cancelado;
+	}
+
+	public void setCancelado(String cancelado) {
+		this.cancelado = cancelado;
 	}
 
 	public String getNombre() {

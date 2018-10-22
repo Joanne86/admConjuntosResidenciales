@@ -364,6 +364,7 @@ CREATE TABLE `recibo` (
   `costoadmin` float NOT NULL,
   `costoparq` float NOT NULL,
   `total` float NOT NULL,
+  `cancelado` varchar(4) NOT NULL,
   PRIMARY KEY (`codigo`),
   KEY `documento` (`documento`),
   CONSTRAINT `recibo_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `persona` (`documento`)

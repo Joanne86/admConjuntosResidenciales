@@ -8,6 +8,8 @@ import com.jfoenix.controls.JFXButton;
 import co.edu.uan.dao.LoginDAO;
 import co.edu.uan.dao.PagoAdminDAO;
 import co.edu.uan.entidad.Recibo;
+import co.edu.uan.reciboPropFacade.IReporteFacade;
+import co.edu.uan.reciboPropFacade.ReciboFacadeImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,8 +49,10 @@ public class CtrlPagoAdminProp implements Initializable{
     public void guardarRecibo() {
     	int numeroAleatorio = (int) (Math.random() * 999999 + 1);
     	recibo.setCodigo(Integer.toString(numeroAleatorio));
+    	recibo.setCancelado("no");
     	if(PagoAdminDAO.getInstance().guardarRecibo(recibo)) {
-    		displayAlert(AlertType.CONFIRMATION, "siiiiii", "Guardo");
+    		IReporteFacade reporteRecibo = new ReciboFacadeImpl();
+    		reporteRecibo.generarReporte(Integer.parseInt(recibo.getCodigo()));   		
     	}else {
     		displayAlert(AlertType.ERROR, "ERROR", "A ocurrido un error");
     	}

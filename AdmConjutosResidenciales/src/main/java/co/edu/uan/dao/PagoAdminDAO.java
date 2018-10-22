@@ -78,7 +78,7 @@ public class PagoAdminDAO {
 
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
-		String sql = "INSERT INTO recibo(codigo, documento, nombre, ntorre, napart, zona, costoadmin, costoparq, total) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO recibo(codigo, documento, nombre, ntorre, napart, zona, costoadmin, costoparq, total, cancelado) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			ps = connection.prepareStatement(sql);
@@ -91,6 +91,7 @@ public class PagoAdminDAO {
 			ps.setFloat(7, recibo.getCostoAdmin());
 			ps.setFloat(8, recibo.getCostoParq());
 			ps.setFloat(9, recibo.getTotal());
+			ps.setString(10, recibo.getCancelado());
 			ps.execute();
 			creado = true;
 		} catch (SQLException e) {

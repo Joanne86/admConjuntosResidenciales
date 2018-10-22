@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recibo" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="92123400-f0f5-4d70-9865-9aeb4cb360ee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     recibo.`codigo` AS recibo_codigo,
+     recibo.`documento` AS recibo_documento,
+     recibo.`nombre` AS recibo_nombre,
+     recibo.`ntorre` AS recibo_ntorre,
+     recibo.`napart` AS recibo_napart,
+     recibo.`zona` AS recibo_zona,
+     recibo.`costoadmin` AS recibo_costoadmin,
+     recibo.`costoparq` AS recibo_costoparq,
+     recibo.`total` AS recibo_total
+FROM
+     recibo
+WHERE recibo.`codigo`= $P!{codigo}]]>
+	</queryString>
+	<field name="recibo_codigo" class="java.lang.String"/>
+	<field name="recibo_documento" class="java.lang.String"/>
+	<field name="recibo_nombre" class="java.lang.String"/>
+	<field name="recibo_ntorre" class="java.lang.Integer"/>
+	<field name="recibo_napart" class="java.lang.Integer"/>
+	<field name="recibo_zona" class="java.lang.String"/>
+	<field name="recibo_costoadmin" class="java.lang.Float"/>
+	<field name="recibo_costoparq" class="java.lang.Float"/>
+	<field name="recibo_total" class="java.lang.Float"/>
+	<variable name="recibo_documento_1" class="java.lang.Integer" resetType="Column" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{recibo_documento}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="83" y="10" width="371" height="32" uuid="385e642d-b3e5-4e16-8afd-0325d72b0605"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[Recibo Conjunto residencial UANconjuntos]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="454" y="10" width="100" height="20" uuid="70798017-7674-45b5-9f04-c678225e551a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="253" y="0" width="100" height="20" uuid="7a576d16-006c-4980-a24d-eb768ca6a913"/>
+				<textFieldExpression><![CDATA[$F{recibo_codigo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="153" y="0" width="100" height="20" uuid="7bbc48f4-aa4b-42cb-8745-ee2736eaf037"/>
+				<text><![CDATA[CODIGO:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="281" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="118" height="20" uuid="3f526509-9b52-4756-8238-c02071565235"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="38" width="118" height="20" uuid="9b391330-814e-4cb7-96ae-b4262f8846bb"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="84" width="90" height="20" uuid="07508eba-ec70-4e3e-957e-6ce7985fdd67"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Torre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="122" width="83" height="20" uuid="b8f41283-38df-478b-9da1-ac70e4e798f8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apartamento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="91" height="20" uuid="82a4f6b8-40db-47c9-975c-df5de06f2c10"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="192" width="136" height="20" uuid="5d1b0ffe-beb7-438c-af5c-4cfc489806b1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo administración:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="232" width="118" height="20" uuid="1bd6e8d6-7543-45b7-ab00-6a237b42d6e2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo parqueadero:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="0" width="100" height="20" uuid="3f2be385-e3a0-4455-a5d9-22a4969c7418"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="38" width="100" height="20" uuid="6b2657b4-edd9-40ae-8093-fe1689a6e80b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="122" width="65" height="20" uuid="cbcffb70-fad0-40c9-9735-53a88d6483a6"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_napart}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="158" width="73" height="20" uuid="8c84521d-f657-489a-9a20-0d942ce26336"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_zona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="192" width="100" height="20" uuid="0a0906b5-3ce4-4081-bf6b-6c88caf7ce35"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_costoadmin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="232" width="100" height="20" uuid="235526cf-de67-49af-9ee5-4dc63a5da71a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_costoparq}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="84" width="72" height="20" uuid="7e235009-ff9f-483d-8c9a-031964819ed8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_ntorre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="14" width="135" height="31" uuid="5a3466e0-41d9-46ab-891f-f7aff4929d4d"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total a pagar:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="162" y="14" width="118" height="31" uuid="1c0cd639-e1d9-4d0e-8a32-3c3fd77cbb61"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recibo_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="218" y="34" width="80" height="20" uuid="c744574d-2b2f-4f66-a127-cc84bfa12b59"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="298" y="34" width="40" height="20" uuid="d2599d25-3d94-45cf-b342-b5a5cc193e47"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

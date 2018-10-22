@@ -28,7 +28,7 @@
       </Text>
       <HBox layoutX="424.0" layoutY="197.0" prefHeight="46.0" prefWidth="441.0">
          <children>
-            <JFXTextField fx:id="txtNdocumentoBuscar" focusColor="WHITE" labelFloat="true" maxWidth="287.0" minWidth="239.0" prefHeight="35.0" prefWidth="287.0" promptText="Numero documento" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
+            <JFXTextField fx:id="txtCodigo" focusColor="WHITE" labelFloat="true" maxWidth="287.0" minWidth="239.0" prefHeight="35.0" prefWidth="287.0" promptText="Codigo de recibo de pago" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="#dcecff">
                <font>
                   <Font size="15.0" />
                </font>
@@ -49,36 +49,25 @@
             <Insets left="20.0" right="20.0" />
          </opaqueInsets>
       </HBox>
-      <TableView fx:id="tvTabla" fixedCellSize="1.0" layoutX="197.0" layoutY="299.0" opacity="0.87" prefHeight="178.0" prefWidth="830.0" AnchorPane.leftAnchor="197.0">
+      <TableView fx:id="tvTabla" fixedCellSize="1.0" layoutX="95.0" layoutY="299.0" opacity="0.87" prefHeight="178.0" prefWidth="914.0" AnchorPane.leftAnchor="95.0">
         <columns>
-          <TableColumn fx:id="clInfoApto" prefWidth="147.0" text="Informacion apto" />
-          <TableColumn fx:id="clTipoApto" minWidth="3.0" prefWidth="132.0" text="Tipo apto" />
-            <TableColumn fx:id="clFechaPago" prefWidth="184.0" text="fecha a pagar" />
-            <TableColumn fx:id="clCargoParqueadero" prefWidth="161.0" text="cargo por parqueadero" />
-            <TableColumn fx:id="clSubTotal" prefWidth="203.0" text="Subtotal" />
+          <TableColumn fx:id="clCodigo" prefWidth="112.0" text="Codigo" />
+          <TableColumn fx:id="clDocumento" minWidth="3.0" prefWidth="104.0" text="Documento" />
+            <TableColumn fx:id="clNombre" prefWidth="154.0" text="Nombre" />
+            <TableColumn fx:id="clTorre" prefWidth="53.0" text="Torre" />
+            <TableColumn fx:id="clApart" prefWidth="60.0" text="Apart" />
+            <TableColumn fx:id="clAdmin" prefWidth="96.0" text="Costo Admin" />
+            <TableColumn fx:id="clParq" prefWidth="123.0" text="Costo parqueadero" />
+            <TableColumn fx:id="clTotal" prefWidth="120.0" text="Total" />
+            <TableColumn fx:id="clCancelado" prefWidth="89.0" text="Cancelado" />
         </columns>
       </TableView>
-      <Text fill="WHITE" layoutX="193.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de (los) apartamento(s) de: ">
+      <Text fill="WHITE" layoutX="95.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos del recibo de pago del propietario:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fx:id="lbNombre" fill="WHITE" layoutX="435.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;nombre&gt;">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="204.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total a pagar:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
-      <Text fx:id="lbTotalPagar" fill="WHITE" layoutX="324.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;SumaTotal&gt;">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Text>
-      <JFXButton fx:id="btnPagar" layoutX="543.0" layoutY="533.0" onAction="#realizarPago" prefHeight="33.0" prefWidth="145.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Realizar pago" textFill="WHITE">
+      <JFXButton fx:id="btnPagar" layoutX="842.0" layoutY="518.0" onAction="#realizarPago" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Cancelar pago" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
