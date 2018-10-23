@@ -7,9 +7,7 @@ import java.sql.SQLException;
 
 import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
-import co.edu.uan.entidad.PropietarioTabla;
 import co.edu.uan.entidad.Recibo;
-import co.edu.uan.entidad.Visitante;
 import javafx.collections.ObservableList;
 
 public class PagoAdminDAO {

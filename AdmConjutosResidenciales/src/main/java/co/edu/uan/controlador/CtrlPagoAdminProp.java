@@ -53,7 +53,9 @@ public class CtrlPagoAdminProp implements Initializable{
     	if(PagoAdminDAO.getInstance().guardarRecibo(recibo)) {
     		IReporteFacade reporteRecibo = new ReciboFacadeImpl();
     		reporteRecibo.generarReporte(Integer.parseInt(recibo.getCodigo()));   		
-    	}else {
+                btnImpRecibo.setDisable(true);
+        
+        }else {
     		displayAlert(AlertType.ERROR, "ERROR", "A ocurrido un error");
     	}
     }

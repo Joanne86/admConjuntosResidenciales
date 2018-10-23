@@ -73,10 +73,11 @@ public class EnvioCorreo implements Correo {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "leidyjoanne86@gmail.com";
-            String passwordRemitente = "6835820gaga";
+            Properties admin = PropertiesUtil.loadProperty(DB_PROPERTIES);
+            String correoRemitente = admin.getProperty(DB_EMAIL_PROP);
+            String passwordRemitente = admin.getProperty(DB_PASSWORD_PROP);
             String correoReceptor = servicio.getCorreo();
-            String asunto = "Usuario y contraseña del conjunto residencial";
+            String asunto = "Horario personal de servicio del conjunto residencial UANconjuntos";
             String mensaje = "Hola<br>Hola "+servicio.getNombre()+", su servicio y horario son:<br> servicio:"+servicio.getServicio()+" "
             		+ " y horario: "+servicio.getHorario()+"<br><br>Por <b>Software conjunto residencial</b>";
 

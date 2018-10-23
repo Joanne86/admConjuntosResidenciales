@@ -31,7 +31,7 @@ import co.edu.uan.envioCorreoProxy.Correo;
 import co.edu.uan.envioCorreoProxy.ProxyEnvioCorreo;
 import co.edu.uan.torreBuilder.Apartamento;
 
-public class CtrlRegistro implements Initializable {
+public class CtrlRegistroProp implements Initializable {
 
 	@FXML
 	private JFXButton btnActualizarTv;
