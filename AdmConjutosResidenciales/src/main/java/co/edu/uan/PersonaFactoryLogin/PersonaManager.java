@@ -10,6 +10,10 @@ public class PersonaManager {
 	private Persona persona;
 	private PersonaFactory personaF;
 
+	/**
+	 * metodo que obtiene el tipo de persona que se logueo
+	 * @param personaF
+	 */
 	public void setFactory(PersonaFactory personaF) {
 		this.personaF = personaF;
 	}

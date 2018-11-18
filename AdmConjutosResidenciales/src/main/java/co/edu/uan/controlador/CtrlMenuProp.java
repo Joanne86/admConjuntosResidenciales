@@ -31,28 +31,25 @@ public class CtrlMenuProp implements Initializable{
     private JFXButton btnQuejasSugerencias;
 
     @FXML
-    private JFXButton btnSolicitudZona;
-
-    @FXML
     private JFXButton btnGestionarArrendatarios;
 
     @FXML
     private JFXButton btnCerrarSesion;
     @FXML
     private JFXButton btnPagoAdmin;
-    @FXML
-    private JFXButton btnPagos;
+
 
     static AnchorPane pane2;
 	static AnchorPane pane3;
 	static AnchorPane pane4;
-	static AnchorPane pane5;
-	static AnchorPane pane6;
-	static AnchorPane pane7;
-	static AnchorPane pane8;
 
 	public static Stage primaryStage;
 
+	/**
+	 * metodo para abrir la vista pricipal al cerrar sesion
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void cerrarSesion(ActionEvent event) throws IOException {
     	primaryStage = new Stage();
@@ -63,7 +60,9 @@ public class CtrlMenuProp implements Initializable{
 
 		primaryStage.show();
 		primaryStage.setMaximized(true);
-
+		pane2=null;
+		pane3=null;
+		pane4=null;
 		CtrlLogin.cerrarVentana();
     }
     
@@ -72,16 +71,26 @@ public class CtrlMenuProp implements Initializable{
 	}
 
     @FXML
-    void gestionarArrendatarios(ActionEvent event) {
+    void gestionarArrendatarios(ActionEvent event) throws IOException {
+    	CtrlMenuPrincipal.drawer1.close();
+		if (pane4 == null) {
 
+			pane4 = FXMLLoader.load(getClass().getResource("/view/RegistroArrendatario.fxml"));
+			pane4.setLayoutX(0);
+			pane4.setLayoutY(45);
+
+			CtrlMenuPrincipal.rootP.getChildren().add(pane4);
+			pane4.setPrefHeight(java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - 45);
+			pane4.setPrefWidth(java.awt.Toolkit.getDefaultToolkit().getScreenSize().width);
+		} else {
+			pane4.toFront();
+		}
     }
-
-
-
-    @FXML
-    void solicitarZonaComun(ActionEvent event) {
-
-    }
+    /**
+     * metodo para abrir la vista se pago de administracion por parte del propietario
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void pagarAdministracion(ActionEvent event) throws IOException {
     	CtrlMenuPrincipal.drawer1.close();
@@ -99,7 +108,11 @@ public class CtrlMenuProp implements Initializable{
 		}
     }
 
-
+    /**
+     * metodo para abrir la vista de quejas y sigerencias por parte del propietario
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void quejasSugerencias(ActionEvent event) throws IOException {
     	CtrlMenuPrincipal.drawer1.close();
@@ -115,10 +128,7 @@ public class CtrlMenuProp implements Initializable{
 		} else {
 			pane2.toFront();
 		}
-    }
-
-
-
+    }  
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lbRol.setText(LoginDAO.getInstancePersona().getLogin().getTipoPersona());

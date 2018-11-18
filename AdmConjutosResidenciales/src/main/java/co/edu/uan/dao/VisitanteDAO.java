@@ -23,7 +23,10 @@ public class VisitanteDAO {
 		}
 		return visitanteDAO;
 	}
-
+/**
+ * metodo para obtener los datos de los visitantes para llenar la tabla
+ * @param lista
+ */
 	public void traerDatosTabla(ObservableList<Visitante> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -46,7 +49,11 @@ public class VisitanteDAO {
 			}
 		}
 	}
-
+/**
+ * metodo para filtrar los visitantes por documento y dar salida
+ * @param lista
+ * @param documento
+ */
 	public void buscarVisitante(ObservableList<Visitante> lista, String documento) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -71,7 +78,11 @@ public class VisitanteDAO {
 			}
 		}
 	}
-
+/**
+ * metodopara guardar los visitantes
+ * @param visitante
+ * @return
+ */
 	public boolean createVisitante(Visitante visitante) {
 		boolean creado = false;
 
@@ -103,7 +114,11 @@ public class VisitanteDAO {
 
 		return creado;
 	}
-
+/**
+ * metodo para registrar la salida de un visitante
+ * @param visitante
+ * @return
+ */
 	public boolean registrarSalida(Visitante visitante) {
 		boolean creado = false;
 

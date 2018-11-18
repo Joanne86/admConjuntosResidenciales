@@ -56,16 +56,10 @@ public class CtrlGestionApartamentos implements Initializable {
 	private TableColumn<TorreCom, String> clTipo;
 
 	@FXML
-	private JFXButton btnEliminar;
-
-	@FXML
 	private TableColumn<TorreCom, String> clApartamento;
 
 	@FXML
 	private JFXTextField txtTipoBusqueda;
-
-	@FXML
-	private JFXButton btnModificar;
 
 	@FXML
 	private JFXButton btnRegistrar;
@@ -83,16 +77,10 @@ public class CtrlGestionApartamentos implements Initializable {
 
 	private String idZona;
 
-	@FXML
-	void modificar(ActionEvent event) {
-
-	}
-
-	@FXML
-	void eliminar(ActionEvent event) {
-
-	}
-
+	/**
+	 * metodo para registrar torres y apartamentos
+	 * @param event
+	 */
 	@FXML
 	void registrar(ActionEvent event) {
 		String tipo = null;
@@ -142,12 +130,10 @@ public class CtrlGestionApartamentos implements Initializable {
 				torreBuilder.addApartamentos(apt, "", "");
 			}
 
-			TorreDAO torreDAO = TorreDAO.getInstace();
-
-			if (torreDAO.verificarTorre(txtTorre.getText())) {
+			if (TorreDAO.getInstace().verificarTorre(txtTorre.getText())) {
 				displayAlert(AlertType.INFORMATION, "TORRE EXISTENTE", "El numero de la torre ya existe");
 			} else {
-				if (torreDAO.createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
+				if (TorreDAO.getInstace().createTorre(torreBuilder.setNumero(Integer.parseInt(txtTorre.getText()))
 										.setZona(idZona, tipo, Float.parseFloat(txtCostoAdmin.getText()),
 										numeroPuestosParq, Float.parseFloat(txtCostoParqueadero.getText()))
 										.build())) {
@@ -178,7 +164,11 @@ public class CtrlGestionApartamentos implements Initializable {
 		txtCostoParqueadero.setText("0");
 		cbTipo.setValue(null);
 	}
-	
+	/**
+	 * metodo para determinar si una cadena es numerico o no
+	 * @param cadena evalua la cadena
+	 * @return
+	 */
 	private boolean isNumeric(String cadena) {
 		try {
 			Integer.parseInt(cadena);
@@ -187,17 +177,21 @@ public class CtrlGestionApartamentos implements Initializable {
 			return false;
 		}
 	}
-
+	
+/**
+ * metodo para filtrar las torres por zona
+ * @param event
+ */
 	@FXML
 	void buscar(ActionEvent event) {
 		if (txtTipoBusqueda.getText().equals("")) {
 			displayAlert(AlertType.INFORMATION, "CAMPO VACIO", "Debe tener el campo de busqueda lleno");
 		} else {
 
-			TorreDAO torreDAO = TorreDAO.getInstace();
+			
 			listaTorre = FXCollections.observableArrayList();
 
-			torreDAO.buscarZona(listaTorre, txtTipoBusqueda.getText());
+			TorreDAO.getInstace().buscarZona(listaTorre, txtTipoBusqueda.getText());
 			tvTabla.setItems(listaTorre);
 
 			clTorre.setCellValueFactory(new PropertyValueFactory<TorreCom, String>("numero"));
@@ -216,14 +210,15 @@ public class CtrlGestionApartamentos implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * metodo para cargar datos de la zona segun sea la seleccionada
+	 * @param event
+	 */
 	@FXML
 	void cargarDatosZona(ActionEvent event) {
-		// se pasa a un zonaDAO que devuelva los datos de esa zona
-		ZonaDAO zonaDAO = new ZonaDAO();
-
-		txtCostoAdmin.setText(zonaDAO.traerDatosDeZonaAdmin(cbTipo.getValue()));
-		txtCostoParqueadero.setText(zonaDAO.traerDatosDeZonaParq(cbTipo.getValue()));
-		idZona = zonaDAO.traerDatosDeZonaId(cbTipo.getValue());
+		txtCostoAdmin.setText(ZonaDAO.getInstance().traerDatosDeZonaAdmin(cbTipo.getValue()));
+		txtCostoParqueadero.setText(ZonaDAO.getInstance().traerDatosDeZonaParq(cbTipo.getValue()));
+		idZona = ZonaDAO.getInstance().traerDatosDeZonaId(cbTipo.getValue());
 	}
 
 	public void iniciarlizarLista() {
@@ -248,8 +243,8 @@ public class CtrlGestionApartamentos implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ZonaDAO zonaDAO = new ZonaDAO();
-		ObservableList<String> lista = zonaDAO.listZona();
+		
+		ObservableList<String> lista = ZonaDAO.getInstance().listZona();
 		cbTipo.setItems(lista);
 		iniciarlizarLista();
 	}

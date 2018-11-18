@@ -31,25 +31,6 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="btnModificar" disable="true" layoutX="977.0" layoutY="364.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="EDIT" size="1.5em" />
-         </graphic>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXButton>
-      <JFXButton fx:id="btnEliminar" disable="true" layoutX="979.0" layoutY="457.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
-         </graphic>
-      </JFXButton>
       <JFXButton fx:id="btnRegistrar" layoutX="977.0" layoutY="277.0" onAction="#registrar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE">
          <font>
             <Font size="15.0" />

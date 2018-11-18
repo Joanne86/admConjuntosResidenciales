@@ -12,21 +12,13 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="243.0" style="-fx-background-color: #339DE5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlMenuProp">
    <children>
-      <Accordion layoutY="368.0" opacity="0.7" prefHeight="273.0" prefWidth="243.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="-1.0" AnchorPane.topAnchor="368.0">
+      <Accordion layoutX="-1.0" layoutY="328.0" opacity="0.7" prefHeight="313.0" prefWidth="243.0" style="-fx-background-color: BLACK;" AnchorPane.bottomAnchor="-1.0" AnchorPane.topAnchor="328.0">
          <panes>
             <TitledPane alignment="CENTER" prefHeight="153.0" prefWidth="243.0" text="Mi cuenta">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="268.0" prefWidth="241.0">
                      <children>
-                        <JFXButton fx:id="btnActualizarDatos" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Actualizar mis datos">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIcon fill="#125b61" iconName="GEARS" />
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btnCerrarSesion" alignment="TOP_LEFT" layoutY="40.0" onAction="#cerrarSesion" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Cerrar sesion">
+                        <JFXButton fx:id="btnCerrarSesion" alignment="TOP_LEFT" onAction="#cerrarSesion" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Cerrar sesion">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -53,16 +45,8 @@
       </ImageView>
       <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="67.0" layoutY="137.0" size="12em" />
       <Label fx:id="lbRol" layoutX="109.0" layoutY="158.0" text="&lt;rol&gt;" textFill="WHITE" />
-      <Label fx:id="lbNombre" layoutX="38.0" layoutY="182.0" text="&lt;nombre&gt;" textFill="WHITE" />
-      <JFXButton fx:id="btnSolicitudZona" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#solicitarZonaComun" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Solicitar zona comun">
-         <font>
-            <Font size="17.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="#125b61" iconName="PAW" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnQuejasSugerencias" alignment="TOP_LEFT" layoutX="1.0" layoutY="288.0" onAction="#quejasSugerencias" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Quejas/sugerencias">
+      <Label fx:id="lbNombre" layoutX="67.0" layoutY="181.0" text="&lt;nombre&gt;" textFill="WHITE" />
+      <JFXButton fx:id="btnQuejasSugerencias" alignment="TOP_LEFT" layoutX="1.0" layoutY="248.0" onAction="#quejasSugerencias" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Quejas/sugerencias">
          <font>
             <Font size="17.0" />
          </font>
@@ -70,7 +54,7 @@
             <FontAwesomeIcon fill="#125b61" iconName="INBOX" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnSolicitudZona1" alignment="TOP_LEFT" layoutX="1.0" layoutY="208.0" onAction="#gestionarArrendatarios" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar arrendatarios">
+      <JFXButton fx:id="btnGestionarArrendatarios" alignment="TOP_LEFT" layoutX="1.0" layoutY="208.0" onAction="#gestionarArrendatarios" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Gestionar arrendatarios">
          <font>
             <Font size="17.0" />
          </font>
@@ -78,7 +62,7 @@
             <FontAwesomeIcon fill="#125b61" iconName="USERS" />
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnPagoAdmin" alignment="TOP_LEFT" layoutX="1.0" layoutY="328.0" onAction="#pagarAdministracion" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Pagar administracion">
+      <JFXButton fx:id="btnPagoAdmin" alignment="TOP_LEFT" layoutX="1.0" layoutY="288.0" onAction="#pagarAdministracion" prefHeight="40.0" prefWidth="241.0" style="-fx-background-color: #AED6F1; -fx-text-fill: black; -fx-border-color: #5DADE2;" text="Pagar administracion">
          <font>
             <Font size="17.0" />
          </font>

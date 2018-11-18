@@ -37,6 +37,9 @@ public class EnvioCorreo implements Correo {
             String correoRemitente = admin.getProperty(DB_EMAIL_PROP);
             String passwordRemitente = admin.getProperty(DB_PASSWORD_PROP);
 
+            System.out.println(correoRemitente);
+            System.out.println(passwordRemitente);
+            
             String correoReceptor = prop.getCorreo();
             String asunto = "Usuario y contraseña del conjunto residencial";
             String mensaje = "Hola<br>Hola "+prop.getNombre()+", su usuario y contraseña son:<br> usuario:"+prop.getLogin().getUsuario()+" "
@@ -56,8 +59,10 @@ public class EnvioCorreo implements Correo {
             
             return true;     
         } catch (AddressException ex) {
+        	System.out.println(ex.getMessage());
         	return false;
         } catch (MessagingException ex) {
+        	System.out.println(ex.getMessage());
         	return false;
         }
 	}

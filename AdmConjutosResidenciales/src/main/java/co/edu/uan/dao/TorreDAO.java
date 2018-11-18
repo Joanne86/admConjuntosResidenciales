@@ -9,6 +9,7 @@ import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
 
 import co.edu.uan.torreBuilder.Torre;
+import co.edu.uan.torreBuilder.TorreApart;
 import co.edu.uan.torreBuilder.TorreCom;
 import javafx.collections.ObservableList;
 
@@ -25,7 +26,11 @@ public class TorreDAO {
 		}
 		return torreDAO;
 	}
-
+/**
+ * metodo para guardar las torres
+ * @param torre
+ * @return
+ */
 	public boolean createTorre(Torre torre) {
 	boolean creada=false;
 		
@@ -36,7 +41,7 @@ public class TorreDAO {
 	
 	String sql = "INSERT INTO torre(numero, naptos, npuestos, idzona) VALUES (?,?,?,?)";
 	String sql2 = "INSERT INTO torreapart(ntorre, napartamento, reside, parqueadero, documento) VALUES (?,?,?,?,?)";
-	String sql3 = "INSERT INTO parqueadero(numero) VALUES (?)";
+	String sql3 = "INSERT INTO parqueadero(numero, ocupado) VALUES (?,?)";
 	try { 
         ps = connection.prepareStatement(sql);
         ps.setInt(1, torre.getNumero());
@@ -57,6 +62,7 @@ public class TorreDAO {
         ps3 = connection.prepareStatement(sql3);
         for(int i=0; i<torre.getZona().getParqueadero().getNumeros().size(); i++) {
         	ps3.setString(1, torre.getZona().getParqueadero().getNumeros().get(i));
+        	ps3.setString(2, "No");
         	ps3.execute();
         }
         creada=true;
@@ -71,7 +77,10 @@ public class TorreDAO {
     }
 	return creada;
 	}
-	
+	/**
+	 * metodo para obtener los datos de las torres
+	 * @param lista
+	 */
 	public void traerDatosTabla(ObservableList<TorreCom> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -97,7 +106,11 @@ public class TorreDAO {
 			}
 		}
 	}
-
+/**
+ * metodo para verificar si la torre existe
+ * @param numero
+ * @return
+ */
 	public boolean verificarTorre(String numero) {
 		boolean encontrado=false;
 		Connection connection = dbAdapter.getConnection();
@@ -127,7 +140,11 @@ public class TorreDAO {
 	public void updateTorre() {
 
 	}
-
+	/**
+	 * metodo para filtrar las zonas por el nombre de las zonas
+	 * @param lista
+	 * @param zona
+	 */
 	public void buscarZona(ObservableList<TorreCom> lista, String zona) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -152,7 +169,10 @@ public class TorreDAO {
 			}
 		}
 	}
-	
+	/**
+	 * metodo para obtener las torres para el registro de los propietarios
+	 * @param listaTorres
+	 */
 	public void traerTorres(ObservableList<Integer> listaTorres) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -180,7 +200,11 @@ public class TorreDAO {
 		}
 		
 	}
-	
+	/**
+	 * metodo para obtener los apartamentos de acuerdo al numero de la torre
+	 * @param listaAptos
+	 * @param torre
+	 */
 	public void traerAptos(ObservableList<Integer> listaAptos, int torre) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps2 = null;
@@ -202,6 +226,11 @@ public class TorreDAO {
 		}
 				
 	}
+	/**
+	 * metodo para traer los apartamentos ocupados para el registro de los visitantes
+	 * @param listaAptos
+	 * @param torre
+	 */
 	public void traerAptosOcupados(ObservableList<Integer> listaAptos, int torre) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps2 = null;
@@ -224,7 +253,30 @@ public class TorreDAO {
 		}
 				
 	}
-	public void deleteTorre() {
-
+	/**
+	 * metodo para obtener la torre y el apartamento del propietario
+	 * @param documento
+	 * @param torre
+	 * @param apart
+	 */
+	public void traerTorreApart(String documento, TorreApart torreApart) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps2 = null;
+		ResultSet rs2 = null;
+		String sql2 = "SELECT ntorre, napartamento FROM apartprop WHERE documento=?";
+		
+		//aptos
+		try {
+			ps2 = connection.prepareStatement(sql2);
+			ps2.setString(1, documento);
+			rs2 = ps2.executeQuery();
+			while (rs2.next()) {
+				torreApart.setTorre(rs2.getInt(1));
+				torreApart.setApart(rs2.getInt(2));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

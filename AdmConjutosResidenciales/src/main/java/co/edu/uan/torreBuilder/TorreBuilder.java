@@ -1,7 +1,11 @@
 package co.edu.uan.torreBuilder;
 
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author LEIDY RODRIGUEZ
+ *
+ */
 public class TorreBuilder implements IBuilder<Torre>{
 	
 	private int numero;

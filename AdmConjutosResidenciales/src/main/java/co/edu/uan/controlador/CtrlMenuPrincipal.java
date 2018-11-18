@@ -59,6 +59,7 @@ public class CtrlMenuPrincipal implements Initializable {
 		hamburger1 = hamburger;
 		rootP = root;
 		drawer1 = drawer;
+		//esto podria mejorarse se esta repitiendo codigo
 		try {
 			if(LoginDAO.getInstancePersona().getLogin().getTipoPersona().equals("administrador")) {
 				panelMenu = FXMLLoader.load(getClass().getResource("/view/MenuAdmin.fxml"));

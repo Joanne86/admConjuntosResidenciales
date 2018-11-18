@@ -25,8 +25,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CtrlGestionServicios implements Initializable {
 
-	@FXML
-	private JFXButton btnReporte;
 
 	@FXML
 	private TableColumn<Servicio, String> clCorreo;
@@ -62,9 +60,6 @@ public class CtrlGestionServicios implements Initializable {
 	private TableColumn<Servicio, String> clTelefono;
 
 	@FXML
-	private JFXButton btnEliminar;
-
-	@FXML
 	private TableColumn<Servicio, String> clDocumento;
 
 	@FXML
@@ -80,9 +75,6 @@ public class CtrlGestionServicios implements Initializable {
 	private JFXButton btnRegistrar;
 
 	@FXML
-	private JFXButton btnModificar;
-
-	@FXML
 	private JFXButton btnBuscar;
 
 	@FXML
@@ -93,6 +85,10 @@ public class CtrlGestionServicios implements Initializable {
 
 	private ObservableList<Servicio> listaServ;
 
+	/**
+	 * metodo para buscar un personal de servicio por cedula
+	 * @param event
+	 */
 	@FXML
 	void buscar(ActionEvent event) {
 		if(txtNdocumento.getText().isEmpty()) {
@@ -108,6 +104,10 @@ public class CtrlGestionServicios implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para registrar el personal de servicio
+	 * @param event
+	 */
 	@FXML
 	void registrar(ActionEvent event) {
 
@@ -148,21 +148,6 @@ public class CtrlGestionServicios implements Initializable {
 		txtTelefono.setText("");
 		cbServicio.setValue(null);
 		txtHorario.setText("");
-	}
-
-	@FXML
-	void eliminar(ActionEvent event) {
-
-	}
-
-	@FXML
-	void modificar(ActionEvent event) {
-
-	}
-
-	@FXML
-	void generarReporte(ActionEvent event) {
-
 	}
 
 	@FXML

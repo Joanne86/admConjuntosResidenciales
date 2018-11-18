@@ -1,27 +1,26 @@
 package co.edu.uan.util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.security.CodeSource;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesUtil {
+	/**
+	 * metodo que lee archivos de propiedades
+	 * @param arc
+	 * @return
+	 */
 	public static Properties loadProperty(String arc){
-       /* try {
-            Properties properties = new Properties();
-            InputStream inputStream = PropertiesUtil.class.getClassLoader().getResourceAsStream(propertiesURL);
-            properties.load(inputStream);
-            return properties;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }*/
+		 try {
+	            Properties properties = new Properties();
+	            InputStream inputStream = PropertiesUtil.class.getClassLoader().getResourceAsStream(arc);
+	            properties.load(inputStream);
+	            return properties;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return null;
+	        }
 		
-		
+		/*
 		Properties prop = null;
 	    try {
 	        CodeSource codeSource = PropertiesUtil.class.getProtectionDomain().getCodeSource();
@@ -42,6 +41,6 @@ public class PropertiesUtil {
 	       // Logger.getLogger(funcionesUtilidad.class.getName()).log(Level.SEVERE, null, ex);
 	    }
 	    return prop;
-            
+          */  
     }
 }

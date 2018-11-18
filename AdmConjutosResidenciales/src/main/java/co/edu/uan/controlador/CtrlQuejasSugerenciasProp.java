@@ -25,6 +25,10 @@ public class CtrlQuejasSugerenciasProp {
     @FXML
     private RadioButton rbSugerencia;
 
+    /**
+     * metodo para enviar las quejas y/o sugerencias
+     * @param event
+     */
     @FXML
     void enviar(ActionEvent event) {
     	if(txtAreaDetalles.getText().isEmpty()||(!rbQueja.isSelected()&&!rbSugerencia.isSelected())) {
@@ -37,17 +41,15 @@ public class CtrlQuejasSugerenciasProp {
     		if(rbSugerencia.isSelected()){
     			tipoNovedad="Sugerencia";
     		}
-    		
-    		NovedadDAO novedadDAO = NovedadDAO.getInstance();
-    		if(novedadDAO.guardarNovedad(tipoNovedad,txtAreaDetalles.getText(), LoginDAO.getInstancePersona().getDocumento())) {
+
+    		if(NovedadDAO.getInstance().guardarNovedad(tipoNovedad,txtAreaDetalles.getText(), LoginDAO.getInstancePersona().getDocumento())) {
     			displayAlert(AlertType.INFORMATION, "NOVEDAD ENVIADA", "Su novedad acaba de ser enviada al administrador");
     			txtAreaDetalles.setText("");
     			rbQueja.setSelected(false);
     			rbSugerencia.setSelected(false);
     		}else{
     			displayAlert(AlertType.ERROR, "ERROR AL ENVIAR", "Ocurrio un error al enviar la novedad");
-    		}
-    		
+    		}		
     	}
     } 
     private void displayAlert(AlertType type, String title, String message) {

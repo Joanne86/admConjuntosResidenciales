@@ -41,6 +41,6 @@
          </font>
       </Text>
       <FontAwesomeIcon fill="WHITE" iconName="USER" layoutX="402.0" layoutY="253.0" size="10em" />
-      <Text fill="WHITE" layoutX="208.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no sabe su usuario y contraseña por favor revice su bandeja de entrada en su correo electronico" />
+      <Text fill="WHITE" layoutX="208.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no sabe su usuario y contraseña por favor revise su bandeja de entrada en su correo electronico" />
    </children>
 </AnchorPane>

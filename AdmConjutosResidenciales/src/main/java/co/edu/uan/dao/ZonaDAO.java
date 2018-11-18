@@ -13,11 +13,24 @@ import javafx.collections.ObservableList;
 
 public class ZonaDAO {
 	private IDBAdapter dbAdapter;
+	public static ZonaDAO zonaDAO=null;
 
-	public ZonaDAO() {
+	private ZonaDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
+	
+	public static ZonaDAO getInstance() {
+		if(zonaDAO==null) {
+			return new ZonaDAO();
+		}
+		return zonaDAO;
+	}
+	
 
+	/**
+	 * metodo para listar las zonas para el registro de las torres
+	 * @return
+	 */
 	public ObservableList<String> listZona() {
 		ObservableList<String> listaZonas = FXCollections.observableArrayList();
 		Connection connection = dbAdapter.getConnection();
@@ -44,6 +57,11 @@ public class ZonaDAO {
 		return listaZonas;
 	}
 
+	/**
+	 * metodo para obtener los datos de la zona seleccionada
+	 * @param zona
+	 * @return
+	 */
 	public String traerDatosDeZonaAdmin(String zona) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -69,6 +87,11 @@ public class ZonaDAO {
 		}
 		return admin;
 	}
+	/**
+	 * metodo para traer los datos de cada zona
+	 * @param zona
+	 * @return
+	 */
 	public String traerDatosDeZonaId(String zona) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -94,6 +117,11 @@ public class ZonaDAO {
 		}
 		return id;
 	}
+	/**
+	 * metodo para obtener el costo del parqueadero de acuerdo a la zona
+	 * @param zona
+	 * @return
+	 */
 	public String traerDatosDeZonaParq(String zona) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;

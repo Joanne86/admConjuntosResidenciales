@@ -9,7 +9,24 @@ public abstract class Persona {
     private String correo;
     private Login login;
 
-    public Persona(String documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
+    public Persona(String documento, String nombre, String telefono, String nacimiento, String correo) {
+		super();
+		this.documento = documento;
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.nacimiento = nacimiento;
+		this.correo = correo;
+	}
+
+	public Persona(String documento, String nombre, String telefono, String correo) {
+		super();
+		this.documento = documento;
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.correo = correo;
+	}
+
+	public Persona(String documento, String nombre, String telefono, String nacimiento, String correo, Login login) {
         super();
         this.documento = documento;
         this.nombre = nombre;

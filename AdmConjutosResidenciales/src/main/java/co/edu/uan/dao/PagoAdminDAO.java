@@ -26,6 +26,11 @@ public class PagoAdminDAO {
 		return pagoAdminDAO;
 	}
 
+	/**
+	 * metodo que traer los datos del recibo para que el propietario pueda imprimirlo  
+	 * @param documento
+	 * @param recibo
+	 */
 	public void traerDatosRecibo(String documento, Recibo recibo) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -73,7 +78,11 @@ public class PagoAdminDAO {
 			}
 		}
 	}
-
+/**
+ * metodo para guardar los datos del recibo en la base de datos
+ * @param recibo
+ * @return
+ */
 	public boolean guardarRecibo(Recibo recibo) {
 		boolean creado = false;
 
@@ -107,7 +116,11 @@ public class PagoAdminDAO {
 
 		return creado;
 	}
-
+	/**
+	 * metodo para traer los datos del recibo de pago
+	 * @param codigo
+	 * @param listaPagos
+	 */
 	public void traerPago(String codigo, ObservableList<Recibo> listaPagos) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -141,7 +154,10 @@ public class PagoAdminDAO {
 		}
 		
 	}
-
+/**
+ * metodo para traer los datos de los recibos de los propietarios
+ * @param listaPagos
+ */
 	public void traerLista(ObservableList<Recibo> listaPagos) {
 		
 		Connection connection = dbAdapter.getConnection();
@@ -176,7 +192,11 @@ public class PagoAdminDAO {
 			}
 		}
 	}
-
+	/**
+	 * metodo para cancelar el pago de administracion en la base de datos
+	 * @param recib
+	 * @return
+	 */
 	public boolean cancelarRecibo(Recibo recib) {
 		boolean creado = false;
 
@@ -202,5 +222,4 @@ public class PagoAdminDAO {
 		}
 		return creado;
 	}
-
 }

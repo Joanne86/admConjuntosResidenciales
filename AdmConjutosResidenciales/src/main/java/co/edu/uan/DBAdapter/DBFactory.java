@@ -6,7 +6,10 @@ import java.util.Properties;
 import co.edu.uan.conectorBD.MySQLDBAdapter;
 import co.edu.uan.util.PropertiesUtil;
 
-
+/**
+ * 
+ * @author LEIDY RODRIGUEZ
+ */
 public class DBFactory {
 
     private static final String DB_FACTORY_PROPERTY_URL = "DBFactory.properties";
@@ -22,7 +25,10 @@ public class DBFactory {
                 throw new IllegalArgumentException("Not supported");
         }
     }
-
+/**
+ * Metodo para saber que clase de base de datos se va a implementar de acuerdo a los parametros del archivo de propiedades
+ * @return nombre la clase a implementar
+ */
     public static IDBAdapter getDefaultDBAdapter() {
         try {
             Properties prop = PropertiesUtil.loadProperty(DB_FACTORY_PROPERTY_URL);

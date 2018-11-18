@@ -195,25 +195,6 @@
             <Insets />
          </opaqueInsets>
       </JFXButton>
-      <JFXButton fx:id="btnEliminar" disable="true" layoutX="907.0" layoutY="473.0" onAction="#eliminar" prefHeight="54.0" prefWidth="137.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Eliminar" textFill="WHITE" AnchorPane.rightAnchor="99.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="TRASH" size="1.5em" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="btnModificar" disable="true" layoutX="904.0" layoutY="402.0" onAction="#modificar" prefHeight="54.0" prefWidth="142.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Modificar" textFill="WHITE" AnchorPane.rightAnchor="97.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="EDIT" size="1.5em" />
-         </graphic>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXButton>
       <JFXButton fx:id="btnActualizarTv" layoutX="37.0" layoutY="279.0" onAction="#actualizarDatos" prefHeight="37.0" prefWidth="49.0" text=".">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="REPEAT" size="2em" />

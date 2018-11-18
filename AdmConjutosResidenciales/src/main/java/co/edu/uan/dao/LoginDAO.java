@@ -18,17 +18,28 @@ public class LoginDAO {
 	private IDBAdapter dbAdapter;
 	private static Persona persona;
 	private static LoginDAO loginDAO=null;
-
+/**
+ * metodo constructor que trae el tipo de gestor de base de datos a utilizar
+ */
 	private LoginDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
+	/**
+	 * metodo que retorna una sola instancea de LoginDAO (singleton)
+	 * @return una Instancia de LoginDAO
+	 */
 	public static LoginDAO getInstance() {
 		if(loginDAO==null) {
 			loginDAO=new LoginDAO();
 		}
 		return loginDAO;
 	}
-
+	/**
+	 * Metodo para iniciar sesion 
+	 * @param usuario
+	 * @param contraseña
+	 * @return
+	 */
 	public boolean iniciarSesion(String usuario, String contraseña) {
 
 		Connection connection = dbAdapter.getConnection();
@@ -54,7 +65,7 @@ public class LoginDAO {
 				contraseñaDecifrada=Cifrado.claveDecifrada(contraseñaCifrada);	
 			}			
 			ps = connection.prepareStatement(sql);// prepara la consulta
-			ps.setString(1, usuario);// se elvia el valor
+			ps.setString(1, usuario);// se envia el valor
 			rs = ps.executeQuery();// busca un nombre de usuario en la bd
 			if (rs.next()) {
 
@@ -74,7 +85,7 @@ public class LoginDAO {
 						setPersona(personaManager.getPersona());
 
 					} else if (tipo.equals("propietario")) {
-						// hace otra consulta para obtener los apartamentos que tiene
+						
 						personaManager.setFactory(new PropietarioFactory());// pasa como parametro el resto de info
 						personaManager.crearPersona(rs.getString(1), rs.getString(2)
 								,rs.getString(5), login);
@@ -100,7 +111,10 @@ public class LoginDAO {
 	public void setPersona(Persona persona) {
 		LoginDAO.persona = persona;
 	}
-
+	/**
+	 * metodo que retorna una instancia de la persona que se logueo para tener los datos en diferentes interfaces de usuario
+	 * @return
+	 */
 	public static Persona getInstancePersona() {
 		return persona;
 	}

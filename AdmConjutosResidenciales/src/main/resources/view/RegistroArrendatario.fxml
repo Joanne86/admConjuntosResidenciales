@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="1143.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uan.controlador.CtrlRegistroArrendatario">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1800.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/conjuto.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="312.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de arrendatarios" AnchorPane.leftAnchor="337.0" AnchorPane.rightAnchor="474.859375">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="337.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Módulo para gestionar arrendatarios del conjunto residencial UANConjuntos." wrappingWidth="331.140625" AnchorPane.leftAnchor="337.0" AnchorPane.rightAnchor="474.859375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="135.0" layoutY="228.0" prefHeight="272.0" prefWidth="736.0" AnchorPane.rightAnchor="272.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXTextField fx:id="txtDocumento" focusColor="WHITE" labelFloat="true" maxWidth="558.0" minWidth="219.0" prefHeight="37.0" prefWidth="245.0" promptText="Numero de documento" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNombre" focusColor="WHITE" labelFloat="true" maxWidth="341.0" minWidth="219.0" prefHeight="37.0" prefWidth="250.0" promptText="Nombre completo" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.columnIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtTelefono" focusColor="WHITE" labelFloat="true" maxWidth="359.0" minWidth="212.0" prefHeight="37.0" prefWidth="359.0" promptText="Telefono" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtEmail" focusColor="WHITE" labelFloat="true" maxWidth="360.0" minWidth="219.0" prefHeight="37.0" prefWidth="250.0" promptText="Correo electronico" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="#dcecff" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <children>
+                  <JFXButton fx:id="btnRegistrar" onAction="#registrar" prefHeight="47.0" prefWidth="336.0" style="-fx-background-color: #35698C; -fx-background-radius: 5;" text="Registrar" textFill="WHITE">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="FLOPPY_ALT" size="1.5em" />
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Paga parqueadero?">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <RadioButton fx:id="rbSiP" mnemonicParsing="false" style="-fx-text-fill: white;" text="SI" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="parqueadero" />
+                     </toggleGroup>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="rbNoP" mnemonicParsing="false" style="-fx-text-fill: white;" text="NO" textFill="WHITE" toggleGroup="$parqueadero">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

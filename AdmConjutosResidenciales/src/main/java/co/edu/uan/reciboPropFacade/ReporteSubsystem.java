@@ -19,6 +19,10 @@ public class ReporteSubsystem {
 	public ReporteSubsystem() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
+	/**
+	 * metodo que muestra el reporte factura
+	 * @param codigoFact
+	 */
 	public void iniciar(int codigoFact) {
         try {
         	Connection conn = dbAdapter.getConnection();

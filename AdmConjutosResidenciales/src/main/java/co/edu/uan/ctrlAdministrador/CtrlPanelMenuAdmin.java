@@ -49,9 +49,6 @@ public class CtrlPanelMenuAdmin implements Initializable {
 	private JFXButton btnGestionarApartamentos;
 
 	@FXML
-	private JFXButton btnUpdateData;
-
-	@FXML
 	private JFXButton btnPagoAdmin;
 
 
@@ -65,6 +62,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 
 	public static Stage primaryStage;
 
+	/**
+	 * metodo para abrir la vista de registro de propietarios
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void registrarPropietario(ActionEvent event) throws IOException {
 		CtrlMenuPrincipal.drawer1.close();
@@ -82,6 +84,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para abrir la vista de registrar visitante
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void registrarVisitante(ActionEvent event) throws IOException {
 
@@ -100,6 +107,9 @@ public class CtrlPanelMenuAdmin implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para abrir la vista de pagos de administracion
+	 */
 	@FXML
 	void pagosAdmin(ActionEvent event) throws IOException {
 		CtrlMenuPrincipal.drawer1.close();
@@ -117,6 +127,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para abrir la vista de gestion de apartamentos
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void gestionarApartamentos(ActionEvent event) throws IOException {
 		CtrlMenuPrincipal.drawer1.close();
@@ -134,7 +149,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			// actualizar tabla de bases de datos.
 		}
 	}
-
+	/**
+	 * metodo para abrir la vista de consulta de arrendatarios
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void consultarArrendatarios(ActionEvent event) throws IOException {
 		CtrlMenuPrincipal.drawer1.close();
@@ -152,6 +171,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para abrir la vista de recepcion de quejas y o sigerencias
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void quejasSugerencias(ActionEvent event) throws IOException {
 		CtrlMenuPrincipal.drawer1.close();
@@ -168,7 +192,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 			pane7.toFront();
 		}
 	}
-	
+	/**
+	 * metodo para abrir la vista de gestion del personal de servicios
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void gestionarServicios(ActionEvent event) throws IOException {
     	CtrlMenuPrincipal.drawer1.close();
@@ -186,11 +214,11 @@ public class CtrlPanelMenuAdmin implements Initializable {
 		}
     }
 
-	@FXML
-	void actualizarDatos(ActionEvent event) {
-
-	}
-
+	/**
+	 * metodo para cerrar la vista de administracion y volver a la vista principal 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void cerrarSesion(ActionEvent event) throws IOException {
 

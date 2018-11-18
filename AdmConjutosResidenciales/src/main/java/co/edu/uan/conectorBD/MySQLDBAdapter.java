@@ -6,7 +6,11 @@ import java.util.Properties;
 
 import co.edu.uan.DBAdapter.IDBAdapter;
 import co.edu.uan.util.PropertiesUtil;
-
+/**
+ * 
+ * @author LEIDY RODRIGUEZ
+ *
+ */
 public class MySQLDBAdapter implements IDBAdapter {
 
     private static final String DB_PROPERTIES = "DBMySQL.properties";

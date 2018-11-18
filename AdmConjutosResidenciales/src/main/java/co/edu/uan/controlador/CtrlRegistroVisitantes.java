@@ -49,8 +49,8 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 	@FXML
 	private JFXButton btnActualizar;
-    @FXML
-    private Text entrada;
+	@FXML
+	private Text entrada;
 
 	@FXML
 	private Text lbHoraSal;
@@ -106,6 +106,11 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 	private Visitante visi;
 
+	/**
+	 * metodo para establecer la fecha y hora de salida en la interfaz grafica
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void capSalida(ActionEvent event) {
 		lbFechaSal.setText(getFecha());
@@ -113,12 +118,22 @@ public class CtrlRegistroVisitantes implements Initializable {
 
 	}
 
+	/**
+	 * metodo para establecer la fecha y hora de entrada en la interfaz grafica
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void capEntrada(ActionEvent event) {
 		lbfechaEnt.setText(getFecha());
 		lbHoraEnt.setText(getHora());
 	}
 
+	/**
+	 * metodo para capturar la hora del sistema
+	 * 
+	 * @return la hora del sistema
+	 */
 	public String getHora() {
 		Calendar calendario = Calendar.getInstance();
 		int hora, minutos, segundos;
@@ -128,6 +143,11 @@ public class CtrlRegistroVisitantes implements Initializable {
 		return hora + ":" + minutos + ":" + segundos;
 	}
 
+	/**
+	 * metodo para capturar la fecha del sistema
+	 * 
+	 * @return la fecha del sistema
+	 */
 	public String getFecha() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = new Date();
@@ -135,22 +155,33 @@ public class CtrlRegistroVisitantes implements Initializable {
 		return fecha;
 	}
 
+	/**
+	 * metodo para buscar al visitante para darle salida
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void buscar(ActionEvent event) {
 		if (txtDocumentoBuscar.getText().isEmpty()) {
 			displayAlert(AlertType.INFORMATION, "CAMPO DE BUSQUEDA VACIO", "Debe tener el campo de busqueda lleno");
 		} else {
-			VisitanteDAO visDAO = VisitanteDAO.getInstance();
+
 			listaVis = FXCollections.observableArrayList();
-			visDAO.buscarVisitante(listaVis, txtDocumentoBuscar.getText());
+			VisitanteDAO.getInstance().buscarVisitante(listaVis, txtDocumentoBuscar.getText());
 			tvVisitantes.setItems(listaVis);
-			if(tvVisitantes.getItems().isEmpty()) {
-				displayAlert(AlertType.INFORMATION, "NO ENCONTRADO", "La persona con ese documento no existe o ya salio");
+			if (tvVisitantes.getItems().isEmpty()) {
+				displayAlert(AlertType.INFORMATION, "NO ENCONTRADO",
+						"La persona con ese documento no existe o ya salio");
 			}
 			txtDocumentoBuscar.setText("");
 		}
 	}
 
+	/**
+	 * metodo para registrar la entrada del visitante
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void registrarEntrada(ActionEvent event) {
 		if (txtDocumento.getText().isEmpty() || txtNombre.getText().isEmpty() || lbfechaEnt.getText().equals("<fecha>")
@@ -170,6 +201,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 			}
 		}
 	}
+
 	public void limpiarCampos() {
 		txtDocumento.setText(null);
 		txtNombre.setText(null);
@@ -179,6 +211,11 @@ public class CtrlRegistroVisitantes implements Initializable {
 		cbTorre.setValue(null);
 	}
 
+	/**
+	 * Metodo para registrar la salida de un visitante
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void registrarSalida(ActionEvent event) {
 
@@ -186,19 +223,22 @@ public class CtrlRegistroVisitantes implements Initializable {
 			displayAlert(AlertType.WARNING, "SIN REGISTRO DE SALIDA",
 					"Debe capturar la fecha y hora de salida del visitante");
 		} else {
-			VisitanteDAO visDAO = VisitanteDAO.getInstance();
-			this.visi.setSalida(lbFechaSal.getText()+"-"+lbHoraSal.getText());
-			if(visDAO.registrarSalida(this.visi)) {
+
+			this.visi.setSalida(lbFechaSal.getText() + "-" + lbHoraSal.getText());
+			if (VisitanteDAO.getInstance().registrarSalida(this.visi)) {
 				displayAlert(AlertType.INFORMATION, "REGISTRO EXITOSO", "Registro de salidaa regitrado");
-			listaVis.set(posicionVisitEnTabla, this.visi);
-			mostrarEntrada();
-			bloquearSalida();
-			}else {
+				listaVis.set(posicionVisitEnTabla, this.visi);
+				mostrarEntrada();
+				bloquearSalida();
+			} else {
 				displayAlert(AlertType.ERROR, "ERROR AL REGISTRAR SALIDA", "ERROR al registrar salida del visitante");
 			}
 		}
-
 	}
+
+	/**
+	 * metodo para traer las torres
+	 */
 
 	public void inicializarTorres() {
 		ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
@@ -207,6 +247,11 @@ public class CtrlRegistroVisitantes implements Initializable {
 		cbTorre.setItems(listaTorres);
 	}
 
+	/**
+	 * metodo para seleccionar los apartamentos ocupados
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void seleccionTorre(ActionEvent event) {
 		try {
@@ -220,13 +265,12 @@ public class CtrlRegistroVisitantes implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para traer los datos de los visitantes registrados
+	 */
 	public void inicializarTabla() {
 		listaVis = FXCollections.observableArrayList();
-
-		VisitanteDAO visDAO = VisitanteDAO.getInstance();
-
-		visDAO.traerDatosTabla(listaVis);
-
+		VisitanteDAO.getInstance().traerDatosTabla(listaVis);
 		tvVisitantes.setItems(listaVis);
 		// agrega el listener a la tabla
 		final ObservableList<Visitante> tablaVisitSel = tvVisitantes.getSelectionModel().getSelectedItems();
@@ -245,6 +289,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 		inicializarTabla();
 		inicializarTorres();
 	}
+
 	public void bloquearSalida() {
 		salida.setVisible(false);
 		btnRegistrarSal.setVisible(false);
@@ -254,6 +299,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 		lbFechaSal.setText("<fecha>");
 		lbHoraSal.setText("<hora>");
 	}
+
 	public void mostrarSalida() {
 		salida.setVisible(true);
 		btnRegistrarSal.setVisible(true);
@@ -261,8 +307,9 @@ public class CtrlRegistroVisitantes implements Initializable {
 		lbFechaSal.setVisible(true);
 		lbHoraSal.setVisible(true);
 	}
+
 	public void bloquearEntrada() {
-	    entrada.setVisible(false);
+		entrada.setVisible(false);
 		btnRegistrarEnt.setVisible(false);
 		btnCaptEnt.setVisible(false);
 		lbfechaEnt.setVisible(false);
@@ -270,6 +317,7 @@ public class CtrlRegistroVisitantes implements Initializable {
 		lbfechaEnt.setText("<fecha>");
 		lbHoraEnt.setText("<hora>");
 	}
+
 	public void mostrarEntrada() {
 		entrada.setVisible(true);
 		btnRegistrarEnt.setVisible(true);
@@ -277,16 +325,12 @@ public class CtrlRegistroVisitantes implements Initializable {
 		lbfechaEnt.setVisible(true);
 		lbHoraEnt.setVisible(true);
 	}
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		bloquearSalida();
 		inicializarTorres();
 		inicializarTabla();
-
-		// carga combo de la base de datos
-
 	}
 
 	private void displayAlert(AlertType type, String title, String message) {
@@ -304,22 +348,24 @@ public class CtrlRegistroVisitantes implements Initializable {
 	};
 
 	/**
-	 * MÃ©todo para poner en los textFields la tupla que selccionemos
+	 * Metodo para poner en los textFields la tupla que selccionemos
 	 */
 
 	public void ponerVisitanteSeleccionado() {
 		final Visitante visitante = getTablaPersonasSeleccionada();
 		posicionVisitEnTabla = listaVis.indexOf(visitante);
 		if (visitante != null) {
-			this.visi = visitante;
-			lbDocumento.setText(visitante.getDocumento());
-			bloquearEntrada();
-			mostrarSalida();
+			if(visitante.getSalida().isEmpty()) {
+				this.visi = visitante;
+				lbDocumento.setText(visitante.getDocumento());
+				bloquearEntrada();
+				mostrarSalida();
+			}	
 		}
 	}
 
 	/**
-	 * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+	 * PARA SELECCIONAR UNA CELDA DE LA TABLA
 	 */
 	public Visitante getTablaPersonasSeleccionada() {
 
@@ -331,6 +377,5 @@ public class CtrlRegistroVisitantes implements Initializable {
 			}
 		}
 		return null;
-
 	}
 }

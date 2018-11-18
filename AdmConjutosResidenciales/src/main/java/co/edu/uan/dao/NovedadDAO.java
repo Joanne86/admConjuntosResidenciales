@@ -23,6 +23,10 @@ public class NovedadDAO {
 		}
 		return novedadDAO;
 	}
+	/**
+	 * metodo para traer los datos a la tabla de novedades
+	 * @param lista
+	 */
 	public void traerDatosTabla(ObservableList<Novedad> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -50,6 +54,13 @@ public class NovedadDAO {
 			}
 		}
 	}
+	/**
+	 * metodo para guardar una novedad por parte del propietario
+	 * @param tipoNovedad
+	 * @param detalleNovedad
+	 * @param documento
+	 * @return
+	 */
 	public boolean guardarNovedad(String tipoNovedad, String detalleNovedad, String documento) {
 		boolean guardado=false;
 		Connection connection = dbAdapter.getConnection();

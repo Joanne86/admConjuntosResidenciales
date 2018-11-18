@@ -5,6 +5,7 @@ import co.edu.uan.DBAdapter.DBFactory;
 import co.edu.uan.DBAdapter.IDBAdapter;
 
 import co.edu.uan.cifrar.metodo.Cifrado;
+import co.edu.uan.entidad.Arrendatario;
 import co.edu.uan.entidad.Novedad;
 import co.edu.uan.entidad.Propietario;
 import co.edu.uan.entidad.PropietarioTabla;
@@ -20,18 +21,22 @@ import java.sql.SQLException;
  */
 public class ResidenteDAO {
 	private IDBAdapter dbAdapter;
-	private static ResidenteDAO propietarioDAO = null;
+	private static ResidenteDAO residenteDAO = null;
 
 	private ResidenteDAO() {
 		dbAdapter = DBFactory.getDefaultDBAdapter();
 	}
 	public static ResidenteDAO getInstance() {
-		if(propietarioDAO==null) {
-			propietarioDAO = new ResidenteDAO();
+		if(residenteDAO==null) {
+			residenteDAO = new ResidenteDAO();
 		}
-		return propietarioDAO;
+		return residenteDAO;
 	}
-	
+	/**
+	 * metodo para verificar si el propietario existe o no
+	 * @param documento
+	 * @return
+	 */
 	public boolean verificarProp(String documento) {
 		boolean encontrado=false;
 		Connection connection = dbAdapter.getConnection();
@@ -57,7 +62,11 @@ public class ResidenteDAO {
 		}
 		return encontrado;
 	}
-	
+	/**
+	 * metodo para filtrar propietario por documento
+	 * @param documento
+	 * @param lista
+	 */
 	public void buscarProp( String documento, ObservableList<PropietarioTabla> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -146,6 +155,61 @@ public class ResidenteDAO {
 		}
 
 	}
+	public boolean createArrendatario(Arrendatario arrend) {
+		Connection connection = dbAdapter.getConnection();
+		try {
+			PreparedStatement sentencia = connection.prepareStatement("INSERT into arrendatario"
+					+ "(documento, nombre, telefono, correo, torreapart, parqn) values(?,?,?,?,?,?)");
+			sentencia.setString(1, arrend.getDocumento());
+			sentencia.setString(2, arrend.getNombre());
+			sentencia.setString(3, arrend.getTelefono());
+			sentencia.setString(4, arrend.getCorreo());
+			sentencia.setString(5, arrend.getTorreapart());
+			sentencia.setString(6, arrend.getParqueadero());
+			sentencia.execute();
+			//modificar tabla parqu
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return false;
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+
+	}
+
+	public boolean verificarArrend(String documento) {
+		boolean encontrado=false;
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "SELECT documento FROM arrendatario WHERE documento=?";
+		try {
+			
+			ps = connection.prepareStatement(sql);
+			ps.setString(1, documento);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				encontrado=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+		return encontrado;
+	}
+	/**
+	 * metodo para traer todos los dataos de los propuetarios
+	 * @param lista
+	 */
 	public void traerDatosTabla(ObservableList<PropietarioTabla> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -176,6 +240,11 @@ public class ResidenteDAO {
 			}
 		}
 	}
+	/**
+	 * metodo para traer los datos de los apartamentos para la novedad
+	 * @param novedad
+	 * @param documento
+	 */
 	public void traerApart(Novedad novedad, String documento) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -190,6 +259,62 @@ public class ResidenteDAO {
 				novedad.setApart(rs.getString(2));
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+		
+	}
+	public void traerArrendatrios(ObservableList<Arrendatario> listaArrend) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//hacer una vista 
+		String sql = "SELECT * FROM arrendatario";
+		try {
+			ps = connection.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listaArrend.add(new Arrendatario(rs.getString(1)
+						, rs.getString(2)
+						, rs.getString(3)
+						, rs.getString(4)
+						, rs.getString(5)
+						, rs.getString(6)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+	public void buscarArrendatario(ObservableList<Arrendatario> listaArrend, String documento) {
+		Connection connection = dbAdapter.getConnection();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		//hacer una vista 
+		String sql = "SELECT * FROM arrendatario WHERE documento=?";
+		try {
+			ps = connection.prepareStatement(sql);
+			ps.setString(1,documento);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listaArrend.add(new Arrendatario(rs.getString(1)
+						, rs.getString(2)
+						, rs.getString(3)
+						, rs.getString(4)
+						, rs.getString(5)
+						, rs.getString(6)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {

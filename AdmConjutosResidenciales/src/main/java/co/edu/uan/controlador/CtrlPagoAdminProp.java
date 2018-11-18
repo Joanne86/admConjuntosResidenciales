@@ -41,25 +41,24 @@ public class CtrlPagoAdminProp implements Initializable{
     private JFXButton btnImpRecibo;
     private Recibo recibo;
 
+    /**
+     * metodo para imprimir recibo
+     * @param event
+     */
     @FXML
     void impRecivo(ActionEvent event) {
-    	guardarRecibo();
-    }
-
-    public void guardarRecibo() {
     	int numeroAleatorio = (int) (Math.random() * 999999 + 1);
     	recibo.setCodigo(Integer.toString(numeroAleatorio));
     	recibo.setCancelado("no");
     	if(PagoAdminDAO.getInstance().guardarRecibo(recibo)) {
     		IReporteFacade reporteRecibo = new ReciboFacadeImpl();
     		reporteRecibo.generarReporte(Integer.parseInt(recibo.getCodigo()));   		
-                btnImpRecibo.setDisable(true);
-        
+                btnImpRecibo.setDisable(true);  
         }else {
     		displayAlert(AlertType.ERROR, "ERROR", "A ocurrido un error");
     	}
     }
-    
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 

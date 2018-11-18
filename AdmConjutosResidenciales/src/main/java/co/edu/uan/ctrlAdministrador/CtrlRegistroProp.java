@@ -94,9 +94,6 @@ public class CtrlRegistroProp implements Initializable {
 	private JFXTextField txtNdocumento;
 
 	@FXML
-	private JFXButton btnEliminar;
-
-	@FXML
 	private TableColumn<PropietarioTabla, String> clApart;
 
 	@FXML
@@ -114,15 +111,16 @@ public class CtrlRegistroProp implements Initializable {
 	@FXML
 	private JFXButton btnRegistrar;
 
-	@FXML
-	private JFXButton btnModificar;
 
 	@FXML
 	private JFXButton btnBuscar;
 
 	// colecciones
 	private ObservableList<PropietarioTabla> listaProp;
-
+/**
+ * metodo para buscar un propietario por cedula
+ * @param event
+ */
 	@FXML
 	void buscar(ActionEvent event) {
 
@@ -133,19 +131,12 @@ public class CtrlRegistroProp implements Initializable {
 			listaProp = FXCollections.observableArrayList();
 			propDAO.buscarProp(txtNdocumento.getText(), listaProp);
 			tvTabla.setItems(listaProp);
-			clDocumento.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("documento"));
-			clNombre.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("nombre"));
-			clTelefono.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("telefono"));
-			clFechaNac.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("fecha"));
-			clCorreo.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("correo"));
-			clTorre.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("torre"));
-			clApart.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("apart"));
-			clReside.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("reside"));
-			clParqueadero.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("reside"));
-
 		}
 	}
-
+/**
+ * metodo para registrar un propietario
+ * @param event
+ */
 	@FXML
 	void registrar(ActionEvent event) {
 
@@ -181,15 +172,15 @@ public class CtrlRegistroProp implements Initializable {
 			Propietario propietario = new Propietario(txtDocumento.getText(), txtNombre.getText(),
 					txtTelefono.getText(), calenFechaNac.getValue().toString(), txtEmail.getText(), login, torre,
 					apart);
-			ResidenteDAO propDAO = ResidenteDAO.getInstance();
-			if (propDAO.verificarProp(txtDocumento.getText())) {
+			
+			if (ResidenteDAO.getInstance().verificarProp(txtDocumento.getText())) {
 				displayAlert(AlertType.INFORMATION, "PROPIETARIO YA EXISTE",
 						"El propietario con el documento " + txtDocumento.getText() + " ya existe");
 			} else {
 				Correo proxyEnvio = new ProxyEnvioCorreo();
 				if (proxyEnvio.enviarCorreoResidente(propietario)) {
 
-					if (propDAO.createPropietario(propietario)) {
+					if (ResidenteDAO.getInstance().createPropietario(propietario)) {
 
 						displayAlert(AlertType.INFORMATION, "Registro exitoso",
 								"Registro del propietario exitoso, el usuario y la contraseña se acaba de enviar al correo electronico del propietario");
@@ -200,6 +191,8 @@ public class CtrlRegistroProp implements Initializable {
 					} else {
 						displayAlert(AlertType.ERROR, "Error guardar Propietario", "Error al guardar el Propietario");
 					}
+				}else {
+					displayAlert(AlertType.ERROR, "Error al validar", "Error al validar datos");
 				}
 			}
 		}
@@ -223,16 +216,6 @@ public class CtrlRegistroProp implements Initializable {
 	}
 
 	@FXML
-	void eliminar(ActionEvent event) {
-
-	}
-
-	@FXML
-	void modificar(ActionEvent event) {
-
-	}
-
-	@FXML
 	void actualizarDatos(ActionEvent event) {
 		inicializarTorres();
 		inicializarTabla();
@@ -244,7 +227,10 @@ public class CtrlRegistroProp implements Initializable {
 		alert.setContentText(message);
 		alert.showAndWait();
 	}
-
+/**
+ * metodo para seleccionar una torre y traer los apartamentos de esa torre
+ * @param event
+ */
 	@FXML
 	void seleccionTorre(ActionEvent event) {
 		try {
@@ -292,14 +278,15 @@ public class CtrlRegistroProp implements Initializable {
 		clParqueadero.setCellValueFactory(new PropertyValueFactory<PropietarioTabla, String>("parqueadero"));
 
 	}
-
+/**
+ * metodo que trae las torres para el registro
+ */
 	public void inicializarTorres() {
 		try {
 
 			ObservableList<Integer> listaTorres = FXCollections.observableArrayList();
 
-			TorreDAO torreDAO = TorreDAO.getInstace();;
-			torreDAO.traerTorres(listaTorres);
+			TorreDAO.getInstace().traerTorres(listaTorres);
 
 			cbTorre.setItems(listaTorres);
 		} catch (NullPointerException e) {

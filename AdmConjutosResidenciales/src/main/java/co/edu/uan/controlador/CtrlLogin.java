@@ -30,6 +30,11 @@ public class CtrlLogin {
 	static Stage primaryStage = new Stage();
 	public static Parent root;
 
+	/**
+	 * metodo para loguearse en el sistema
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void ingresar(ActionEvent event) throws IOException {
 

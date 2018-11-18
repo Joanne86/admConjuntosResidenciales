@@ -24,7 +24,11 @@ public class CtrlPrincipal {
 	AnchorPane pane2;
 	
 	
-
+	/**
+	 * metodo para abrir la vista del login
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void iniciarSesion(ActionEvent event) throws IOException {
 		if (pane2 == null) {
@@ -40,8 +44,5 @@ public class CtrlPrincipal {
 		} else {
 			pane2.toFront();
 		}
-
-	}
-	
-	
+	}	
 }

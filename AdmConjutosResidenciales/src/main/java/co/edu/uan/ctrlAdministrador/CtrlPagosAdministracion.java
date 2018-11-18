@@ -73,6 +73,10 @@ public class CtrlPagosAdministracion implements Initializable{
     
     private Recibo recib;
 
+    /**
+     * metodo para buscar el codigo de recibo de pago 
+     * @param event
+     */
     @FXML
     void buscar(ActionEvent event) {
     	if(txtCodigo.getText().isEmpty()) {
@@ -88,6 +92,10 @@ public class CtrlPagosAdministracion implements Initializable{
     	}
     }
 
+    /**
+     * metodo para cancelar o dar por hecho el pago de administracion por parte del propietario
+     * @param event
+     */
     @FXML
     void realizarPago(ActionEvent event) {
     	if(this.recib==null) {
@@ -145,7 +153,7 @@ public class CtrlPagosAdministracion implements Initializable{
 	};
 
 	/**
-	 * MÃ©todo para poner en los textFields la tupla que selccionemos
+	 * Metodo para poner en los textFields la tupla que selccionemos
 	 */
 
 	public void ponerReciboSeleccionado() {
@@ -158,7 +166,7 @@ public class CtrlPagosAdministracion implements Initializable{
 	}
 
 	/**
-	 * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+	 * PARA SELECCIONAR UNA CELDA DE LA TABLA
 	 */
 	public Recibo getTablaReciboSeleccionado() {
 

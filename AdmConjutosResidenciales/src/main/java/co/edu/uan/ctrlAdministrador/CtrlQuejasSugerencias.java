@@ -53,13 +53,13 @@ public class CtrlQuejasSugerencias implements Initializable{
 
     @FXML
     void actualizar(ActionEvent event) {
-
+    	inicializarTabla() ;
     }
 
     public void inicializarTabla() {
     	listaNovedad =  FXCollections.observableArrayList();
-    	NovedadDAO novedadDAO = NovedadDAO.getInstance();
-    	novedadDAO.traerDatosTabla(listaNovedad);
+    	
+    	NovedadDAO.getInstance().traerDatosTabla(listaNovedad);
     	tablaQuejasSugerencias.setItems(listaNovedad);
     	final ObservableList<Novedad> tablaVisitSel = tablaQuejasSugerencias.getSelectionModel().getSelectedItems();
 		tablaVisitSel.addListener(selectorTabla);
@@ -85,7 +85,7 @@ public class CtrlQuejasSugerencias implements Initializable{
 	};
 
 	/**
-	 * MÃ©todo para poner en los textFields la tupla que selccionemos
+	 * Metodo para poner en los textFields la tupla que selccionemos
 	 */
 
 	public void ponerVisitanteSeleccionado() {
@@ -97,7 +97,7 @@ public class CtrlQuejasSugerencias implements Initializable{
 	}
 
 	/**
-	 * PARA SELECCIONAR UNA CELDA DE LA TABLA "tablaPersonas"
+	 * PARA SELECCIONAR UNA CELDA DE LA TABLA
 	 */
 	public Novedad getTablaPersonasSeleccionada() {
 

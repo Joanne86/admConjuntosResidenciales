@@ -24,7 +24,10 @@ public class ServicioDAO {
 		}
 		return servicioDAO;
 	}
-
+	/**
+	 *metodo para obtener los servicios disonibles para el registro del personal
+	 * @param lista llena la lista
+	 */
 	public void traerServicios(ObservableList<String> lista) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
@@ -53,12 +56,15 @@ public class ServicioDAO {
 		}
 
 	}
-
+	/**
+	 *  metodo para obtener los datos de todo el personal de servicios
+	 * @param listaServ llena la lista para llenar la tabla
+	 */
 	public void traerDatosTabla(ObservableList<Servicio> listaServ) {
 		Connection connection = dbAdapter.getConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM personalServicio";
+		String sql = "SELECT * FROM personalservicio";
 		try {
 			ps = connection.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -81,7 +87,11 @@ public class ServicioDAO {
 			}
 		}
 	}
-
+/**
+ * metodo para verificar si existe el personal de servicio
+ * @param documento
+ * @return
+ */
 	public boolean verificarPServicio(String documento) {
 		boolean encontrado=false;
 		Connection connection = dbAdapter.getConnection();
@@ -107,7 +117,11 @@ public class ServicioDAO {
 		}
 		return encontrado;
 	}
-
+/**
+ * metodo para guardar el personal de servicio
+ * @param servicio
+ * @return
+ */
 	public boolean createPServicio(Servicio servicio) {
 		Connection connection = dbAdapter.getConnection();
 
@@ -140,7 +154,11 @@ public class ServicioDAO {
 			}
 		}
 	}
-
+/**
+ * metodo para buscar o filtrar el personal de servicio por documento
+ * @param listaServ
+ * @param documento
+ */
 	public void buscarPServicio(ObservableList<Servicio> listaServ, String documento) {
 		
 		Connection connection = dbAdapter.getConnection();
